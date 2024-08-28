@@ -7,7 +7,6 @@ function page() {
 <Layout>
 <div className='container'>
       <h1>this is Investor’s Corner page</h1>
-
 </div>
 </Layout>
  </>

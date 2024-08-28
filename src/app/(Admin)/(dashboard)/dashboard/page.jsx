@@ -7,6 +7,7 @@ import Sidebar from '@/app/(Admin)/(dashboard)/dashboard/Components/Sidebar/Side
 import CategoryManagement from './Components/categories/Cat';
 import ProductManagement from './Components/products/product';
 import FooterManagement from './Components/footer-management/footer';
+import HeaderLogoPage from './Components/Header/headerLogo';
 
 const Dashboard = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -49,7 +50,8 @@ const Dashboard = () => {
             <div className='main-content'>
                 {activeTab === 'category' && <CategoryManagement />}
                 {activeTab === 'product' && <ProductManagement />}
-                {activeTab === 'footer' && <FooterManagement />}
+                {activeTab === 'footer' && <FooterManagement /> }
+                <HeaderLogoPage/>
             </div>
         </div>
         </div>
