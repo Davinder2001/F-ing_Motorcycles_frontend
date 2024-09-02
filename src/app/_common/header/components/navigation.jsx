@@ -1,11 +1,26 @@
 import React from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
+import Image from 'next/image';
 
-function Navigation() {
+ 
+
+function Navigation({result}) {
+// console.log(result)
+ 
+  
   return (
 
-        <nav>
-          <ul>
+ <>
+    <div className='header_logo'>
+    <Image 
+      src={result.image_path} 
+      height={50} 
+      width={100} 
+      alt='logo' 
+    />
+  </div>
+        <nav className='navbar'>
+           <ul>
             <li>
               <Link href="/">Home</Link>
             </li>
@@ -23,7 +38,7 @@ function Navigation() {
             </li>
           </ul>
         </nav>
- 
+    </>
 
   );
 }

@@ -2,6 +2,13 @@ import axios from 'axios';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+
+
+
+
+
+
+
 // Fetch all footers
 export const fetchFooters = async () => {
     try {

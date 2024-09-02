@@ -14,6 +14,9 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                 <button onClick={() => setActiveTab('product')} className={activeTab === 'product' ? 'active' : ''}>
                     Product Management
                 </button>
+                <button onClick={() => setActiveTab('header')} className={activeTab === 'header' ? 'active' : ''}>
+                    Header Management
+                </button>  
                 <button onClick={() => setActiveTab('footer')} className={activeTab === 'footer' ? 'active' : ''}>
                     Footer Management
                 </button>          

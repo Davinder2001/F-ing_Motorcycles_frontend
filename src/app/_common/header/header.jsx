@@ -1,16 +1,17 @@
 import React from 'react';
-import Link from 'next/link'
-import HeaderLogoPage from '@/app/components/header/headerLogo'
-import Navigation from '@/app/components/NavigationComponents/navigation'
+import Navigation from '@/app/_common/header/components/navigation'
+import { EXPORT_ALL_APIS } from '../../../../utils/apis/apis';
 
-function Header() {
+async function Header() {
+  let api=EXPORT_ALL_APIS()
+  let result= api.loadHeaderImage()
   return (
     <>
       <header>
       <div className='container'>
         <div className='header-inner'>
-        <HeaderLogoPage/>
-        <Navigation/>
+      
+        <Navigation result={result}/>
       </div>
       </div>
       </header>
