@@ -1,7 +1,7 @@
 "use client"
-import FooterColumnOne from '@/app/components/FooterComponents/footer_first_column'
-import FooterColumnTwo from '@/app/components/FooterComponents/footer_second_column'
-import FooterColumnThree from '@/app/components/FooterComponents/footer_third_column'
+import FooterColumnOne from '@/app/_common/footer/component/footer_first_column'
+import FooterColumnTwo from '@/app/_common/footer/component/footer_second_column'
+import FooterColumnThree from '@/app/_common/footer/component/footer_third_column'
 import React from 'react'
 
 function FooterPage({result}) {

@@ -7,7 +7,7 @@ export const EXPORT_ALL_APIS=()=>{
     }
 
     const loadHomeFirstSection = async () => {
-          let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`);
+          let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`)
           let data = resp.json(); // Get the raw response as text
           return data;
       

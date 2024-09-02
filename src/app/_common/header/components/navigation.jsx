@@ -12,12 +12,14 @@ function Navigation({result}) {
 
  <>
     <div className='header_logo'>
+  <Link href="/">
     <Image 
       src={result.image_path} 
-      height={50} 
-      width={100} 
+      height={20} 
+      width={180} 
       alt='logo' 
     />
+    </Link>
   </div>
         <nav className='navbar'>
            <ul>

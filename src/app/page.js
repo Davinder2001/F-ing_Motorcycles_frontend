@@ -7,9 +7,9 @@ import Homepage from './_homepage/homepage';
 
 const Page = async() => {
   let api=EXPORT_ALL_APIS()
-  let result= api.loadHomeFirstSection()
+  let result=await api.loadHomeFirstSection()
 
-  let category= api.loadHomeCategory()
+  let category=await api.loadHomeCategory()
   
 
 

@@ -4,7 +4,7 @@ import { EXPORT_ALL_APIS } from '../../../../utils/apis/apis';
 
 async function Header() {
   let api=EXPORT_ALL_APIS()
-  let result= api.loadHeaderImage()
+  let result=await api.loadHeaderImage()
   return (
     <>
       <header>
