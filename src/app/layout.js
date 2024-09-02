@@ -1,5 +1,6 @@
 // /app/layout.js
 import "./globals.css";
+import "./style/global.scss"
 import Layout from "./_common/layout/layout";
 
 export const metadata = {
