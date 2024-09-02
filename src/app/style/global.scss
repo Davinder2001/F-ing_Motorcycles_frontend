@@ -264,6 +264,15 @@ span.mc-green {
   background: #E7F6F1;
 }
 
+.tab-button:nth-child(1) {
+  border-top-left-radius: 5px;
+}
+
+.tab-button:nth-child(5) {
+  border-top-right-radius: 5px;
+}
+
+
 
 h2.heading_dualc span {
 color: $m_green;
