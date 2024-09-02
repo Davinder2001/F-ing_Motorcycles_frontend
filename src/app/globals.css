@@ -53,3 +53,7 @@ header ul, ol {
   display: flex;
   justify-content: space-between;
 }
+.header-inner {
+  display: flex;
+  gap: 20px;
+}

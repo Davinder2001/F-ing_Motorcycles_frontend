@@ -50,8 +50,9 @@ const Dashboard = () => {
             <div className='main-content'>
                 {activeTab === 'category' && <CategoryManagement />}
                 {activeTab === 'product' && <ProductManagement />}
+                {activeTab === 'header' && <HeaderLogoPage/> }
                 {activeTab === 'footer' && <FooterManagement /> }
-                <HeaderLogoPage/>
+                
             </div>
         </div>
         </div>

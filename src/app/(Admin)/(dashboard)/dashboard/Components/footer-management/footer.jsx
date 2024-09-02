@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from 'react';
 import { updateFooter, fetchFooters } from '@/Api/FooterApi/api'; // Adjust the path as needed
 

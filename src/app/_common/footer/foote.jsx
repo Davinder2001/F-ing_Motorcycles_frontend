@@ -1,22 +1,18 @@
 import React from "react";
-import FooterFirstColumn from "@/app/components/FooterComponents/footer_first_column";
-import FooterSecondColumn from "@/app/components/FooterComponents/footer_second_column";
-import FooterThirdColumn from "@/app/components/FooterComponents/footer_third_column";
 
-function Footer() {
+import FooterPage from "./component/footerPage";
+import { EXPORT_ALL_APIS } from "../../../../utils/apis/apis";
+
+async function Footer() {
+  let api=EXPORT_ALL_APIS()
+  let result= api.loadHeaderFooter()
+
+ 
+  
   return (
+    
     <section className="footer_section">
-      <div className="footer_inner_section container">
-        <div className="first_column">
-          <FooterFirstColumn />
-        </div>
-        <div className="second_column">
-          <FooterSecondColumn />
-        </div>
-        <div className="third_column">
-          <FooterThirdColumn />
-        </div>
-      </div>
+      <FooterPage result={result}/>
     </section>
   );
 }

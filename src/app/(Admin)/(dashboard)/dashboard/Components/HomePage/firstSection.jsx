@@ -8,31 +8,37 @@ const API_URL = 'http://localhost:8000/';
 const HomeContentPage = () => {
   const [image, setImage] = useState(null);
   const [newImage, setNewImage] = useState(null);
+  const [heading, setHeading] = useState('');
+  const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
   useEffect(() => {
-    const fetchImage = async () => {
+    const fetchData = async () => {
       try {
         const response = await axios.get(`${API_URL}api/homedata`);
         setImage(response.data.image); // Assuming response data contains image path and id
+        setHeading(response.data.heading || ''); // Assuming response data contains heading
+        setDescription(response.data.description || ''); // Assuming response data contains description
       } catch (err) {
-        setError('Failed to fetch image.');
+        setError('Failed to fetch home content.');
       } finally {
         setLoading(false);
       }
     };
 
-    fetchImage();
+    fetchData();
   }, []);
 
-  const handleImageUpload = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     if (newImage) {
       formData.append('image', newImage);
     }
+    formData.append('heading', heading);
+    formData.append('description', description);
 
     try {
       const response = await axios.post(`${API_URL}api/homedata`, formData, {
@@ -40,34 +46,12 @@ const HomeContentPage = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      setImage(response.data.image); // Assuming response data contains image path and id
-      setSuccess('Image uploaded successfully!');
+      setImage(response.data.image); // Assuming response data contains updated image path and id
+      setHeading(response.data.heading); // Assuming response data contains updated heading
+      setDescription(response.data.description); // Assuming response data contains updated description
+      setSuccess('Home content updated successfully!');
     } catch (err) {
-      setError('Failed to upload image.');
-    }
-  };
-
-  const handleImageUpdate = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    if (newImage) {
-      formData.append('image', newImage);
-    }
-
-    if (image && image.id) {
-      try {
-        const response = await axios.put(`${API_URL}api/update-image/${image.id}`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        setImage(response.data.image); // Assuming response data contains updated image path and id
-        setSuccess('Image updated successfully!');
-      } catch (err) {
-        setError('Failed to update image.');
-      }
-    } else {
-      setError('No image to update.');
+      setError('Failed to update home content.');
     }
   };
 
@@ -106,25 +90,25 @@ const HomeContentPage = () => {
           <p>No image found.</p>
         )}
 
-        <form onSubmit={handleImageUpload}>
+        <form onSubmit={handleSubmit}>
           <input
             type="file"
             accept="image/*"
             onChange={(e) => setNewImage(e.target.files[0])}
           />
-          <button type="submit">Upload Image</button>
+          <input
+            type="text"
+            value={heading}
+            onChange={(e) => setHeading(e.target.value)}
+            placeholder="Heading"
+          />
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description"
+          />
+          <button type="submit">Upload/Update Content</button>
         </form>
-
-        {image && (
-          <form onSubmit={handleImageUpdate}>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setNewImage(e.target.files[0])}
-            />
-            <button type="submit">Update Image</button>
-          </form>
-        )}
 
         {image && (
           <button onClick={handleImageDelete}>Delete Image</button>
