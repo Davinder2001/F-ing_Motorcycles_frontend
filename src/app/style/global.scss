@@ -531,6 +531,125 @@ a {
 }
 
 
+.popup-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-form {
+  background-color: white;
+  padding: 43px 46px;
+  border-radius: 5px;
+  width: 850px;
+  position: relative;
+}
+
+
+.popup-form .close-btn {
+  position: absolute;
+  top: 10%;
+  right: 38px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.popup-form .form-group {
+  margin-bottom: 15px;
+}
+
+
+.popup-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.popup-form button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+}
+
+
+.popup-form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+form.custom_popup_form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+
+form.custom_popup_form .form-group:nth-child(5) {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+form.custom_popup_form input {
+  background: #F4F4F4;
+  border: none;
+}
+form.custom_popup_form input,
+textarea,
+select
+{
+    background: #F4F4F4;
+    border: none;
+    padding:20px;
+    font-size:18px;
+}
+
+form.custom_popup_form button:hover{
+    background:black !important;
+}
+
+
+
+img.line_popup {
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  right: 0;
+
+}
+.popup-form h2 {
+  font-weight: 400;
+}
+
+form.custom_popup_form button {
+    float: right;
+    max-width: 120px;
+    background: #437A67 !important;
+    font-size: 22px;
+    font-family: oxanium;
+}
+
+form.custom_popup_form label {
+  font-family: Helvetica Neue;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
 
 
 
@@ -651,8 +770,32 @@ p.growth-intro {
 }
 
 
+@media only screen and (max-width:468px) {
+  form.custom_popup_form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    gap: 0px;
+}
+
+form.custom_popup_form input,
+ textarea, 
+ select {
+  background: #F4F4F4;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.popup-form h2 {
+  font-size: 28px;
+}
+
+form.custom_popup_form .form-group:nth-child(5) {
+  grid-column-start: auto;
+  grid-column-end: auto;
+}
 
 
-
-
+}
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import PopupForm from '@/app/_common/layout/popup';
 
 const TabComponent = () => {
   const tabData = [
@@ -51,6 +51,9 @@ const TabComponent = () => {
   ];
 
   const [activeTab, setActiveTab] = useState('Mild Hybrid');
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const openPopup = () => setIsPopupOpen(true);
+  const closePopup = () => setIsPopupOpen(false);
 
   return (
     <div className="tabs-container container">
@@ -73,10 +76,13 @@ const TabComponent = () => {
             <div key={tab.name}>
               <h3>{tab.title}</h3>
               <p>{tab.description}</p>
-              <button className="enquiry-button"><img src="/enquiry.png"/>Enquiry Now</button>
-            </div>
+              <button className="enquiry-button" onClick={openPopup}>
+                <img src="/enquiry.png" alt="Enquiry" /> Enquiry Now
+              </button>            </div>
           ))}
       </div>
+      {isPopupOpen && <PopupForm closeForm={closePopup} />} {/* Conditionally render form */}
+
     </div>
   );
 };
