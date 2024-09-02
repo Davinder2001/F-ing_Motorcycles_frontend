@@ -74,7 +74,7 @@ const TabComponent = () => {
           .filter((tab) => tab.name === activeTab)
           .map((tab) => (
             <div key={tab.name}>
-              <h3>{tab.title}</h3>
+            
               <p>{tab.description}</p>
               <button className="enquiry-button" onClick={openPopup}>
                 <img src="/enquiry.png" alt="Enquiry" /> Enquiry Now

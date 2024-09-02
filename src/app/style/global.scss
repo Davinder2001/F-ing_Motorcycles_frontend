@@ -249,7 +249,7 @@ span.mc-green {
   transform: translateX(-50%);
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-top: 15px solid #437a67; /* Color of the triangle */
+  border-top: 15px solid #13544e; /* Color of the triangle */
 }
 
 
@@ -454,7 +454,7 @@ button.enquiry-button:hover {
 }
 
 .enquiry-button {
-  background-color: #437A67;
+  background-color: $m_green;
   color: #fff;
   padding: 10px 26px;
   border: none;
@@ -507,7 +507,7 @@ button.enquiry-button:hover {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 23px;
-  color: #016934;
+  color: $m_green;
   font-family: oxanium;
 
 }
@@ -515,9 +515,10 @@ button.enquiry-button:hover {
 
 
 a.getdirection {
-  color: #437A67;
+  color: $m_green;
   display: flex;
   align-items: center;
+  text-transform: capitalize;
   column-gap: 20px;
   font-size: 18px;
   text-decoration: underline;
@@ -664,7 +665,7 @@ img.line_popup {
 form.custom_popup_form button {
     float: right;
     max-width: 120px;
-    background: #437A67 !important;
+    background: $m_green !important;
     font-size: 22px;
     font-family: oxanium;
 }
