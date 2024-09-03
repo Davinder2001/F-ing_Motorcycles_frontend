@@ -15,11 +15,11 @@ const Page = async() => {
 
   return (
     <Layout>
-      <div className='container'>
+    
      
           <Homepage result={result} category={category}/>
        
-      </div>
+
     </Layout>
   );
 };

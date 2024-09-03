@@ -1,29 +1,49 @@
 export const EXPORT_ALL_APIS=()=>{
 
     const loadHeaderFooter=async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/footer`)
-        let data= resp.json()
-        return data
+        try {
+            let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/footer`)
+            let data= resp.json()
+            return data
+            
+        } catch (error) {
+            console.log('error')
+        }
     }
 
     const loadHomeFirstSection = async () => {
-          let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`)
-          let data = resp.json(); // Get the raw response as text
-          return data;
+        try {
+            
+            let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`)
+            let data = await resp.json();  
+            return data;
+        } catch (error) {
+            console.log('error')
+        }
       
       };
       
 
     const loadHomeCategory=async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`)
-        let data= resp.json()
-        return data
+        try {
+            let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`)
+            let data=await resp.json()
+            return data
+            
+        } catch (error) {
+           console.log('error') 
+        }
     }
     
     const loadHeaderImage=async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/headerlogo`)
-        let data= resp.json()
-        return data
+        try {
+            
+            let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/headerlogo`)
+            let data=await resp.json()
+            return data
+        } catch (error) {
+            console.log('error')
+        }
     }
 
     return{
