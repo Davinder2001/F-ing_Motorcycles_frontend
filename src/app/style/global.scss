@@ -168,6 +168,10 @@ header {
   padding-bottom: 60px;
   padding-top: 60px;
 }
+
+
+
+
  header nav ul a {
   text-decoration: none;
   font-size: 16px;
@@ -272,6 +276,42 @@ span.highlight {
   line-height: 1.6;
 }
 
+
+
+
+.sidebar {
+  max-width: 250px;
+  height: 100vh;
+  background: #13544e;
+  width: 100%;
+  border-radius: 10px;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar .tab-buttons {
+  padding-top:20px;
+}
+
+
+.sidebar .logo h3 {
+  text-align: center;
+  color: white;
+  border-bottom: 1px solid white;
+  padding-bottom: 28px;
+}
+
+.admin_header {
+  padding: 10px;
+ float: right; 
+ display: none;
+}
+
+.dashboard-inner .main-content button {
+  padding: 10px;
+  font-family: oxanium;
+  cursor: pointer;
+}
 
 
 
@@ -417,37 +457,6 @@ span.mc-green {
   border: none;
   background: #E7F6F1;
 }
-.footer_section .copyright_bar_inner {
-  text-align:center;
-}
-
-.footer_section .copyright_bar{
-  padding:20px 0px;
-  background-color: #E7F6F1;
-}
-
-.footer_section .first_column {
-  width: 33%;
-}
-
-.footer_section .second_column {
-width: 33%;
-}
-
-.footer_section .third_column {
-width: 33%;
-}
-
-.footer_section li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-
-.main-content {
-  width: 80%;
-}
 
 .tab-button:nth-child(1) {
   border-top-left-radius: 5px;
@@ -498,11 +507,143 @@ section.investor-corner:before {
   margin-top: 45px;
 }
 
+.dashboard-inner {
+  .sidebar {
+    button.logout-btn {
+      padding: 10px 20px;
+      width: 80%;
+      margin-top: 13px;
+      margin: auto;
+      margin-left: 22px;
+      margin-top: 19px;
+  }
+  }
+
+
+  .tab-buttons {
+    buttons {
+      border: none !important;
+      padding: 20px !important;
+    }
+
+    
+
+
+    button {
+      padding: 13px;
+      text-align: left;
+      font-size: 14px;
+      cursor: pointer;
+      pointer-events: visible;
+      background: transparent;
+      color: #fff;
+      border: none;
+      border-bottom: 1px solid #ffffff48;
+      padding-bottom: 14px;
+      border-radius: 0px;
+      margin-bottom: 0px;
+    }
+  }
+
+  .main-content {
+    width: 100%;
+
+    form {
+      background: #f3f3f38a;
+      padding: 25px 15px;
+      margin-bottom: 43px;
+      box-shadow: 2px 0px 5px #00000066;
+      border-radius: 10px;
+
+      button {
+        margin-right: 10px;
+    }
+  }
+
+    button {
+      padding: 10px;
+      font-family: oxanium;
+      cursor: pointer;
+    }
+   
+    
+
+    th:last-child {
+      width: 12%;
+  }
+  input {
+    background: white;
+    border: 1px solid grey;
+    padding: 20px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+textarea {
+  background: white;
+  border: 1px solid grey;
+  padding: 20px 10px;
+  height: 120px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+    table {
+      tr {
+        th {
+          color: white;
+          background: #13544e;
+          padding: 10px;
+          white-space: nowrap;
+          text-align: left;
+        }
+      }
+    }
+
+    table tr td {
+      border-bottom: 1px solid #ccc !important;
+      padding: 12px;
+      color: #22222f !important;
+      font-weight: 300 !important;
+      line-height: 24px !important;
+      letter-spacing: 0.6px !important;
+    }
+    table tr td:last-child button {
+      margin-right: 10px;
+  }
+
+    
+
+    h2:first-child {
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
+  }
+}
+
+
+
+
+
+
+.dropdown.active .dropdown-menu button {
+  padding-left: 50px;
+}
+
+.dashboard-inner .sidebar .dropdown button {
+  width: 100%;
+}
 .invertor_growthsection {
   display: block;
   margin-top: 70px;
 }
 
+.main {
+  padding: 10px;
+  margin: 26px;
+  box-shadow: 0px 0px 14px #00000026;
+  border-radius: 19px;
+}
 
 section.investor-corner {
   position: relative;

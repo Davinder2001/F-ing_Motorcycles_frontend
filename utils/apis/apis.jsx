@@ -5,13 +5,13 @@ export const EXPORT_ALL_APIS=()=>{
 
     const loadHeaderFooter=async()=>{
         let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/footer`)
-        let data= resp.json()
+        let data=await resp.json()
         return data
     }
 
     const loadHomeFirstSection = async () => {
           let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`)
-          let data = resp.json(); // Get the raw response as text
+          let data =await resp.json(); // Get the raw response as text
           return data;
       
       };
@@ -19,31 +19,31 @@ export const EXPORT_ALL_APIS=()=>{
 
     const loadHomeCategory=async()=>{
         let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`)
-        let data= resp.json()
+        let data=await resp.json()
         return data
     }
     
     const loadHeaderImage=async()=>{
         let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/headerlogo`)
-        let data= resp.json()
+        let data=await resp.json()
         return data
     }
 
       const fetchContent =async()=>{
         let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`)
-        let data= resp.json()
+        let data=await resp.json()
         return data
     }
     
     const fetchProductPage =async()=>{
         let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`)
-        let data= resp.json()
+        let data=await resp.json()
         return data
     }
     
     const fetchHomePageThirdSec =async()=>{
         let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`)
-        let data= resp.json()
+        let data=await resp.json()
         return data
     }  
 
@@ -54,7 +54,7 @@ export const EXPORT_ALL_APIS=()=>{
     }    
     const fetchInvestor  =async()=>{
         let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/investorPage`)
-        let data= resp.json()
+        let data=await resp.json()
         return data
     }
 

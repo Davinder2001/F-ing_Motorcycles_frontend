@@ -12,6 +12,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
 
     return (
         <div className='sidebar'>
+            <div className='logo'><h3>UZAQ</h3></div>
 
             <div className='tab-buttons'>
                 <button onClick={() => setActiveTab('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>
