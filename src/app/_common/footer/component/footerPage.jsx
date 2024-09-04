@@ -9,7 +9,7 @@ function FooterPage({result}) {
    
    
   return (
-    <>
+    <div className='footer_outer'>
         <div className="footer_inner_section container">
         <div className="first_column">
           <FooterColumnOne result={result} />
@@ -21,7 +21,10 @@ function FooterPage({result}) {
           <FooterColumnThree result={result}/>
         </div>
       </div>
-    </>
+      <div className='copyright_bar'>
+        <div className='copyright_bar_inner container'>© UZAQ (2024-2027) | All Rights Reserved | Privacy Policy | Cookie Policy</div>
+      </div>
+    </div>
   )
 }
 

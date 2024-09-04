@@ -9,8 +9,8 @@ function Homepage({result, category}) {
   return (
 
    <div className='home_page_section'>
-   <ControlProducts/>
-   <HybridInfo/>
+   <ControlProducts result={result}/>
+   <HybridInfo category={category} />
    <InvestorSection/>
  
 

@@ -1,21 +1,15 @@
-import React from 'react'
+import React from "react";
+import AdminHeader from "./(dashboard)/dashboard/Components/AdminHeader/AdminHeader";
+import AdminFooter from "./(dashboard)/dashboard/Components/AdminFooter/AdminFooter";
 
-
-export default function AdminRootLayout({children}) {
+export default function AdminRootLayout({ children }) {
   return (
-     <div className='main'>
-     <h1>this is admin header </h1>
-  <div className='admin-inner'>
-    
-      
-      <div className='main-content'>
-          {children}
-
+    <div className="main">
+      <AdminHeader />
+      <div className="admin-inner">
+        {children}
+        <AdminFooter />
       </div>
-
-  </div>
-
-     <h1>this is admin footer</h1>
-     </div>
-  )
+    </div>
+  );
 }

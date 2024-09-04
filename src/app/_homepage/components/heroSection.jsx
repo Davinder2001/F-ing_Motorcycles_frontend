@@ -1,21 +1,23 @@
 import React from 'react';
+import Image from "next/image";
 
-const ControlProducts = () => {
+const ControlProducts = ({result}) => {
+  console.log(result)
   return (
     <section className="controlProducts container">
       <div className="textContainer hero_sction">
         <h1>
-          Innovative Control Products <br /> for <span className="highlight">Electric Scooter</span>
+          {result?.heading} <br /> for <span className="highlight">{result?.heading_nxt}</span>
         </h1>
         <p>
-          Uzaq is revolutionizing the Indian automotive industry with its innovative in-house developed hybrid powertrain technology. Our advanced system, which includes a state-of-the-art ECU, proprietary firmware, and seamless hardware integration etc....
+        {result?.description}
         </p>
         <button className="enquiry-button"> 
           <img src='/enquiry.png'/> Enquiry Now
         </button>
       </div>
       <div className="imageContainer">
-         <img src="/bike.png" alt="Electric Scooter" className="scooterImage"/>       
+      <Image src={result?.image}  height={400} width={500}/>      
       </div>
     </section>
   );

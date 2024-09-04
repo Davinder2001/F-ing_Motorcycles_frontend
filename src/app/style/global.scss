@@ -417,6 +417,37 @@ span.mc-green {
   border: none;
   background: #E7F6F1;
 }
+.footer_section .copyright_bar_inner {
+  text-align:center;
+}
+
+.footer_section .copyright_bar{
+  padding:20px 0px;
+  background-color: #E7F6F1;
+}
+
+.footer_section .first_column {
+  width: 33%;
+}
+
+.footer_section .second_column {
+width: 33%;
+}
+
+.footer_section .third_column {
+width: 33%;
+}
+
+.footer_section li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.main-content {
+  width: 80%;
+}
 
 .tab-button:nth-child(1) {
   border-top-left-radius: 5px;

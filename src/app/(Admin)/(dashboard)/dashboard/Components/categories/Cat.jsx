@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { fetchCategories, createCategory, updateCategory, deleteCategory } from '@/Api/CategoryApi/api';
+// import {  , updateCategory, deleteCategory } from '@/Api/CategoryApi/api';
+import { EXPORT_ALL_APIS } from '../../../../../../../utils/apis/apis';
+let api=EXPORT_ALL_APIS()
 
 const CategoryManagement = () => {
     const [categories, setCategories] = useState([]);
@@ -24,15 +26,16 @@ const CategoryManagement = () => {
     useEffect(() => {
         const loadCategories = async () => {
             try {
-                const fetchedCategories = await fetchCategories();
-                setCategories(fetchedCategories || []);
+                const fetchedCategories = await api.fetchCategories(); // Only call fetch once
+                setCategories(fetchedCategories || []); // Set categories or an empty array if nothing is returned
             } catch (error) {
                 console.error('Error loading categories:', error.message);
             }
         };
-
+    
         loadCategories();
     }, []);
+    
 
     const handleCreateCategory = async (e) => {
         e.preventDefault();
@@ -47,7 +50,7 @@ const CategoryManagement = () => {
         // }
 
         try {
-            await createCategory(token, newCategory);
+            await api.createCategory(token, newCategory);
             const updatedCategories = await fetchCategories();
             setCategories(updatedCategories || []);
             setNewCategory({ name: '', shortDescription: '', longDescription: '', /* image: null */ });
@@ -60,18 +63,20 @@ const CategoryManagement = () => {
     const handleUpdateCategory = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
-
+    
         const formData = new FormData();
         formData.append('name', editCategoryData.name);
         formData.append('short_description', editCategoryData.shortDescription);
         formData.append('long_description', editCategoryData.longDescription);
-        // if (editCategoryData.image) {
-        //     formData.append('category_image', editCategoryData.image);
-        // }
-
+    
+        if (editCategoryData.category_image) { // Assuming 'category_image' is the image field
+            formData.append('category_image', editCategoryData.category_image);
+        }
+    console.log('Form Data',formData)
         try {
-            await updateCategory(token, editCategoryData.id, editCategoryData);
+            await api.updateCategory(token, editCategoryData.id, formData); // Pass formData instead of editCategoryData
             const updatedCategories = await fetchCategories();
+            console.log('Update Data', updatedCategories)
             setCategories(updatedCategories || []);
             setEditCategory(null);
             setEditCategoryData({
@@ -79,23 +84,25 @@ const CategoryManagement = () => {
                 name: '',
                 shortDescription: '',
                 longDescription: '',
-                // image: null
+                category_image: null
             });
         } catch (error) {
             console.error('Failed to update category:', error.message);
         }
     };
+    
 
     const handleDeleteCategory = async (categoryId) => {
         const token = localStorage.getItem('token');
         try {
-            await deleteCategory(token, categoryId);
+            await api.deleteCategory(token, categoryId);
             const updatedCategories = await fetchCategories();
             setCategories(updatedCategories || []);
         } catch (error) {
             console.error('Failed to delete category:', error.message);
         }
     };
+    
 
     return (
         <div>
