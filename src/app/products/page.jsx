@@ -4,7 +4,7 @@ import { EXPORT_ALL_APIS } from '../../../utils/apis/apis'
 
 const page = async() => {
   let api=EXPORT_ALL_APIS()
-  let result=await api.fetchProductPage()
+  let result=await api.fetchCategories()
 
   return (
     <div>

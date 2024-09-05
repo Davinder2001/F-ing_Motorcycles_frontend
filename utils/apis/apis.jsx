@@ -12,18 +12,6 @@ export const EXPORT_ALL_APIS = () => {
         return data
     }
 
-    const loadHomeFirstSection = async () => {
-        let resp = await fetch(`${API_URL}/api/homedata`)
-        let data = resp.json();
-        return data;
-
-    }
-
-    const loadHomeCategory = async () => {
-        let resp = await fetch(`${API_URL}/api/categories`)
-        let data = resp.json()
-        return data
-    }
 
     const loadHeaderImage = async () => {
         let resp = await fetch(`${API_URL}/api/headerlogo`)
@@ -37,17 +25,6 @@ export const EXPORT_ALL_APIS = () => {
         return data
     }
 
-    const fetchProductPage = async () => {
-        let resp = await fetch(`${API_URL}/api/categories`)
-        let data = resp.json()
-        return data
-    }
-
-    const fetchHomePageThirdSec = async () => {
-        let resp = await fetch(`${API_URL}/api/homedata`)
-        let data = resp.json()
-        return data
-    }
 
     const fetchCategories = async () => {
         let resp = await fetch(`${API_URL}/api/categories`)
@@ -342,12 +319,9 @@ export const EXPORT_ALL_APIS = () => {
     return {
         // Fetch Apis in order
         loadHeaderFooter,
-        loadHomeFirstSection,
-        loadHomeCategory,
         loadHeaderImage,
         fetchContent,
-        fetchProductPage,
-        fetchHomePageThirdSec,
+
         fetchCategories,
         fetchInvestor,
         fetchFooter,
