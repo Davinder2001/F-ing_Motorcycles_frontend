@@ -1,64 +1,70 @@
 import axios from "axios"
-export const EXPORT_ALL_APIS=()=>{
 
-    //////////////////////////////////////////// fetch all apis
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-    const loadHeaderFooter=async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/footer`)
-        let data=await resp.json()
+export const EXPORT_ALL_APIS = () => {
+
+    /////////////////////// Fetch Apis  ///////////////////////// 
+
+    const loadHeaderFooter = async () => {
+        let resp = await fetch(`${API_URL}/api/footer`)
+        let data = resp.json()
         return data
     }
 
     const loadHomeFirstSection = async () => {
-          let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`)
-          let data =await resp.json(); // Get the raw response as text
-          return data;
-      
-      };
-      
+        let resp = await fetch(`${API_URL}/api/homedata`)
+        let data = resp.json();
+        return data;
 
-    const loadHomeCategory=async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`)
-        let data=await resp.json()
-        return data
     }
-    
-    const loadHeaderImage=async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/headerlogo`)
-        let data=await resp.json()
+
+    const loadHomeCategory = async () => {
+        let resp = await fetch(`${API_URL}/api/categories`)
+        let data = resp.json()
         return data
     }
 
-      const fetchContent =async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`)
-        let data=await resp.json()
-        return data
-    }
-    
-    const fetchProductPage =async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`)
-        let data=await resp.json()
-        return data
-    }
-    
-    const fetchHomePageThirdSec =async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`)
-        let data=await resp.json()
-        return data
-    }  
-
-    const fetchCategories =async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`)
-        let data=await resp.json()
-        return data
-    }    
-    const fetchInvestor  =async()=>{
-        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/investorPage`)
-        let data=await resp.json()
+    const loadHeaderImage = async () => {
+        let resp = await fetch(`${API_URL}/api/headerlogo`)
+        let data = resp.json()
         return data
     }
 
-    
+    const fetchContent = async () => {
+        let resp = await fetch(`${API_URL}/api/homedata`)
+        let data = resp.json()
+        return data
+    }
+
+    const fetchProductPage = async () => {
+        let resp = await fetch(`${API_URL}/api/categories`)
+        let data = resp.json()
+        return data
+    }
+
+    const fetchHomePageThirdSec = async () => {
+        let resp = await fetch(`${API_URL}/api/homedata`)
+        let data = resp.json()
+        return data
+    }
+
+    const fetchCategories = async () => {
+        let resp = await fetch(`${API_URL}/api/categories`)
+        let data = await resp.json()
+        return data
+    }
+    const fetchInvestor = async () => {
+        let resp = await fetch(`${API_URL}/api/investorPage`)
+        let data = resp.json()
+        return data
+    }
+
+    const fetchFooter = async () => {
+        let resp = await fetch(`${API_URL}/api/footer`)
+        let data = resp.json()
+        return data
+    }
 
 
 
@@ -71,22 +77,34 @@ export const EXPORT_ALL_APIS=()=>{
 
 
 
-    /////////////////////////////////////// post apis //////////////////////////////*html*/`
-    
-    
-    // Category crud 
-     const createCategory = async (token, category) => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /////////////////////////////////////// Crud Api's //////////////////////////////*html*/
+
+    // Category CRUD 
+    const createCategory = async (token, category) => {
         try {
             const formData = new FormData();
             formData.append('name', category.name);
             formData.append('short_description', category.shortDescription);
             formData.append('long_description', category.longDescription);
-    
+
             if (category.category_image) {
                 formData.append('category_image', category.category_image);
             }
-    
-            await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`, formData, {
+
+            await axios.post(`${API_URL}/api/categories`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',
@@ -95,7 +113,8 @@ export const EXPORT_ALL_APIS=()=>{
         } catch (error) {
             throw new Error('Failed to create category.');
         }
-    };
+    }
+
     const updateCategory = async (token, categoryId, category) => {
         try {
             // Create query parameters
@@ -104,30 +123,29 @@ export const EXPORT_ALL_APIS=()=>{
                 short_description: category.shortDescription,
                 long_description: category.longDescription,
             });
-            
+
             if (category.category_image) {
                 queryParams.append('category_image', category.category_image); // Not suitable for files
             }
-            
+
             // Send PUT request with query parameters appended to URL
-            const response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/categories/${categoryId}?${queryParams.toString()}`, {
+            const response = await axios.put(`${API_URL}/api/categories/${categoryId}?${queryParams.toString()}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json', // Incorrect for file uploads
                 },
             });
-    
-            console.log('Category updated successfully'); // Debugging line
+
             return response.data;
         } catch (error) {
             console.error('Failed to update category:', error.response?.data || error.message);
             throw new Error('Failed to update category.');
         }
-    };
-    
+    }
+
     const deleteCategory = async (token, categoryId) => {
         try {
-            await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/categories/${categoryId}`, {
+            await axios.delete(`${API_URL}/api/categories/${categoryId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -135,14 +153,9 @@ export const EXPORT_ALL_APIS=()=>{
         } catch (error) {
             throw new Error('Failed to delete category.');
         }
-    };
-        
+    }
 
-
-
-
-
-
+    // Content for Home Page
 
     const createContent = async (token, content) => {
         try {
@@ -155,16 +168,16 @@ export const EXPORT_ALL_APIS=()=>{
             formData.append('description_2', content.description2);
             formData.append('button_1', content.button2);
             formData.append('button_2', content.button2);
-    
+
             if (content.image) {
                 formData.append('image', content.image);
             }
-    
+
             if (content.image2) {
                 formData.append('image_2', content.image2);
             }
-    
-            await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`, formData, {
+
+            await axios.post(`${API_URL}/api/homedata`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',
@@ -173,7 +186,7 @@ export const EXPORT_ALL_APIS=()=>{
         } catch (error) {
             throw new Error('Failed to create content.');
         }
-    };
+    }
 
     const updateContent = async (token, content) => {
         try {
@@ -186,16 +199,16 @@ export const EXPORT_ALL_APIS=()=>{
             formData.append('description_2', content.description2);
             formData.append('button_1', content.button2);
             formData.append('button_2', content.button2);
-    
+
             if (content.image) {
                 formData.append('image', content.image);
             }
-    
+
             if (content.image2) {
                 formData.append('image_2', content.image2);
             }
-    
-            await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`, formData, {
+
+            await axios.put(`${API_URL}/api/homedata`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',
@@ -204,10 +217,11 @@ export const EXPORT_ALL_APIS=()=>{
         } catch (error) {
             throw new Error('Failed to update content.');
         }
-    };
+    }
+
     const deleteContent = async (token) => {
         try {
-            await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/homedata`, {
+            await axios.delete(`${API_URL}/api/homedata`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -215,8 +229,10 @@ export const EXPORT_ALL_APIS=()=>{
         } catch (error) {
             throw new Error('Failed to delete content.');
         }
-    };
-        
+    }
+
+    // Investor Content CRUD
+
     const createInvestorContent = async (token, content) => {
         try {
             const formData = new FormData();
@@ -229,16 +245,16 @@ export const EXPORT_ALL_APIS=()=>{
             formData.append('field7', content.field7);
             formData.append('field8', content.field8);
             formData.append('field9', content.field9);
-    
+
             if (content.image) {
                 formData.append('image', content.image);
             }
-    
+
             if (content.image2) {
                 formData.append('image_2', content.image2);
             }
-    
-            await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/investorPage`, formData, {
+
+            await axios.post(`${API_URL}/api/investorPage`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',
@@ -247,7 +263,8 @@ export const EXPORT_ALL_APIS=()=>{
         } catch (error) {
             throw new Error('Failed to create investor content.');
         }
-    };
+    }
+
     const updateInvestorContent = async (token, content) => {
         try {
             const formData = new FormData();
@@ -260,16 +277,16 @@ export const EXPORT_ALL_APIS=()=>{
             formData.append('field7', content.field7);
             formData.append('field8', content.field8);
             formData.append('field9', content.field9);
-    
+
             if (content.image) {
                 formData.append('image', content.image);
             }
-    
+
             if (content.image2) {
                 formData.append('image_2', content.image2);
             }
-    
-            await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/investorPage`, formData, {
+
+            await axios.put(`${API_URL}/api/investorPage`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',
@@ -278,10 +295,11 @@ export const EXPORT_ALL_APIS=()=>{
         } catch (error) {
             throw new Error('Failed to update investor content.');
         }
-    };
+    }
+
     const deleteInvestorContent = async (token) => {
         try {
-            await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/investorPage`, {
+            await axios.delete(`${API_URL}/api/investorPage`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -289,36 +307,61 @@ export const EXPORT_ALL_APIS=()=>{
         } catch (error) {
             throw new Error('Failed to delete investor content.');
         }
-    };
-            
-    
-    
-    
+    }
 
+    // Header API
+    const uploadHeaderImage = async (image) => {
+        try {
+            const formData = new FormData();
+            formData.append('image', image);
 
-    return{
+            const response = await axios.post(`${API_URL}/api/headerlogo`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+
+            return response.data;
+        } catch (error) {
+            console.error("Error uploading header image:", error);
+            return null;
+        }
+    }
+
+    // Delete the header image
+    const deleteHeaderImage = async () => {
+        try {
+            const response = await axios.delete(`${API_URL}/api/headerlogo`);
+            return response.data;
+        } catch (error) {
+            console.error("Error deleting header image:", error);
+            return null;
+        }
+    }
+
+    return {
+        // Fetch Apis in order
         loadHeaderFooter,
         loadHomeFirstSection,
         loadHomeCategory,
         loadHeaderImage,
         fetchContent,
-        createCategory,
-        createContent,
-        updateContent,
-        deleteContent,
         fetchProductPage,
         fetchHomePageThirdSec,
         fetchCategories,
         fetchInvestor,
+        fetchFooter,
+        // CRUD Apis in order
+        createCategory,
         updateCategory,
         deleteCategory,
+        createContent,
+        updateContent,
+        deleteContent,
         createInvestorContent,
         updateInvestorContent,
         deleteInvestorContent,
+        uploadHeaderImage,
+        deleteHeaderImage
     }
 }
-
-
-
-
- 

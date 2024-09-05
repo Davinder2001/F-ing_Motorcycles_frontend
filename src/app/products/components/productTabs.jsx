@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import PopupForm from '@/app/_common/layout/popup';
 
 const TabComponent = ({ result }) => {

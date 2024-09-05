@@ -9,27 +9,27 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 
 
-// Fetch all footers
-export const fetchFooters = async () => {
-    try {
-        const response = await axios.get(`${API_URL}/api/footer`);
-        return response.data;
-    } catch (error) {
-        console.error('Failed to fetch footers:', error.response?.data || error.message);
-        throw new Error('Failed to fetch footers.');
-    }
-};
+// // Fetch all footers
+// export const fetchFooters = async () => {
+//     try {
+//         const response = await axios.get(`${API_URL}/api/footer`);
+//         return response.data;
+//     } catch (error) {
+//         console.error('Failed to fetch footers:', error.response?.data || error.message);
+//         throw new Error('Failed to fetch footers.');
+//     }
+// };
 
-// Fetch a single footer by ID
-export const fetchFooterById = async (id) => {
-    try {
-        const response = await axios.get(`${API_URL}/api/footer/${id}`);
-        return response.data;
-    } catch (error) {
-        console.error(`Failed to fetch footer with ID ${id}:`, error.response?.data || error.message);
-        throw new Error('Failed to fetch footer.');
-    }
-};
+// // Fetch a single footer by ID
+// export const fetchFooterById = async (id) => {
+//     try {
+//         const response = await axios.get(`${API_URL}/api/footer/${id}`);
+//         return response.data;
+//     } catch (error) {
+//         console.error(`Failed to fetch footer with ID ${id}:`, error.response?.data || error.message);
+//         throw new Error('Failed to fetch footer.');
+//     }
+// };
 
 // Create a new footer
 export const createFooter = async (footerData) => {

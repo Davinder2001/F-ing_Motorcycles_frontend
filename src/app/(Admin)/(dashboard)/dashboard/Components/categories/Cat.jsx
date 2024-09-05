@@ -45,13 +45,11 @@ const CategoryManagement = () => {
         formData.append('name', newCategory.name);
         formData.append('short_description', newCategory.shortDescription);
         formData.append('long_description', newCategory.longDescription);
-        // if (newCategory.image) {
-        //     formData.append('category_image', newCategory.image);
-        // }
+    
 
         try {
             await api.createCategory(token, newCategory);
-            const updatedCategories = await fetchCategories();
+            const updatedCategories = await api.fetchCategories();
             setCategories(updatedCategories || []);
             setNewCategory({ name: '', shortDescription: '', longDescription: '', /* image: null */ });
             setShowAddForm(false);
@@ -72,13 +70,11 @@ const CategoryManagement = () => {
         if (editCategoryData.category_image) { // Assuming 'category_image' is the image field
             formData.append('category_image', editCategoryData.category_image);
         }
-    console.log('Form Data',formData)
+      
         try {
-            await api.updateCategory(token, editCategoryData.id, formData); // Pass formData instead of editCategoryData
-            const updatedCategories = await fetchCategories();
-            console.log('Update Data', updatedCategories)
+            await api.updateCategory(token, editCategoryData.id, editCategoryData); // Pass formData instead of editCategoryData
+            const updatedCategories = await api.fetchCategories();
             setCategories(updatedCategories || []);
-            setEditCategory(null);
             setEditCategoryData({
                 id: '',
                 name: '',
@@ -86,6 +82,7 @@ const CategoryManagement = () => {
                 longDescription: '',
                 category_image: null
             });
+            setEditCategory(null);
         } catch (error) {
             console.error('Failed to update category:', error.message);
         }
@@ -96,7 +93,7 @@ const CategoryManagement = () => {
         const token = localStorage.getItem('token');
         try {
             await api.deleteCategory(token, categoryId);
-            const updatedCategories = await fetchCategories();
+            const updatedCategories = await api.fetchCategories();
             setCategories(updatedCategories || []);
         } catch (error) {
             console.error('Failed to delete category:', error.message);
@@ -151,6 +148,7 @@ const CategoryManagement = () => {
                     <form onSubmit={handleUpdateCategory}>
                         <input
                             type="text"
+                            name='name'
                             placeholder="Category Name"
                             value={editCategoryData.name}
                             onChange={(e) => setEditCategoryData({ ...editCategoryData, name: e.target.value })}

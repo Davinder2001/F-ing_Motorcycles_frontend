@@ -2,6 +2,12 @@
 import { useState, useEffect } from 'react';
 import { updateFooter, fetchFooters } from '@/Api/FooterApi/api'; // Adjust the path as needed
 
+
+import { EXPORT_ALL_APIS } from '../../../../../../../utils/apis/apis';
+let api=EXPORT_ALL_APIS()
+const getFooter = api.loadHeaderFooter();
+
+
 const FooterManagement = () => {
     const [formData, setFormData] = useState({
         column_1_heading_1: '',
@@ -25,7 +31,7 @@ const FooterManagement = () => {
     useEffect(() => {
         const getFooter = async () => {
             try {
-                const footers = await fetchFooters();
+                const footers = await api.loadHeaderFooter();
                 if (footers.length > 0) {
                     // Assuming there is only one footer
                     const footer = footers[0];
