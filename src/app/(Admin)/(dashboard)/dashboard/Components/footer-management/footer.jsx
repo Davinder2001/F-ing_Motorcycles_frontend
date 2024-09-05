@@ -5,7 +5,7 @@ import { updateFooter, fetchFooters } from '@/Api/FooterApi/api'; // Adjust the 
 
 import { EXPORT_ALL_APIS } from '../../../../../../../utils/apis/apis';
 let api=EXPORT_ALL_APIS()
-const getFooter = api.loadHeaderFooter();
+const getFooter = api.fetchFooter();
 
 
 const FooterManagement = () => {
@@ -31,7 +31,7 @@ const FooterManagement = () => {
     useEffect(() => {
         const getFooter = async () => {
             try {
-                const footers = await api.loadHeaderFooter();
+                const footers = await api.fetchFooter();
                 if (footers.length > 0) {
                     // Assuming there is only one footer
                     const footer = footers[0];

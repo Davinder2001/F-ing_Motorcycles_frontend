@@ -5,7 +5,7 @@ import { EXPORT_ALL_APIS } from "../../../../utils/apis/apis";
 
 async function Footer() {
   let api=EXPORT_ALL_APIS()
-  let result=await api.loadHeaderFooter()
+  let result=await api.fetchFooter()
   
   return (
     

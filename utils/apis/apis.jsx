@@ -6,12 +6,6 @@ export const EXPORT_ALL_APIS = () => {
 
     /////////////////////// Fetch Apis  ///////////////////////// 
 
-    const loadHeaderFooter = async () => {
-        let resp = await fetch(`${API_URL}/api/footer`)
-        let data = resp.json()
-        return data
-    }
-
 
     const loadHeaderImage = async () => {
         let resp = await fetch(`${API_URL}/api/headerlogo`)
@@ -132,6 +126,9 @@ export const EXPORT_ALL_APIS = () => {
         }
     }
 
+
+
+
     // Content for Home Page
 
     const createContent = async (token, content) => {
@@ -207,6 +204,9 @@ export const EXPORT_ALL_APIS = () => {
             throw new Error('Failed to delete content.');
         }
     }
+
+
+
 
     // Investor Content CRUD
 
@@ -316,9 +316,11 @@ export const EXPORT_ALL_APIS = () => {
         }
     }
 
+
+
     return {
         // Fetch Apis in order
-        loadHeaderFooter,
+        // loadHeaderFooter,
         loadHeaderImage,
         fetchContent,
 
