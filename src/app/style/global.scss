@@ -280,14 +280,85 @@ span.highlight {
 
 
 .sidebar {
-  max-width: 250px;
-  height: 100vh;
+  // max-width: 250px;
+  height: 200vh;
   background: #13544e;
-  width: 100%;
-  border-radius: 10px;
-  position: sticky;
-  top: 0;
+  width: 20%;
+ 
 }
+.sidebar .sidebar-inner {
+  position: sticky;
+  top:10px
+}
+.copyright_bar_inner {
+  padding: 20px 0px !important;
+  text-align: center;
+}
+.footer_section .first_column {
+  width: 25%;
+}
+.footer_section .footer_outer h5 {
+  margin: 10px 0px;
+}
+
+.copyright_bar {
+  background: #E7F6F1;
+}
+.dashboard-inner {
+  display: flex;
+  gap: 20px;
+}
+.sidebar {
+  width: 20%;
+}
+.dashboard .tab-buttons {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.container {
+    max-width: 1320px;
+    margin: auto;
+}
+header ul, ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  header nav ul a {
+    text-decoration: none;
+  }
+  header nav ul {
+    display: flex;
+    column-gap: 60px;
+}
+
+.footer_inner_section {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px !important;
+}
+
+.footer_section li {
+  list-style-type: none; 
+  padding-left: 0; 
+}
+
+
+.footer_section ul, ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.admin-footer-section-columns {
+  display: flex;
+  justify-content: space-between;
+}
+.header-inner {
+  display: flex;
+  gap: 20px;
+}
+
 
 .sidebar .tab-buttons {
   padding-top:20px;
@@ -302,9 +373,10 @@ span.highlight {
 }
 
 .admin_header {
-  padding: 10px;
- float: right; 
- display: none;
+  background-color: #13544e;
+}
+.admin-footer {
+  background-color: #13544e;
 }
 
 .dashboard-inner .main-content button {
@@ -638,12 +710,12 @@ textarea {
   margin-top: 70px;
 }
 
-.main {
-  padding: 10px;
-  margin: 26px;
-  box-shadow: 0px 0px 14px #00000026;
-  border-radius: 19px;
-}
+// .main {
+//   padding: 10px;
+//   margin: 26px;
+//   box-shadow: 0px 0px 14px #00000026;
+//   border-radius: 19px;
+// }
 
 section.investor-corner {
   position: relative;

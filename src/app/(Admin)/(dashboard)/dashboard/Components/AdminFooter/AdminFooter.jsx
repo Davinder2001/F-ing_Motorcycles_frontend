@@ -2,7 +2,12 @@ import React from 'react'
 
 const AdminFooter = () => {
   return (
-    <div>AdminFooter</div>
+    <div className='admin-footer'>
+    {/* <div className=''>
+    AdminFooter
+
+    </div> */}
+    </div>
   )
 }
 

@@ -63,7 +63,7 @@ const InvestorPageManagement = () => {
         }
 
         try {
-            await api.createInvestorContent(token, formData);
+            await api.createInvestorContent(token, newInvestor);
             const updatedInvestor = await api.fetchInvestor(token);
             setInvestor(updatedInvestor || {});
             setNewInvestor({
@@ -104,7 +104,7 @@ const InvestorPageManagement = () => {
         }
 
         try {
-            await api.updateInvestor(token, formData);
+            await api.updateInvestorContent(token, newInvestor);
             const updatedInvestor = await api.fetchInvestor(token);
             setInvestor(updatedInvestor || {});
             setShowEditForm(false);

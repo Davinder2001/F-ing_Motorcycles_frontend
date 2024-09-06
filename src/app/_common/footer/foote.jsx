@@ -8,7 +8,6 @@ async function Footer() {
   let result=await api.fetchFooter()
   
   return (
-    
     <section className="footer_section">
       <FooterPage result={result}/>
     </section>

@@ -36,6 +36,16 @@ export const EXPORT_ALL_APIS = () => {
         let data = resp.json()
         return data
     }
+    const fetchProducts = async () => {
+        let resp = await fetch(`${API_URL}/api/footer`)
+        let data = resp.json()
+        return data
+    }  
+      const fetchprofile = async () => {
+        let resp = await fetch(`${API_URL}/api/profile`)
+        let data = await resp.json()
+        return data
+    }
 
 
 
@@ -317,16 +327,60 @@ export const EXPORT_ALL_APIS = () => {
     }
 
 
+    // Footer CRUD Api
+
+    const createFooter = async (footerData) => {
+        try {
+            const response = await axios.post(`${API_URL}/api/footer`, footerData);
+            return response.data;
+        } catch (error) {
+            console.error('Failed to create footer:', error.response?.data || error.message);
+            throw new Error('Failed to create footer.');
+        }
+    };
+    
+    // Update an existing footer
+     const updateFooter = async (id, footerData) => {
+        try {
+            const response = await axios.put(`${API_URL}/api/footer/${id}`, footerData);
+            return response.data;
+        } catch (error) {
+            console.error(`Failed to update footer with ID ${id}:`, error.response?.data || error.message);
+            throw new Error('Failed to update footer.');
+        }
+    };
+    
+    // Delete a footer
+     const deleteFooter = async (id) => {
+        try {
+            const response = await axios.delete(`${API_URL}/api/footer/${id}`);
+            return response.data;
+        } catch (error) {
+            console.error(`Failed to delete footer with ID ${id}:`, error.response?.data || error.message);
+            throw new Error('Failed to delete footer.');
+        }
+    };
+
+
+
+
+
+
+
+
+
+
 
     return {
         // Fetch Apis in order
-        // loadHeaderFooter,
         loadHeaderImage,
         fetchContent,
-
         fetchCategories,
         fetchInvestor,
         fetchFooter,
+        fetchProducts,
+        fetchprofile,
+
         // CRUD Apis in order
         createCategory,
         updateCategory,
@@ -338,6 +392,10 @@ export const EXPORT_ALL_APIS = () => {
         updateInvestorContent,
         deleteInvestorContent,
         uploadHeaderImage,
-        deleteHeaderImage
+        deleteHeaderImage,
+        createFooter,
+        updateFooter,
+        deleteFooter
+
     }
 }

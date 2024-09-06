@@ -17,7 +17,14 @@ const DashboardMain = ({ getCatDash }) => {
   return (
     <div>
       <h1>Dashboard</h1>
-      <p>Number of items: {count}</p>
+      <div className='card-wrapper'>
+        <div className='card'>
+          <h5>Categorys: {count}</h5>
+        </div>
+          <div className='card'>
+          <h5>Products: {0}</h5>
+        </div>
+      </div>
     </div>
   );
 };

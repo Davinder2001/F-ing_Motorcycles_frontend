@@ -1,12 +1,16 @@
-// ProductManagement.js
-
 'use client';
 
 import { useState, useEffect } from 'react';
-import { fetchProducts, createProduct, updateProduct, deleteProduct } from '@/Api/ProductApi/api';
+// import { fetchProducts, createProduct, updateProduct, deleteProduct } from '@/Api/ProductApi/api';
 import Image from 'next/image';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
+import { EXPORT_ALL_APIS } from "../../../../../../../utils/apis/apis";
+
+let api=EXPORT_ALL_APIS()
+  let result=await api.fetchProducts
+  
 
 const ProductManagement = ({ categories }) => {
     const [products, setProducts] = useState([]);
@@ -15,7 +19,7 @@ const ProductManagement = ({ categories }) => {
     const [showProductForm, setShowProductForm] = useState(false);
 
     useEffect(() => {
-        fetchProducts()
+        api.fetchProducts()
             .then((data) => setProducts(data || []))
             .catch(error => console.error(error));
     }, []);
@@ -35,7 +39,7 @@ const ProductManagement = ({ categories }) => {
 
         try {
             await createProduct(token, formData);
-            fetchProducts().then((data) => setProducts(data || []));
+            api.fetchProducts().then((data) => setProducts(data || []));
             setNewProduct({ name: '', price: '', description: '', category_id: '', image: null });
             setShowProductForm(false); // Hide form after creation
         } catch (error) {
@@ -47,7 +51,7 @@ const ProductManagement = ({ categories }) => {
         const token = localStorage.getItem('token');
         try {
             await deleteProduct(token, productId);
-            fetchProducts().then((data) => setProducts(data || []));
+            api.fetchProducts().then((data) => setProducts(data || []));
         } catch (error) {
             console.error(error.message);
         }
@@ -68,7 +72,7 @@ const ProductManagement = ({ categories }) => {
 
         try {
             await updateProduct(token, editProduct.id, formData);
-            fetchProducts().then((data) => setProducts(data || []));
+            api.fetchProducts().then((data) => setProducts(data || []));
             setEditProduct(null);
         } catch (error) {
             console.error(error.message);

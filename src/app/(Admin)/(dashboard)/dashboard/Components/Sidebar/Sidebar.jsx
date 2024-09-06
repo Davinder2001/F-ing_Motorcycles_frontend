@@ -12,11 +12,14 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
 
     return (
         <div className='sidebar'>
-            <div className='logo'><h3>UZAQ</h3></div>
-
+            {/* <div className='logo'><h3>UZAQ</h3></div> */}
+<div className='sidebar-inner'>
             <div className='tab-buttons'>
                 <button onClick={() => setActiveTab('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>
                     Dashboard
+                </button>  
+                <button onClick={() => setActiveTab('profile')} className={activeTab === 'profile' ? 'active' : ''}>
+                    Profile
                 </button>   
                 <button onClick={() => setActiveTab('category')} className={activeTab === 'category' ? 'active' : ''}>
                     Category Management
@@ -55,8 +58,9 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                     )}
                 </div>
             </div>
+
             <LogoutBtn />
-        </div>
+        </div></div>
     );
 };
 

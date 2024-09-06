@@ -5,8 +5,9 @@ import { useRouter } from 'next/navigation';
 import { getUserDashboard } from '@/Api/LoginApi/api';
 import Sidebar from '@/app/(Admin)/(dashboard)/dashboard/Components/Sidebar/Sidebar';
 import CategoryManagement from './Components/categories/Cat';
-import ProductManagement from './Components/products/product';
+// import ProductManagement from '@/app/(Admin)/(dashboard)/dashboard/Components/ProductManagement/product';
 import FooterManagement from './Components/footer-management/footer';
+import Profile from './Components/Profile/ProfilePage';
 import HeaderLogoPage from './Components/Header/headerLogo';
 import HomePageManagement from './Components/HomePageManagement/page';
 import ProductPageManagement from './Components/ProductPageManagement/productPage';
@@ -14,11 +15,12 @@ import InvestorPageManagement from './Components/InvestorPageManagement/investor
 import DashboardMain from './Components/MainDashboard/dashboard';
 
 import { EXPORT_ALL_APIS } from '../../../../../utils/apis/apis';
-let api=EXPORT_ALL_APIS()
-const getCatDash = api.fetchCategories();
 
 
-const Dashboard = () => {
+const Dashboard =  () => {
+    let api=EXPORT_ALL_APIS()
+    const getCatDash = api.fetchCategories();
+    const getProfile = api.fetchprofile();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [dashboardData, setDashboardData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -58,8 +60,9 @@ const Dashboard = () => {
             <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
             <div className='main-content'>
                 {activeTab === 'dashboard' && <DashboardMain getCatDash={getCatDash}/>}
+                {activeTab === 'profile' && <Profile getProfile={getProfile} />}
                 {activeTab === 'category' && <CategoryManagement />}
-                {activeTab === 'product' && <ProductManagement />}
+                {/* {activeTab === 'product' && <ProductManagement />} */}
                 {activeTab === 'header' && <HeaderLogoPage/> }
                 {activeTab === 'footer' && <FooterManagement /> }
                 {activeTab === 'homePage' && <HomePageManagement /> } 

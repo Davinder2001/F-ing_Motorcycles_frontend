@@ -1,12 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { updateFooter, fetchFooters } from '@/Api/FooterApi/api'; // Adjust the path as needed
+// import { updateFooter, fetchFooters } from '@/Api/FooterApi/api'; // Adjust the path as needed
 
 
 import { EXPORT_ALL_APIS } from '../../../../../../../utils/apis/apis';
 let api=EXPORT_ALL_APIS()
-const getFooter = api.fetchFooter();
-
 
 const FooterManagement = () => {
     const [formData, setFormData] = useState({
@@ -75,12 +73,11 @@ const FooterManagement = () => {
         e.preventDefault();
 
         try {
-            const footers = await fetchFooters();
+            const footers = await api.fetchFooter();
             if (footers.length > 0) {
                 const footerId = footers[0].id; // Assuming ID is available
-                const updatedFooter = await updateFooter(footerId, formData);
-                console.log('Updated Footer:', updatedFooter);
-                // Optionally redirect or show a success message
+                const updatedFooter = await api.updateFooter(footerId, formData);
+                  // Optionally redirect or show a success message
             } else {
                 setError('No footer found for updating.');
             }
