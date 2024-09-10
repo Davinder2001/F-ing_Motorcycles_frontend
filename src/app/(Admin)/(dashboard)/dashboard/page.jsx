@@ -1,80 +1,55 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import ManagementPage from './_dashboard/page';
 import { useRouter } from 'next/navigation';
 import { getUserDashboard } from '@/Api/LoginApi/api';
-import Sidebar from '@/app/(Admin)/(dashboard)/dashboard/Components/Sidebar/Sidebar';
-import CategoryManagement from './Components/categories/Cat';
-// import ProductManagement from '@/app/(Admin)/(dashboard)/dashboard/Components/ProductManagement/product';
-import FooterManagement from './Components/footer-management/footer';
-import Profile from './Components/Profile/ProfilePage';
-import HeaderLogoPage from './Components/Header/headerLogo';
-import HomePageManagement from './Components/HomePageManagement/page';
-import ProductPageManagement from './Components/ProductPageManagement/productPage';
-import InvestorPageManagement from './Components/InvestorPageManagement/investorPage';
-import DashboardMain from './Components/MainDashboard/dashboard';
 
-import { EXPORT_ALL_APIS } from '../../../../../utils/apis/apis';
+const Dashboard = () => {
+  const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    // Check if the user is authenticated by retrieving the token from localStorage
+    const token = localStorage.getItem('token'); // Replace 'authToken' with your token key
 
-const Dashboard =  () => {
-    let api=EXPORT_ALL_APIS()
-    const getCatDash = api.fetchCategories();
-    const getProfile = api.fetchprofile();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [dashboardData, setDashboardData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [activeTab, setActiveTab] = useState('dashboard');  
-    const router = useRouter();
-    
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            setIsAuthenticated(true);
-            fetchDashboardData(token);
-        } else {
-            router.push('/login');
-        }
-    }, [router]);
-
-    const fetchDashboardData = async (token) => {
-        try {
-            const data = await getUserDashboard(token);
-            setDashboardData(data);
-        } catch (error) {
-            console.error('Failed to fetch user dashboard.', error);
-            router.push('/login');
-        } finally {
-            setLoading(false);
-        }
-    };
-    
-    if (!isAuthenticated || loading) {
-        return <div>Loading...</div>;
+    if (!token) {
+      // If token is not found, redirect to login
+      router.push('/login');
+    } else {
+      // If token is found, set authentication to true and fetch the dashboard data
+      setIsAuthenticated(true);
+      fetchDashboardData(token);
     }
-    
-    return (
-        <div className='dashboard'>
-        <div className='dashboard-inner'>
+  }, [router]);
 
-            <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-            <div className='main-content'>
-                {activeTab === 'dashboard' && <DashboardMain getCatDash={getCatDash}/>}
-                {activeTab === 'profile' && <Profile getProfile={getProfile} />}
-                {activeTab === 'category' && <CategoryManagement />}
-                {/* {activeTab === 'product' && <ProductManagement />} */}
-                {activeTab === 'header' && <HeaderLogoPage/> }
-                {activeTab === 'footer' && <FooterManagement /> }
-                {activeTab === 'homePage' && <HomePageManagement /> } 
-                {activeTab === 'productPage' && <ProductPageManagement /> } 
-                {activeTab === 'investorPage' && <InvestorPageManagement /> }
-                {activeTab === 'aboutPage' && <FooterManagement /> } {/* Change with original page */}
-                {activeTab === 'contactPage' && <FooterManagement /> } {/* Change with original page */}
-                
-            </div>
-        </div>
-        </div>
-    );
+  const fetchDashboardData = async (token) => {
+    try {
+      const data = await getUserDashboard(token);
+      setDashboardData(data); // Store the dashboard data
+    } catch (error) {
+      console.error('Failed to fetch user dashboard.', error);
+      // If fetching data fails, redirect to login
+      router.push('/login');
+    } finally {
+      // After fetching, set loading to false
+      setLoading(false);
+    }
+  };
+
+  // Show loading spinner or placeholder while checking authentication
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  // If user is authenticated, display the management page
+  return (
+    <div>
+      {isAuthenticated && <ManagementPage dashboardData={dashboardData} />}
+    </div>
+  );
 };
 
 export default Dashboard;

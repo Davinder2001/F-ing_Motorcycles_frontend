@@ -170,6 +170,260 @@ header {
 }
 
 
+.hybrid-why-section {
+  padding: 40px;
+}
+
+.hybrid-why-section .vcu-link {
+  color: #13544e;
+}
+
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: -100%; /* Initially hidden off-screen */
+  width: 100%;
+  height: 100vh;
+  background: #333;
+  color: #fff;
+  transition: left 0.3s ease;
+  z-index: 20;
+  overflow: auto;
+}
+
+.menu.active {
+  left: 0; /* Slide in from the left */
+}
+
+.menu-item {
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
+.navbar_2 {display: flex;}
+
+.theme-toggle-container {
+    display:flex;
+}
+
+.menu-item:hover {
+  background: #555;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: #444;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.login_page .loginformContainer {
+  width: 50%;
+  margin: 100px auto;
+  padding: 30px;
+  box-shadow: 1px 1px 14px 0px;
+  border-radius: 5px;
+}
+
+.loginformContainer .adminLoginBtn {
+  width: 100%;
+  background-color: #13544e;
+  border: 0;
+  font-size: 18px;
+  color: white;
+  padding: 10px;
+  border-radius: 3px;
+  margin-top: 30px;
+}
+
+
+.hybrid-why-section .hybrid-tech-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hybrid-why-section .tech-icons img {
+  width: 100%;
+  max-width: 570px;
+  margin-right: 10px;
+}
+
+
+.hybrid-why-section .tech-icons {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 30px;
+  align-items: center;
+}
+
+
+
+.our-journey-section {
+  background-color: #f4f7f8;
+  padding: 40px;
+  text-align: center;
+}
+
+.journey-timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+  column-gap: 20px;
+}
+
+.journey-step {
+  width: 100%;
+  max-width: 242px;
+  text-align: center;
+  background: white;
+  padding: 20px 10px;
+  border-radius: 10px;
+}
+
+
+.journey-step img {
+  width: 100px;
+  height: 110px;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+.journey-step p {
+  font-size: 20px;
+  font-family: oxanium;
+  width: 90%;
+  margin: auto;
+  font-weight: 500;
+}
+
+img.journeylines {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.journey-timeline {
+  position: relative;
+  padding-bottom: 54px;
+}
+
+
+.founders-section {
+  background-color: #e7f6f1;
+  padding: 40px 0px;
+  padding-bottom: 60px;
+  text-align: center;
+  width: 100%;
+}
+
+img.imagef_two {
+  width: 156px;
+  margin-bottom: -11px;
+}
+
+
+.founder-photo {
+  background: #13544e;
+  padding: 10px;
+  width: 150px;
+  display: flex;
+  align-items: unset;
+  justify-content: center;
+  border-radius: 50%;
+  height: 150px;
+  overflow: hidden;
+}
+
+
+.founders-section .title {
+  font-size: 28px;
+  color: $m_green;
+  margin-bottom: 30px;
+}
+
+.founders-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* gap: 20px; */
+}
+
+.founder-card {
+  background-color: white;
+  border: 1px solid #c8d6e3;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.founder-info {
+  flex: 1;
+  text-align: left;
+}
+
+.founder-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: $m_green;
+}
+
+.founder-details {
+  font-size: 18px;
+  color: #333;
+  margin: 5px 0;
+  padding-bottom: 5px;
+}
+
+.founder-photo {
+  margin-left: 20px;
+}
+
+
+.hybrid-why-section {
+  padding: 60px 0px !important;
+}
+
+
+.founder-photo img {
+  width: 120px;
+  height: 160px;
+  border-radius: 8px;
+  object-fit: cover;
+  filter: brightness(1.2);
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 110px rgb(19 84 78); 
+}
+
+.founders-section h2 {
+    text-align: left;
+    color: #2b5432;
+}
+
 
 
  header nav ul a {
@@ -207,8 +461,30 @@ span.highlight {
 
 
 
+
+.hybrid-why-section {
+  padding: 30px 5px;
+}
+
+
+.hybrid-why-section img.hybrid_imageone {
+  height: 236px;
+  object-fit: contain;
+}
+
+.hybrid-why-section {
+  padding: 30px 5px;
+}
+
+.hybrid-why-content li {
+  font-size: 17px;
+  font-family: Helvetica Neue;
+  line-height: 28px;
+}
+
+
+
 .weprovide .title {
-  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
   color: #000;
@@ -233,6 +509,78 @@ span.highlight {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   justify-content: normal;
+}
+
+
+
+
+.hero_slider {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items:center;
+  column-gap: 25px;
+}
+
+.slider-container {
+  background: #F6FFFC;
+}
+
+.images_right img {
+  height: 500px;
+  object-fit: contain;
+}
+
+.left_side_panel h1 {
+  margin-top: 0px;
+}
+
+.slider-navigation button {
+  background: transparent;
+  border: none;
+  border-top: 2px solid #e5e5e5;
+  max-width: 300px;
+  width: 100%;
+  cursor: pointer;
+  padding-top: 18px;
+  text-align: left;
+}
+
+.slider-navigation button.active span {
+  background: $m_green;
+  border-radius: 65px;
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+.slider-navigation button span {
+  background: #F4F4F4;
+  padding: 10px 14px;
+  border-radius: 65px;
+  width: 20px;
+  height: 20px;
+  color: #000000;
+}
+.images_right {
+  text-align: right;
+}
+
+.hero_slider h2{
+  margin-top:0px;
+  display: grid;
+  height: 74px;
+}
+
+
+.slider-navigation {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -58px;
+  padding-bottom: 35px;
+}
+
+.slider-navigation button.active {
+  border-top: 2px solid $m_green;
 }
 
 .weprovide .card img {
@@ -485,6 +833,7 @@ img.line_g {
 p.about_us_description {
   font-weight: normal;
   line-height: 30px;
+  margin-bottom: 50px;
 }
 
  
@@ -1076,10 +1425,96 @@ form.custom_popup_form label {
 
 
 
+@media only screen and (max-width:1200px) {
+  .hero_slider h2 {
+    margin-top: 0px;
+    height: 140px;
+}
+
+
+}
+
+
+
 
 @media only screen and (max-width:1024px) {
   .contact-cards-container {
        flex-wrap: wrap; 
+}
+
+.navbar {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.navbar.open {
+  display: flex;
+}
+
+.navbar ul {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-toggle {
+  display: flex;
+  width: 38px;
+  height: 34px;
+  background: red;
+}
+
+.header_logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.journey-step {
+  height: 240px;
+  object-fit: cover;
+}
+
+.hybrid-why-section .hybrid-tech-section {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+
+
+.founder-card {
+  flex-direction: column-reverse;
+}
+
+
+.hero_slider h2 {
+  margin-top: 0px;
+  height: 114px;
+}
+
+
+
+.images_right {
+  text-align: center;
+}
+
+.hero_slider {
+    padding: 30px 0px;
+}
+
+.images_right img {
+  height: 300px;
+}
+
+.slider-navigation {
+  margin-top: 3px;
 }
 
 .investor-image img {
@@ -1156,6 +1591,53 @@ img.custom_dot_section {
   button.tab-button:last-child {
     grid-column-start: 1;
     grid-column-end: 3;
+}
+
+
+.journey-timeline {
+  display: flex;
+   align-items: flex-start;
+  margin-top: 20px;
+  flex-wrap: wrap;  
+  row-gap: 20px;
+}
+
+.hybrid-why-section .hybrid-tech-section {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.hybrid-why-section .tech-icons {
+  display: flex;
+   align-items: center;
+  flex-wrap: wrap;
+}
+
+.hybrid-why-section img.hybrid_imageone {
+  height: 200px;
+  object-fit: contain;
+}
+
+
+.founder-card {
+  width: 90%;
+  margin-bottom: 20px !important;
+  margin: auto;
+}
+
+
+.hero_slider {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  grid-column-gap: 25px;
+  column-gap: 25px;
+}
+
+
+.slider-content {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .invertor_growthsection {

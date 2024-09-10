@@ -1,76 +1,48 @@
 import Image from 'next/image';
 
-const ContactSection = () => {
+const ContactSection = ({ result }) => {
+  console.log('Contact Data:', result);
+
   return (
     <div className="container_contact_us">
       {/* Contact Cards */}
       <div className="contact-cards-container contact_details">
-        {/* Card 1 */}
-        <div className="card">
-         <div className='linkedin_c'>
-          <img className="line_g" src='/linesg.png'></img>
-          <div className="title">Saurabh Kumar</div>
-          <a href='#'>
-          <img src="/linkedin.png"></img>
-          </a>
+        {/* Dynamically render the contact cards */}
+        {result?.data?.map((contact, index) => (
+          <div className="card" key={index}>
+            <div className="linkedin_c">
+              <img className="line_g" src="/linesg.png" alt="line" />
+              <div className="title">{contact.name}</div>
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <img src="/linkedin.png" alt="LinkedIn" />
+              </a>
+            </div>
+            <div className="icon-text-container">
+              <Image
+                src="/nav.png" // Replace with your email icon path
+                alt="Email Icon"
+                width={16}
+                height={16}
+                className="icon"
+              />
+              <span><a href={`mailto:${contact.email}`}>{contact.email}</a></span>
+            </div>
+            <div className="icon-text-container">
+              <Image
+                src="/mob.png" // Replace with your phone icon path
+                alt="Phone Icon"
+                width={16}
+                height={16}
+                className="icon"
+              />
+              <span><a href={`tel:${contact.number}`}>{contact.number}</a></span>
+            </div>
           </div>
-          <div className="icon-text-container">
-            <Image
-              src="/nav.png" // Replace with your email icon path
-              alt="Email Icon"
-              width={16}
-              height={16}
-              className="icon"
-            />
-            <span><a href="mailto:Ksaurabhh@gmail.com">Ksaurabhh@gmail.com</a></span>
-          </div>
-          <div className="icon-text-container">
-            <Image
-              src="/mob.png" // Replace with your phone icon path
-              alt="Phone Icon"
-              width={16}
-              height={16}
-              className="icon"
-            />
-            <span><a href="tel:91 9632319385">+91 9632319385</a></span>
-          </div>
-        </div>
+        ))}
 
-        {/* Card 2 */}
-        <div className="card">
-        <div className='linkedin_c'>
-        <img className="line_g" src='/linesg.png'></img>
-          <div className="title">Deven Sharma</div>
-            <img className="line_g" src='/linesg.png'></img>
-          <a href='#'>
-          <img src="/linkedin.png"></img>
-          </a>
-          </div>
-          <div className="icon-text-container">
-            <Image
-              src="/nav.png" // Replace with your email icon path
-              alt="Email Icon"
-              width={16}
-              height={16}
-              className="icon"
-            />
-            <span><a href="mailto:devensharma@gmail.com">devensharma@gmail.com</a></span>
-          </div>
-          <div className="icon-text-container">
-            <Image
-              src="/mob.png" // Replace with your phone icon path
-              alt="Phone Icon"
-              width={16}
-              height={16}
-              className="icon"
-            />
-            <span><a href="tel:+91 9816788504">+91 9816788504</a></span>
-          </div>
-        </div>
-
-        {/* Card 3 */}
+        {/* Static Registered Address Card */}
         <div className="card address_contact">
-        <img className="line_g" src='/linesg.png'></img>
+          <img className="line_g" src="/linesg.png" alt="line" />
           <div className="title">Registered Address</div>
           <div className="icon-text-container">
             <Image
@@ -85,7 +57,7 @@ const ContactSection = () => {
           <div>
             <a className="getdirection" href="https://goo.gl/maps/..." target="_blank" rel="noopener noreferrer">
               Get directions
-              <img src="/getd.png"></img>
+              <img src="/getd.png" alt="Get Directions Icon" />
             </a>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { EXPORT_ALL_APIS } from '../../../../../../../utils/apis/apis';
+import Link from 'next/link';
 
 const api = EXPORT_ALL_APIS();
 
@@ -18,6 +19,7 @@ const InvestorPageManagement = () => {
     });
 
     const [investor, setInvestor] = useState({});
+     
     const [showAddForm, setShowAddForm] = useState(false);
     const [showEditForm, setShowEditForm] = useState(false);
 
@@ -25,8 +27,8 @@ const InvestorPageManagement = () => {
         const fetchInvestor = async () => {
             const token = localStorage.getItem('token');
             try {
-                const data = await api.fetchInvestor(token);
-                setInvestor(data || {});
+                const fetchInvestorPage = await api.fetchInvestor(token);
+                setInvestor(fetchInvestorPage.data[0] || {});
             } catch (error) {
                 console.error('Failed to fetch investor data:', error.message);
             }
@@ -41,6 +43,7 @@ const InvestorPageManagement = () => {
             ...prevInvestor,
             [name]: files ? files[0] : value,
         }));
+        console.log()
     };
 
     const handleCreateInvestor = async (e) => {
@@ -87,24 +90,10 @@ const InvestorPageManagement = () => {
     const handleUpdateInvestor = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
-        const formData = new FormData();
-
-        formData.append('field1', investor.field1 || '');
-        formData.append('field2', investor.field2 || '');
-        formData.append('field3', investor.field3 || '');
-        formData.append('field4', investor.field4 || '');
-        formData.append('field5', investor.field5 || '');
-        formData.append('field6', investor.field6 || '');
-        formData.append('field7', investor.field7 || '');
-        formData.append('field8', investor.field8 || '');
-        formData.append('field9', investor.field9 || '');
-
-        if (investor.image) {
-            formData.append('image', investor.image);
-        }
+    
 
         try {
-            await api.updateInvestorContent(token, newInvestor);
+            await api.updateInvestorContent(token, investor.id, investor);
             const updatedInvestor = await api.fetchInvestor(token);
             setInvestor(updatedInvestor || {});
             setShowEditForm(false);
@@ -131,6 +120,11 @@ const InvestorPageManagement = () => {
             {showAddForm && (
                 <form onSubmit={handleCreateInvestor}>
                     <h2>Create Investor</h2>
+                    <input
+                        type="file"
+                        name="image"
+                        onChange={handleChange}
+                    />
                     <input
                         type="text"
                         name="field1"
@@ -194,11 +188,6 @@ const InvestorPageManagement = () => {
                         onChange={handleChange}
                         placeholder="Field 9"
                     />
-                    <input
-                        type="file"
-                        name="image"
-                        onChange={handleChange}
-                    />
                     <button type="submit">Create Investor</button>
                 </form>
             )}
@@ -206,6 +195,11 @@ const InvestorPageManagement = () => {
             {showEditForm && (
                 <form onSubmit={handleUpdateInvestor}>
                     <h2>Edit Investor</h2>
+                    <input
+                        type="file"
+                        name="image"
+                        onChange={(e) => setInvestor({ ...investor, image: e.target.files[0] })}
+                    />
                     <input
                         type="text"
                         name="field1"
@@ -269,11 +263,6 @@ const InvestorPageManagement = () => {
                         onChange={(e) => setInvestor({ ...investor, field9: e.target.value })}
                         placeholder="Field 9"
                     />
-                    <input
-                        type="file"
-                        name="image"
-                        onChange={(e) => setInvestor({ ...investor, image: e.target.files[0] })}
-                    />
                     <button type="submit">Update Investor</button>
                 </form>
             )}
@@ -291,7 +280,10 @@ const InvestorPageManagement = () => {
             </button>
 
             <div>
-                <h2>Current Investor</h2>
+                <h2>Current Investor Page</h2>
+                {investor.image && (
+                    <p><strong>Image:</strong> <img src={investor.image} alt="Investor" /></p>
+                )}
                 <p><strong>Field 1:</strong> {investor.field1}</p>
                 <p><strong>Field 2:</strong> {investor.field2}</p>
                 <p><strong>Field 3:</strong> {investor.field3}</p>
@@ -301,9 +293,7 @@ const InvestorPageManagement = () => {
                 <p><strong>Field 7:</strong> {investor.field7}</p>
                 <p><strong>Field 8:</strong> {investor.field8}</p>
                 <p><strong>Field 9:</strong> {investor.field9}</p>
-                {investor.image && (
-                    <p><strong>Image:</strong> <img src={investor.image} alt="Investor" /></p>
-                )}
+               
             </div>
         </div>
     );

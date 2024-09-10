@@ -1,5 +1,7 @@
 import React from 'react';
 import Navigation from '@/app/_common/header/components/navigation'
+import HeadetLogo from '@/app/_common/header/components/headetLogo'
+import DarkMode from '@/app/_common/header/components/darkMode'
 import { EXPORT_ALL_APIS } from '../../../../utils/apis/apis';
 
 async function Header() {
@@ -10,8 +12,9 @@ async function Header() {
       <header>
       <div className='container'>
         <div className='header-inner'>
-      
-        <Navigation result={result}/>
+        <HeadetLogo result={result}/>
+        <Navigation />
+        <DarkMode/>
       </div>
       </div>
       </header>

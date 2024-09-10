@@ -10,7 +10,12 @@ const nextConfig = {
         pathname: '/storage/**',
       },
     ],
-  },
+  }, 
+  
+ 
+ 
+
+  
 };
 
 export default nextConfig;

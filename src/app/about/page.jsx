@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../_common/layout/layout'
+import Founders from './components/teamMember'
 
 function page() {
   return (
@@ -13,6 +14,14 @@ function page() {
        <br></br><span></span>Our hybrid powertrain system is engineered to optimize performance while significantly reducing emissions, making a substantial contribution to India's green energy objectives. By focusing on enhancing fuel efficiency and lowering environmental impact, Uzaq is not just advancing automotive technology but also accelerating the country’s transition towards sustainable energy solutions.
        <br></br><span></span>Our commitment to innovation and sustainability positions us as a key player in the automotive industry, driving progress and setting new standards for eco-friendly transportation. As we continue to push the boundaries of what’s possible, Uzaq remains focused on delivering cutting-edge solutions that align with global environmental goals and meet the evolving needs of our customers.</p>
 </div>
+
+<div className='teammembers'>
+    <Founders/>
+
+
+</div>
+
+
 </Layout>
  </>
   )

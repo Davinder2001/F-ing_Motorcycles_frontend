@@ -46,6 +46,15 @@ export const EXPORT_ALL_APIS = () => {
         let data = await resp.json()
         return data
     }
+        
+    const fetchContactPage = async () => {
+        let resp = await fetch(`${API_URL}/api/ContactPage`)
+        let data = await resp.json()
+        return data
+    }
+
+   
+
 
 
 
@@ -73,56 +82,135 @@ export const EXPORT_ALL_APIS = () => {
 
     /////////////////////////////////////// Crud Api's //////////////////////////////*html*/
 
+
+      const createContactPage = async (contactPage) => {
+        const response = await fetch(`${API_URL}/api/ContactPage`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: contactPage.name,  // Include name
+            email: contactPage.email,  // Include email
+            number: contactPage.number  // Include number
+          }),
+        });
+      
+        const result = await response.json();
+        alert('User saved successfully');
+      
+        return result; // Return the result instead of data (data was undefined)
+      };
+      
+      const updateContactPage = async (contactPage, selectedUserId) => {
+        const response = await fetch(`${API_URL}/api/ContactPage/${selectedUserId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: contactPage.name,  // Include name
+            email: contactPage.email,  // Include email
+            number: contactPage.number  // Include number
+          }),
+        });
+      
+        const result = await response.json();
+        alert('User updated successfully');
+      
+        return result;
+      };
+      
+      const deleteContactPage = async (id) => {
+        const response = await fetch(`${API_URL}/api/ContactPage/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+      
+        if (response.ok) {
+          alert('Content deleted successfully');
+        } else {
+          alert('Error deleting content');
+        }
+      
+        return response.ok;
+      };
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Category CRUD 
     const createCategory = async (token, category) => {
         try {
-            const formData = new FormData();
-            formData.append('name', category.name);
-            formData.append('short_description', category.shortDescription);
-            formData.append('long_description', category.longDescription);
-
-            if (category.category_image) {
-                formData.append('category_image', category.category_image);
-            }
-
-            await axios.post(`${API_URL}/api/categories`, formData, {
+            const response = await fetch(`${API_URL}/api/categories`, {
+                method: 'POST',
                 headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json', // Changed to 'application/json'
                 },
+                body: JSON.stringify({
+                    name: category.name,
+                    short_description: category.shortDescription,
+                    long_description: category.longDescription
+                }),
             });
+    
+            if (!response.ok) {
+                throw new Error('Failed to create category.');
+            }
+    
+            const result = await response.json();
+            alert('Category created successfully');
+    
+            return result; // Return the result instead of data (data was undefined)
         } catch (error) {
-            throw new Error('Failed to create category.');
+            console.error(error);
+            alert('Failed to create category.');
         }
-    }
-
+    };
+    
     const updateCategory = async (token, categoryId, category) => {
         try {
-            // Create query parameters
-            const queryParams = new URLSearchParams({
-                name: category.name,
-                short_description: category.shortDescription,
-                long_description: category.longDescription,
-            });
-
-            if (category.category_image) {
-                queryParams.append('category_image', category.category_image); // Not suitable for files
-            }
-
-            // Send PUT request with query parameters appended to URL
-            const response = await axios.put(`${API_URL}/api/categories/${categoryId}?${queryParams.toString()}`, {
+            const response = await fetch(`${API_URL}/api/categories/${categoryId}`, {
+                method: 'PUT',
                 headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json', // Incorrect for file uploads
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json', // Set to 'application/json'
                 },
+                body: JSON.stringify({
+                    name: category.name,
+                    short_description: category.shortDescription,
+                    long_description: category.longDescription,
+                    category_image: category.category_image // Include if present
+                }),
             });
-
-            return response.data;
+    
+            if (!response.ok) {
+                throw new Error('Failed to update category.');
+            }
+    
+            const result = await response.json();
+            alert('Category updated successfully');
+    
+            return result;
         } catch (error) {
-            console.error('Failed to update category:', error.response?.data || error.message);
-            throw new Error('Failed to update category.');
+            console.error('Failed to update category:', error.message);
+            alert('Failed to update category.');
         }
-    }
+    };
+    
 
     const deleteCategory = async (token, categoryId) => {
         try {
@@ -218,6 +306,7 @@ export const EXPORT_ALL_APIS = () => {
 
 
 
+  
     // Investor Content CRUD
 
     const createInvestorContent = async (token, content) => {
@@ -252,37 +341,71 @@ export const EXPORT_ALL_APIS = () => {
         }
     }
 
-    const updateInvestorContent = async (token, content) => {
-        try {
-            const formData = new FormData();
-            formData.append('field1', content.field1);
-            formData.append('field2', content.field2);
-            formData.append('field3', content.field3);
-            formData.append('field4', content.field4);
-            formData.append('field5', content.field5);
-            formData.append('field6', content.field6);
-            formData.append('field7', content.field7);
-            formData.append('field8', content.field8);
-            formData.append('field9', content.field9);
+  const updateInvestorContent = async (token, id, content) => {
+    try {
 
-            if (content.image) {
-                formData.append('image', content.image);
-            }
 
-            if (content.image2) {
-                formData.append('image_2', content.image2);
-            }
 
-            await axios.put(`${API_URL}/api/investorPage`, formData, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-        } catch (error) {
-            throw new Error('Failed to update investor content.');
+        // Create a new FormData instance
+        const formData = new FormData();
+        // Append all fields to FormData
+        formData.append('field1', content.field1);
+        formData.append('field2', content.field2);
+        formData.append('field3', content.field3);
+        formData.append('field4', content.field4);
+        formData.append('field5', content.field5);
+        formData.append('field6', content.field6);
+        formData.append('field7', content.field7);
+        formData.append('field8', content.field8);
+        formData.append('field9', content.field9);
+    
+        // Append images if available
+        if (content.image) {
+            formData.append('image', content.image);
         }
+        
+        if (content.image2) {
+            formData.append('image_2', content.image2);
+        }
+
+        const DATA = JSON.stringify(content)
+        
+
+console.log('dddddddddd',DATA)
+
+        // Send the PUT request with formData and ID in the URL
+        const response = await fetch(`${API_URL}/api/investorPage/${id}`, {
+            method: 'PUT', // Use 'POST' if creating a new resource
+            body: DATA,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                // 'Content-Type': 'multipart/form-data' is not needed with FormData in fetch
+            },
+        });
+
+        const result = await response.json();
+        console.log('Update successful', result);
+        return result;
+    } catch (error) {
+        console.error('Failed to update investor content.', error);
+        throw new Error('Failed to update investor content.');
     }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     const deleteInvestorContent = async (token) => {
         try {
@@ -361,6 +484,7 @@ export const EXPORT_ALL_APIS = () => {
         }
     };
 
+   
 
 
 
@@ -380,8 +504,12 @@ export const EXPORT_ALL_APIS = () => {
         fetchFooter,
         fetchProducts,
         fetchprofile,
+        fetchContactPage,
 
         // CRUD Apis in order
+        createContactPage,
+        updateContactPage,
+        deleteContactPage,
         createCategory,
         updateCategory,
         deleteCategory,

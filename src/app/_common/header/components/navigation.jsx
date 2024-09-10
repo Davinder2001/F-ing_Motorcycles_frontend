@@ -4,23 +4,12 @@ import Image from 'next/image';
 
  
 
-function Navigation({result}) {
-// console.log(result)
+function Navigation() {
  
   
   return (
 
- <>
-    <div className='header_logo'>
-  <Link href="/">
-    <Image 
-      src={result.image_path} 
-      height={20} 
-      width={180} 
-      alt='logo' 
-    />
-    </Link>
-  </div>
+
         <nav className='navbar'>
            <ul>
             <li>
@@ -40,7 +29,7 @@ function Navigation({result}) {
             </li>
           </ul>
         </nav>
-    </>
+  
 
   );
 }

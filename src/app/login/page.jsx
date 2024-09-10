@@ -1,60 +1,16 @@
-'use client';
+import React from 'react'
+import LoginPage from './components/loginpage'
+import Layout from '../_common/layout/layout'
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { loginUser } from '@/api/LoginApi/api';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const router = useRouter();
+  return (
+    <div>
+    <Layout>
+        <LoginPage/>
+    </Layout>
+    </div>
+  )
+}
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        setError('');
-
-        try {
-            const data = await loginUser(email, password);
-
-            if (data.status) {
-                localStorage.setItem('token', data.token); // Store token in local storage
-                router.push('/dashboard'); // Redirect to dashboard
-            } else {
-                setError(data.message);
-            }
-        } catch (err) {
-            setError(err.message);
-        }
-    };
-
-    return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button type="submit">Login</button>
-            </form>
-        </div>
-    );
-};
-
-export default Login;
+export default Login

@@ -1,12 +1,29 @@
-import React from 'react'
+import React from 'react';
 
-const ProfilePage = ({getProfile}) => {
-  console.log(getProfile.object)
+const ProfilePage = ({ getProfile }) => {
+ 
+  const { data, success } = getProfile || {};
+
+  console.log(data)
+ 
   return (
     <div>
-      <h3>Admin Profile</h3>
+      <h1>Profile Page</h1>
+      {
+        <ul>
+          {data===undefined?("no result found"):(data.map((item, index) => (
+            <li key={index}>
+            
+              <p>ID: {item.id}</p>
+              <p>Name: {item.name}</p>
+               
+            </li>
+          )))}
+        </ul>
+   
+      }
     </div>
-  )
-}
+  );
+};
 
-export default ProfilePage
+export default ProfilePage;
