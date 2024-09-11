@@ -71,13 +71,17 @@ const FooterManagement = () => {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         try {
+            const token = localStorage.getItem('token');
             const footers = await api.fetchFooter();
+            // Check if any footer data was returned
             if (footers.length > 0) {
-                const footerId = footers[0].id; // Assuming ID is available
-                const updatedFooter = await api.updateFooter(footerId, formData);
-                  // Optionally redirect or show a success message
+                const footer = footers[0]; // Get the first footer object
+                const footerId = footer.id; // Get the ID of the footer
+                const updatedFooter = await api.updateFooter(token, footerId, formData);
+                // Optionally redirect or show a success message
+                console.log('Footer updated successfully', updatedFooter);
             } else {
                 setError('No footer found for updating.');
             }
@@ -86,6 +90,7 @@ const FooterManagement = () => {
             setError('Failed to update footer.');
         }
     };
+    
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;

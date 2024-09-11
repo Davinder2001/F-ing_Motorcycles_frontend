@@ -150,6 +150,220 @@ body {
 } 
 
 
+
+.close-menu svg {
+  padding-top: 25px;
+}
+
+.theme-toggle-container svg {
+  width: 20px;
+}
+
+nav.navbar ul li a {
+  padding: 10px 10px !important;
+}
+
+nav.navbar ul li a:hover {
+  background: #13544e;
+  color: white;
+}
+
+nav.navbar ul li:hover a {
+  color: white;
+}
+
+nav.navbar ul li {
+  padding: initial;
+}
+
+
+
+.mobile-menu {
+  cursor: pointer;
+}
+
+
+.left_side_panel {
+  margin-top: -15%;
+}
+
+
+.hybrid_sections {
+  padding: 10px 20px;
+}
+
+
+.mobile-menu svg {
+  color: black;
+}
+
+
+
+.menu.active {
+  background: url(/menu.png);
+  background-position: bottom;
+  background-size: cover;
+}
+a.menu-item:hover {
+  color: white;
+}
+
+
+.dark-mode {
+  background: #171717;
+
+
+  .slider-container {
+  background: #171717;
+}
+
+.header_logo img {
+  filter: brightness(0) invert(1);
+}
+
+.menu {
+  background: #000000;
+  color: #fff;
+}
+
+.close-menu svg {
+  color: #fff;
+  margin-left: 14px;
+}
+
+.dark-mode .close-menu svg {
+  color: #fff;
+}
+
+
+.mobile-menu svg {
+  color: white;
+}
+
+.hybrid-why-section .tech-icons img {
+  width: 100%;
+  max-width: 570px;
+  margin-right: 10px;
+  filter: invert(1);
+}
+
+section.investor-corner:before {
+  content: "";
+  background: #322f2f;
+ 
+}
+
+
+.contact_details .title {
+   color: #ffffff; 
+}
+
+
+
+
+
+.hero_slider h2 {
+  margin-top: 0px;
+  display: grid;
+  height: 74px;
+  color: white;
+}
+
+.address_contact span {
+  font-size: 18px;
+  color: white;
+}
+
+
+p,
+a {
+  font-family: Helvetica Neue;
+  font-size: 18px;
+  color:#fff;
+}
+
+.slider-navigation button {
+  color: white;
+}
+
+header {
+  background: #0D0D0D;
+
+}
+
+header {
+  background: #0D0D0D;
+}
+
+.theme-toggle-container svg {
+  color: white;
+}
+
+.what_we_provide {
+  padding: 40px 0px;
+  background: linear-gradient(188deg, #161616, #000000ad);
+}
+
+.weprovide .title {
+  color: #ffffff;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+ {
+  font-family: Helvetica Neue;
+  color: white;
+}
+
+
+ul li {
+  font-family: Helvetica Neue;
+  color: white;
+}
+
+.growth-card {
+  background-color: #322f2f;
+}
+
+p.about_us_description {
+  color: #ffffff;
+}
+
+.founder-card {
+  background-color: #322f2f;
+  border: 1px solid #c8d6e3;
+ }
+
+ .founders-section {
+  background-color: #000000;
+}
+
+
+.copyright_bar {
+  background: #000;
+}
+
+
+.our-journey-section {
+  background-color: #171717a8;
+  text-align: center;
+}
+
+.journey-step {
+   background: #322f2f;
+ 
+}
+
+
+}
+
+
+
+
+
 header {
     padding: 20px 10px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.0784313725);
@@ -178,22 +392,39 @@ header {
   color: #13544e;
 }
 
+.close-menu svg {
+  color: black;
+  margin-left: 14px;
+}
+
+
+.close-menu svg {
+  padding-top: 25px;
+}
+
+
 
 .menu {
   position: fixed;
   top: 0;
-  left: -100%; /* Initially hidden off-screen */
-  width: 100%;
+  right: -100%;
+  width: 320px;
   height: 100vh;
-  background: #333;
+  padding: 10px;
+  background: #fff;
   color: #fff;
   transition: left 0.3s ease;
   z-index: 20;
   overflow: auto;
+  box-shadow: 2px 0px 12px #b4b4b48c;
 }
 
 .menu.active {
-  left: 0; /* Slide in from the left */
+  right: 0; /* Slide in from the left */
+}
+
+.menu-list {
+  padding-top: 40px;
 }
 
 .menu-item {
@@ -201,12 +432,32 @@ header {
   padding: 1rem;
   text-align: center;
   text-decoration: none;
-  color: #fff;
+  color: #000000;
+  text-align: left;
 }
-.navbar_2 {display: flex;}
+
+
+.navbar_2 {
+  display: flex;
+  column-gap: 22px;
+  align-items: center;
+}
+
+nav.navbar.light,
+.dark {
+  display: block !important;
+  padding: 0px;
+}
+
+nav.navbar.dark {
+  background: transparent;
+  padding: 0px;
+}
 
 .theme-toggle-container {
-    display:flex;
+  display: flex;
+  column-gap: 13px;
+  align-items: center;
 }
 
 .menu-item:hover {
@@ -236,11 +487,16 @@ header {
   width: 100%;
   background-color: #13544e;
   border: 0;
+  cursor: pointer;
   font-size: 18px;
   color: white;
   padding: 10px;
   border-radius: 3px;
   margin-top: 30px;
+}
+
+.loginformContainer .adminLoginBtn:hover {
+  background-color:#000;
 }
 
 
@@ -277,6 +533,7 @@ header {
   align-items: flex-start;
   margin-top: 20px;
   column-gap: 20px;
+  justify-content: center;
 }
 
 .journey-step {
@@ -559,6 +816,9 @@ span.highlight {
   width: 20px;
   height: 20px;
   color: #000000;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 20px;
 }
 .images_right {
   text-align: right;
@@ -678,7 +938,7 @@ header ul, ol {
   }
   header nav ul {
     display: flex;
-    column-gap: 60px;
+    column-gap: 35px;
 }
 
 .footer_inner_section {
@@ -925,7 +1185,7 @@ section.investor-corner:before {
   width: 32%;
   height: 100%;
   z-index: -1;
-  margin-top: 45px;
+  margin-top: 0px;
 }
 
 .dashboard-inner {
@@ -1068,6 +1328,7 @@ textarea {
 
 section.investor-corner {
   position: relative;
+  padding-bottom: 60px;
 }
 
 
@@ -1207,7 +1468,7 @@ button.enquiry-button:hover {
   border: none;
   cursor: pointer;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   column-gap: 10px;
@@ -1218,6 +1479,10 @@ button.enquiry-button:hover {
 .enquiry-button:hover {
   background-color: $m_green;
 }
+
+
+
+
 
 
 .contact-cards-container {
@@ -1442,16 +1707,39 @@ form.custom_popup_form label {
        flex-wrap: wrap; 
 }
 
-.navbar {
+
+.left_side_panel {
+  margin-top: 0px;
+}
+
+.container {
+  max-width: 1280px;
+  padding: 0px 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+nav.navbar {
   display: none;
+}
+
+nav.navbar.light {
+  display: block !important;
+}
+
+
+
+
+
+.navbar {
   flex-direction: column;
-  position: absolute;
-  top: 60px;
+  position: relative;
+  top: 0px;
   left: 0;
   right: 0;
   background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
+   padding: 20px;
 }
 
 .navbar.open {
@@ -1593,14 +1881,81 @@ img.custom_dot_section {
     grid-column-end: 3;
 }
 
+.investor-content h5 {
+  font-size: 18px;
+}
+
+
+.investor-image img {
+  height: 328px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.our-journey-section {
+  background-color: #f4f7f8;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero_slider h2 {
+  margin-top: 0px;
+  height: 80px;
+}
+
+
+h2 {
+  font-family: Helvetica Neue;
+  font-size: 28px;
+}
+
+.container.aboutus h5 {
+  font-size: 18px;
+  width: 100%;
+  line-height: 28px;
+  margin-bottom: 0px;
+}
+
+.slider-navigation {
+  width: 100%;
+
+}
+
+
 
 .journey-timeline {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
    align-items: flex-start;
   margin-top: 20px;
   flex-wrap: wrap;  
   row-gap: 20px;
 }
+
+.journey-step {
+  width: 95%;
+  max-width: 234px;
+  text-align: center;
+  margin: auto;
+  background: white;
+  padding: 20px 10px;
+  border-radius: 10px;
+  height: 208px;
+  object-fit: cover;
+}
+
+img.journeylines {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: none;
+}
+
+img.journeylines {
+  display: none;
+}
+
 
 .hybrid-why-section .hybrid-tech-section {
   display: grid;
@@ -1637,7 +1992,7 @@ img.custom_dot_section {
 
 .slider-content {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .invertor_growthsection {
@@ -1684,6 +2039,33 @@ p.growth-intro {
     gap: 0px;
 }
 
+.journey-timeline {
+  grid-template-columns: 1fr;
+}
+
+
+.journey-step {
+  width: 95%;
+  max-width: 280px;
+  margin: auto;
+ }
+
+
+
+.hero_slider h2 {
+  margin-top: 0px;
+  height: 62px;
+  font-size: 24px;
+}
+
+p,
+ a {
+  font-family: Helvetica Neue;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+
 form.custom_popup_form input,
  textarea, 
  select {
@@ -1702,6 +2084,45 @@ form.custom_popup_form .form-group:nth-child(5) {
   grid-column-end: auto;
 }
 
+
+}
+
+
+@media only screen and (max-width:400px) {
+  .header-inner {
+    display: block;
+    gap: 5px;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.images_right img {
+  height: 250px;
+  margin-top: 20px;
+}
+.slider-navigation button span {
+  background: #F4F4F4;
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 37px;
+}
+
+.navbar_2 {
+  display: flex;
+  column-gap: 22px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_logo {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.theme-toggle-container svg {
+  width: 16px;
+}
 
 }
 

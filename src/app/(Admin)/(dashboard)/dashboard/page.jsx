@@ -28,6 +28,7 @@ const Dashboard = () => {
   const fetchDashboardData = async (token) => {
     try {
       const data = await getUserDashboard(token);
+      // const data = await getUserDashboard(token);
       setDashboardData(data); // Store the dashboard data
     } catch (error) {
       console.error('Failed to fetch user dashboard.', error);
@@ -39,11 +40,7 @@ const Dashboard = () => {
     }
   };
 
-  // Show loading spinner or placeholder while checking authentication
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
+ 
   // If user is authenticated, display the management page
   return (
     <div>

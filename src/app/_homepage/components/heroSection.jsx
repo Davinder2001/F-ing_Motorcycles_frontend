@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-const SliderComponent = () => {
-  const [activeSlide, setActiveSlide] = useState(2); // Default is 2 Wheelers
+const SliderComponent = ({ result, heroSection }) => {
+  const [activeSlide, setActiveSlide] = useState(0); // Default to the first slide
   const [highlightText, setHighlightText] = useState('Electric Scooter'); // Text to type out
   const textArray = ['Electric Scooter', 'Electric Bike', 'Hybrid Vehicle']; // Array of texts to loop
 
@@ -12,6 +12,19 @@ const SliderComponent = () => {
   const typingSpeed = 100; // Speed of typing in ms
   const deletingSpeed = 50; // Speed of deleting in ms
   const pauseTime = 1500; // Time to wait before deleting the text
+
+  const hasImages = heroSection && heroSection.length > 0;
+
+  useEffect(() => {
+    if (hasImages) {
+      // Log image URLs for all items in heroSection
+      heroSection.forEach((item, index) => {
+        `Image URL for item ${index}:`, item.image;
+      });
+    } else {
+      console.log('Hero section data is not available or empty.');
+    }
+  }, [heroSection, hasImages]);
 
   // Typing effect logic
   useEffect(() => {
@@ -39,19 +52,25 @@ const SliderComponent = () => {
     return () => clearTimeout(typingTimeout);
   }, [typedText, isDeleting]);
 
-  // Automatically switch slides every 3 seconds
   useEffect(() => {
-    const slideInterval = setInterval(() => {
-      setActiveSlide((prevSlide) => {
-        if (prevSlide === 4) {
-          return 2; // Cycle back to 2 if currently at 4
-        }
-        return prevSlide + 1; // Go to the next slide (2 -> 3 -> 4)
-      });
-    }, 3000); // 3000ms = 3 seconds
+    if (hasImages) {
+      const slideInterval = setInterval(() => {
+        setActiveSlide((prevSlide) => (prevSlide + 1) % heroSection.length);
+      }, 3000); // 3000ms = 3 seconds
 
-    return () => clearInterval(slideInterval); // Cleanup interval on unmount
-  }, []);
+      return () => clearInterval(slideInterval); // Cleanup interval on unmount
+    }
+  }, [hasImages, heroSection]);
+
+  // Get the current image URL based on activeSlide
+  const getImageForSlide = () => {
+    if (hasImages) {
+      return heroSection[activeSlide]?.image || '/slidethree.png'; // Fallback if needed
+    }
+    return '/slidethree.png'; // Fallback if heroSection is empty
+  };
+
+  console.log("result", result)
 
   return (
     <div className="slider-container">
@@ -71,45 +90,27 @@ const SliderComponent = () => {
             </button>
           </div>
 
-          <div className="images_right">
-            {activeSlide === 2 && (
-              <>
-                <img src="/slideone.png" alt="2 wheeler" className="vehicle-image" />
-              </>
-            )}
-            {activeSlide === 3 && (
-              <>
-                <img src="/slidetwo.png" alt="3 wheeler" className="vehicle-image" />
-              </>
-            )}
-            {activeSlide === 4 && (
-              <>
-                <img src="/slidethree.png" alt="4 wheeler" className="vehicle-image" />
-              </>
-            )}
-          </div>
+          {hasImages && (
+            <div className="images_right">
+              <img src={getImageForSlide()} alt={`Slide ${activeSlide}`} className="vehicle-image" />
+            </div>
+          )}
+
         </div>
 
-        <div className="slider-navigation">
-          <button
-            className={`slider-button ${activeSlide === 2 ? 'active' : ''}`}
-            onClick={() => setActiveSlide(2)}
-          >
-            <span>2</span> Wheelers
-          </button>
-          <button
-            className={`slider-button ${activeSlide === 3 ? 'active' : ''}`}
-            onClick={() => setActiveSlide(3)}
-          >
-            <span>3</span> Wheelers
-          </button>
-          <button
-            className={`slider-button ${activeSlide === 4 ? 'active' : ''}`}
-            onClick={() => setActiveSlide(4)}
-          >
-            <span>4</span> Wheelers
-          </button>
-        </div>
+        {hasImages && (
+          <div className="slider-navigation">
+            {heroSection.map((_, index) => (
+              <button
+                key={index}
+                className={`slider-button ${activeSlide === index ? 'active' : ''}`}
+                onClick={() => setActiveSlide(index)}
+              >
+                <span>{index + 2}</span> Wheelers
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

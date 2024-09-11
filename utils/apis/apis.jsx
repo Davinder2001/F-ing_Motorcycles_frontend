@@ -1,4 +1,5 @@
-import axios from "axios"
+``
+import axios, { formToJSON } from "axios"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -51,10 +52,29 @@ export const EXPORT_ALL_APIS = () => {
         let resp = await fetch(`${API_URL}/api/ContactPage`)
         let data = await resp.json()
         return data
+    }    
+
+    const getUserDashboard = async (token) => {
+        try {
+            const response = await axios.get(`${API_URL}/api/dashboard`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            throw new Error('Failed to fetch user dashboard.');
+        }
+    };
+   
+    
+    const fetchHeroSections = async () => {
+        let resp = await fetch(`${API_URL}/api/heroSection`)
+        let data = await resp.json()
+        return data
     }
 
-   
-
+  
 
 
 
@@ -137,14 +157,6 @@ export const EXPORT_ALL_APIS = () => {
       
         return response.ok;
       };
-      
-
-
-
-
-
-
-
 
 
 
@@ -229,37 +241,67 @@ export const EXPORT_ALL_APIS = () => {
 
     // Content for Home Page
 
-    const createContent = async (token, content) => {
+    const createContent = async (token, newContent) => {
         try {
             const formData = new FormData();
-            formData.append('heading', content.heading);
-            formData.append('heading_nxt', content.headingNxt);
-            formData.append('description', content.description);
-            formData.append('Sub_heading_2', content.subHeading2);
-            formData.append('heading_2', content.heading2);
-            formData.append('description_2', content.description2);
-            formData.append('button_1', content.button2);
-            formData.append('button_2', content.button2);
-
-            if (content.image) {
-                formData.append('image', content.image);
+    
+            // Append all text data
+            formData.append('heading', newContent.heading);
+            formData.append('heading_nxt', newContent.heading_nxt);
+            formData.append('description', newContent.description);
+            formData.append('heading_2', newContent.heading_2);
+            formData.append('Sub_heading_2', newContent.Sub_heading_2);
+            formData.append('description_2', newContent.description_2);
+            formData.append('s_description_1', newContent.s_description_1);
+            formData.append('s_description_2', newContent.s_description_2);
+            formData.append('s_description_3', newContent.s_description_3);
+            formData.append('third_sec_heading', newContent.third_sec_heading);
+            formData.append('disc_1_sec_3', newContent.disc_1_sec_3);
+            formData.append('disc_2_sec_3', newContent.disc_2_sec_3);
+            formData.append('disc_3_sec_3', newContent.disc_3_sec_3);
+            formData.append('disc_4_sec_3', newContent.disc_4_sec_3);
+            formData.append('disc_5_sec_3', newContent.disc_5_sec_3);
+    
+            // Append image files (if provided)
+            if (newContent.image_1_sec_3) {
+                formData.append('image_1_sec_3', newContent.image_1_sec_3);
             }
-
-            if (content.image2) {
-                formData.append('image_2', content.image2);
+            if (newContent.image_2_sec_3) {
+                formData.append('image_2_sec_3', newContent.image_2_sec_3);
             }
-
-            await axios.post(`${API_URL}/api/homedata`, formData, {
+            if (newContent.image_3_sec_3) {
+                formData.append('image_3_sec_3', newContent.image_3_sec_3);
+            }
+            if (newContent.image_4_sec_3) {
+                formData.append('image_4_sec_3', newContent.image_4_sec_3);
+            }
+            if (newContent.image_5_sec_3) {
+                formData.append('image_5_sec_3', newContent.image_5_sec_3);
+            }
+    console.log('DATA', formData)
+            const response = await fetch(`${API_URL}/api/homedata`, {
+                method: 'POST',
                 headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}`, // Note: Do NOT set 'Content-Type' with FormData
                 },
+                body: formData
             });
+    
+            if (!response.ok) {
+                throw new Error('Failed to create content.');
+            }
+    
+            const result = await response.json();
+            alert('Slide updated successfully');
+            return result;
+    
         } catch (error) {
-            throw new Error('Failed to create content.');
+            console.error('Failed to update slide:', error.message);
+            alert('Failed to update slide.');
         }
-    }
-
+    };
+    
+    
     const updateContent = async (token, content) => {
         try {
             const formData = new FormData();
@@ -291,9 +333,9 @@ export const EXPORT_ALL_APIS = () => {
         }
     }
 
-    const deleteContent = async (token) => {
+    const deleteContent = async (token, id) => {
         try {
-            await axios.delete(`${API_URL}/api/homedata`, {
+            await axios.delete(`${API_URL}/api/homedata/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -301,7 +343,8 @@ export const EXPORT_ALL_APIS = () => {
         } catch (error) {
             throw new Error('Failed to delete content.');
         }
-    }
+    };
+    
 
 
 
@@ -452,24 +495,84 @@ console.log('dddddddddd',DATA)
 
     // Footer CRUD Api
 
-    const createFooter = async (footerData) => {
+    const createFooter = async (token, footerData) => {
         try {
-            const response = await axios.post(`${API_URL}/api/footer`, footerData);
-            return response.data;
+            const response = await fetch(`${API_URL}/api/footer`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json', // Set to 'application/json'
+                },
+                body: JSON.stringify({
+                    column_1_field_1: footerData.column_1_field_1,
+                    column_1_field_2: footerData.column_1_field_2,
+                    column_1_field_3: footerData.column_1_field_3,
+                    column_1_field_4: footerData.column_1_field_4,
+                    column_1_heading_1: footerData.column_1_heading_1,
+                    column_2_field_1: footerData.column_2_field_1,
+                    column_2_field_2: footerData.column_2_field_2,
+                    column_2_field_3: footerData.column_2_field_3,
+                    column_2_heading_1: footerData.column_2_heading_1,
+                    column_3_field_1: footerData.column_3_field_1,
+                    column_3_field_2: footerData.column_3_field_2,
+                    column_3_field_3: footerData.column_3_field_3,
+                    column_3_heading_1: footerData.column_3_heading_1
+                }),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to create footer.');
+            }
+    
+            const result = await response.json();
+            alert('Footer created successfully');
+            return result;
+    
         } catch (error) {
-            console.error('Failed to create footer:', error.response?.data || error.message);
-            throw new Error('Failed to create footer.');
+            console.error('Failed to create footer:', error.message);
+            alert('Failed to create footer.');
         }
     };
     
-    // Update an existing footer
-     const updateFooter = async (id, footerData) => {
+    
+    const updateFooter = async (token, id, footerData) => {
+       
+        
         try {
-            const response = await axios.put(`${API_URL}/api/footer/${id}`, footerData);
-            return response.data;
+            const response = await fetch(`${API_URL}/api/footer/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json', // Set to 'application/json'
+                },
+                body: JSON.stringify({
+                    column_1_field_1: footerData.column_1_field_1,
+                    column_1_field_2: footerData.column_1_field_2,
+                    column_1_field_3: footerData.column_1_field_3,
+                    column_1_field_4: footerData.column_1_field_4,
+                    column_1_heading_1: footerData.column_1_heading_1,
+                    column_2_field_1: footerData.column_2_field_1,
+                    column_2_field_2: footerData.column_2_field_2,
+                    column_2_field_3: footerData.column_2_field_3,
+                    column_2_heading_1: footerData.column_2_heading_1,
+                    column_3_field_1: footerData.column_3_field_1,
+                    column_3_field_2: footerData.column_3_field_2,
+                    column_3_field_3: footerData.column_3_field_3,
+                    column_3_heading_1: footerData.column_3_heading_1
+                }),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to update footer.');
+            }
+    
+            const result = await response.json();
+            alert('Footer updated successfully');
+            return result;
+    
         } catch (error) {
-            console.error(`Failed to update footer with ID ${id}:`, error.response?.data || error.message);
-            throw new Error('Failed to update footer.');
+            console.error('Failed to update footer:', error.message);
+            alert('Failed to update footer.');
         }
     };
     
@@ -483,6 +586,75 @@ console.log('dddddddddd',DATA)
             throw new Error('Failed to delete footer.');
         }
     };
+
+    const createHeroSection = async (token, formData) => {
+        try {
+            const response = await fetch(`${API_URL}/api/heroSection`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    // 'Content-Type': 'application/json', // Set to 'application/json'
+                },
+                body: formData,
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to create heroSection.');
+            }
+    
+            const result = await response.json();
+            alert('Slide created successfully');
+            return result;
+    
+        } catch (error) {
+            console.error('Failed to create Slide:', error.message);
+            alert('Failed to create Slide.');
+        }
+    };
+
+    const updateeHeroSection = async (token, editId, editContent) => {
+       
+        try {
+            console.log('sasasa', editContent)
+            const response = await fetch(`${API_URL}/api/heroSection/${editId}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json', // Set to 'application/json'
+                },
+                body: JSON.stringify({
+                    image:editContent.image,
+                    text:editContent.text
+                })
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to update slide.');
+            }
+    
+            const result = await response.json();
+            alert('Slide updated successfully');
+            return result;
+    
+        } catch (error) {
+            console.error('Failed to update slide:', error.message);
+            alert('Failed to update slidr.');
+        }
+    };
+    
+    const deleteHeroSection = async (id) => {
+        try {
+            const response = await axios.delete(`${API_URL}/api/heroSection/${id}`);
+            return response.data;
+             alert('Slide updated successfully');
+        } catch (error) {
+            console.error(`Failed to delete Slide with ID ${id}:`, error.response?.data || error.message);
+            throw new Error('Failed to delete footer.');
+        }
+    };
+    
+
+    
 
    
 
@@ -505,6 +677,9 @@ console.log('dddddddddd',DATA)
         fetchProducts,
         fetchprofile,
         fetchContactPage,
+        getUserDashboard,
+        fetchHeroSections,
+
 
         // CRUD Apis in order
         createContactPage,
@@ -523,7 +698,10 @@ console.log('dddddddddd',DATA)
         deleteHeaderImage,
         createFooter,
         updateFooter,
-        deleteFooter
+        deleteFooter,
+        createHeroSection,
+        updateeHeroSection,
+        deleteHeroSection
 
     }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ProfilePage = ({ getProfile }) => {
+const ProfilePage = ({ profileData }) => {
  
-  const { data, success } = getProfile || {};
+  const { data, success } = profileData || {};
 
   console.log(data)
  
