@@ -15,6 +15,11 @@ import ProductPageManagement from '@/app/(Admin)/(dashboard)/dashboard/Component
 import InvestorPageManagement from '@/app/(Admin)/(dashboard)/dashboard/Components/InvestorPageManagement/investorPage';
 import AboutPageManagement from '@/app/(Admin)/(dashboard)/dashboard/Components/aboutPageManagement/aboutPageManagement';
 import ContactPageManage from '@/app/(Admin)/(dashboard)/dashboard/Components/ContactPageManagement/contactPageManage';
+import PrivacyPolicyManagement from '@/app/(Admin)/(dashboard)/dashboard/Components/PrivacyPolicyManagement/PrivacyPolicyManagement';
+import TermsofUseManagement from '@/app/(Admin)/(dashboard)/dashboard/Components/TermsofUseManagement/TermsofUseManagement';
+import TermsAndConditionsManagement from '@/app/(Admin)/(dashboard)/dashboard/Components/TermsAndConditionsManagement/TermsAndConditionsManagement';
+import FounderManagement from '@/app/(Admin)/(dashboard)/dashboard/Components/FounderManagement/FounderManagement';
+import EnquiryForm from '@/app/(Admin)/(dashboard)/dashboard/Components/EnquiryForm/enquiryForm';
 
 const ManagementPage = () => {
 
@@ -24,6 +29,12 @@ const ManagementPage = () => {
     const [profileData, setProfileData] = useState(null);
     const [categories, setCategories] = useState([]);
     const [contactPageData, setContactPageData] = useState([]);
+    const [PrivacyPolicy, setPrivacyPolicy] = useState([]);
+    const [termsOfUse, settermsOfUse] = useState([]);
+    const [termsAndConditions, settermsAndConditions] = useState([]);
+    const [AboutUs, setaboutUs] = useState([]);
+    const [founders, setfounders] = useState([]);
+    const [enquiryFormData, setenquiryForm] = useState([]);
     const [loading, setLoading] = useState(true);
 
 
@@ -35,9 +46,21 @@ const ManagementPage = () => {
                 const profile = await api.fetchprofile();
                 const categoryList = await api.fetchCategories();
                 const contactPageData = await api.fetchContactPage();
+                const PrivacyPolicy = await api.fetchPrivacyPolicyPage();
+                const termsOfUse = await api.fetchTermsOfUsePage();
+                const termsAndConditions = await api.fetchTermsAndConditionsPage();
+                const AboutUs = await api.fetchAboutUsPage();
+                const founders = await api.fetchFounders();
+                const enquiryFormData = await api.fetchenquiryForm();
                 setProfileData(profile);
                 setCategories(categoryList);
                 setContactPageData(contactPageData);
+                setPrivacyPolicy(PrivacyPolicy);
+                settermsOfUse(termsOfUse);
+                settermsAndConditions(termsAndConditions);
+                setaboutUs(AboutUs);
+                setfounders(founders);
+                setenquiryForm(enquiryFormData);
             } catch (error) {
                 console.error("Error fetching data:", error);
             } finally {
@@ -57,14 +80,19 @@ const ManagementPage = () => {
                 <div className="main-content">
                     {activeTab === 'dashboard' && <DashboardMain />}
                     {activeTab === 'profile' && profileData && <Profile profileData={profileData} />}
+                    {activeTab === 'enquiryForm' && <EnquiryForm enquiryFormData={enquiryFormData}/>}
                     {activeTab === 'category' && <CategoryManagement categories={categories} />}
                     {activeTab === 'header' && <HeaderLogoPage />}
                     {activeTab === 'footer' && <FooterManagement />}
                     {activeTab === 'homePage' && <HomePageManagement />}
                     {activeTab === 'productPage' && <ProductPageManagement />}
                     {activeTab === 'investorPage' && <InvestorPageManagement />}
-                    {activeTab === 'aboutPage' && <AboutPageManagement />}
+                    {activeTab === 'aboutPage' && <AboutPageManagement AboutUs={AboutUs}/>}
                     {activeTab === 'contactPage' && <ContactPageManage contactPageData={contactPageData} />}
+                    {activeTab === 'privacyPolicy' && <PrivacyPolicyManagement PrivacyPolicy={PrivacyPolicy}/>}
+                    {activeTab === 'termsOfUse' && <TermsofUseManagement termsOfUse={termsOfUse}/>}
+                    {activeTab === 'terms&Conditions' && <TermsAndConditionsManagement termsAndConditions={termsAndConditions}/>}
+                    {activeTab === 'founder' && <FounderManagement founders={founders} />}
                 </div>
             </div>
         </div>

@@ -6,16 +6,16 @@ import InvestorSection from '../investor-corner/components/investorCorner'
 import HybridWhy from './components/Hybridwhy'
 import OurJourney from './components/ourJourney'
 
-function Homepage({result, category, heroSection}) {
-  
+function Homepage({result, category, heroSection, investor}) {
+
   return (
 
   <div className='home_page_section'>
     <SliderComponent result={result} heroSection={heroSection}/>
     <HybridInfo category={category} />
-    <HybridWhy/>
-    <OurJourney/>
-    <InvestorSection/>
+    <HybridWhy result={result}/>
+    <OurJourney result={result}/>
+    <InvestorSection investor={investor}/>
   </div>
   )
 }

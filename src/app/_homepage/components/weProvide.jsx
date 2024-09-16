@@ -3,7 +3,7 @@ import React from "react";
 
 
 const HybridInfo = ({category}) => {
-  console.log(category)
+
   return (
 
   <div className="what_we_provide ">

@@ -8,17 +8,17 @@ const FooterColumnTwo = ({ result }) => {
                 <div key={index}>
                     <h5>{ele.column_2_heading_1}</h5>
                     <li>
-                        <Link href="/">
+                        <Link href="/PrivacyPolicy">
                             {ele.column_2_field_1}
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/TermsOfUse">
                             {ele.column_2_field_2}
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/TermsAndConditions">
                             {ele.column_2_field_3}
                         </Link>
                     </li>

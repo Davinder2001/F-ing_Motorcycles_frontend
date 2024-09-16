@@ -92,7 +92,7 @@ const handleCreateSubmit = async (e) => {
     setEditId(heroSection.id);
     setEditContent({
       text: heroSection.text,
-      image: null, // Keep the previous image unless a new one is uploaded
+      image: heroSection.image, // Keep the previous image unless a new one is uploaded
     });
     setShowEditForm(true); // Show the edit form when editing
   };

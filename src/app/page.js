@@ -10,11 +10,12 @@ const Page = async() => {
   let result      = await api.fetchContent()
   let category    = await api.fetchCategories()
   let heroSection = await api.fetchHeroSections()  
+  let investor    = await api.fetchInvestor()
 
 
   return (
     <Layout>
-    <Homepage result={result} category={category} heroSection={heroSection}/>
+    <Homepage result={result} category={category} heroSection={heroSection} investor={investor}/>
     </Layout>
   );
 };

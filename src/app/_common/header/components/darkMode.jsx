@@ -22,34 +22,26 @@ const DarkMode = () => {
       <div className="navbar_2">
         <div className="theme-toggle-container">
           <FaSun size={24} className={`icon ${darkMode ? 'inactive' : ''}`} />
-          <button 
-            className={`toggle-button ${darkMode ? 'dark' : 'light'}`} 
-            onClick={toggleDarkMode}
-          >
-            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
-          </button>
+          <label className="switch">
+            <input type="checkbox" checked={darkMode} onChange={toggleDarkMode} />
+            <span className="slider round"></span>
+          </label>
           <FaMoon size={24} className={`icon ${darkMode ? '' : 'inactive'}`} />
         </div>
-        
+
         <div className={`menu ${menuOpen ? 'active' : ''}`}>
           <div className="close-menu" onClick={toggleMenu}>
             <FaTimes size={24} />
           </div>
           <div className="menu-list">
-        
-              <Link href="/" className="menu-item" onClick={toggleMenu}>Home</Link>
-        
-              <Link href="/products" className="menu-item" onClick={toggleMenu}>Our Products</Link>
-        
-              <Link href="/investor-corner" className="menu-item" onClick={toggleMenu}>Investor’s Corner</Link>
-    
-              <Link href="/about" className="menu-item" onClick={toggleMenu}>About</Link>
-    
-              <Link href="/contact-us" className="menu-item" onClick={toggleMenu}>Contact Us</Link>
-            
+            <Link href="/" className="menu-item" onClick={toggleMenu}>Home</Link>
+            <Link href="/products" className="menu-item" onClick={toggleMenu}>Our Products</Link>
+            <Link href="/investor-corner" className="menu-item" onClick={toggleMenu}>Investor’s Corner</Link>
+            <Link href="/about" className="menu-item" onClick={toggleMenu}>About</Link>
+            <Link href="/contact-us" className="menu-item" onClick={toggleMenu}>Contact Us</Link>
+          </div>
         </div>
-        </div>
-        
+
         <div className="mobile-menu" onClick={toggleMenu}>
           {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </div>

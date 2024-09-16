@@ -33,7 +33,9 @@ const TabComponent = ({ result }) => {
           .map((tab) => (
             <div key={tab.name}>
               <h3>{tab.name}</h3>
-              <p>{tab.long_description}</p>
+              <div
+                dangerouslySetInnerHTML={{ __html: tab.long_description }} // Render HTML content
+              />
               <button className="enquiry-button" onClick={openPopup}>
                 <img src="/enquiry.png" alt="Enquiry" /> Enquiry Now
               </button>

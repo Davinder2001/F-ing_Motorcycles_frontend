@@ -20,6 +20,9 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                 </button>  
                 <button onClick={() => setActiveTab('profile')} className={activeTab === 'profile' ? 'active' : ''}>
                     Profile
+                </button> 
+                <button onClick={() => setActiveTab('enquiryForm')} className={activeTab === 'enquiryForm' ? 'active' : ''}>
+                Enquiry
                 </button>   
                 <button onClick={() => setActiveTab('category')} className={activeTab === 'category' ? 'active' : ''}>
                     Category Management
@@ -32,6 +35,9 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                 </button>
                 <button onClick={() => setActiveTab('footer')} className={activeTab === 'footer' ? 'active' : ''}>
                     Footer Management
+                </button>
+                <button onClick={() => setActiveTab('founder')} className={activeTab === 'founder' ? 'active' : ''}>
+                    Founder
                 </button>
                 <div className={`dropdown ${showDropdown ? 'active' : ''}`}>
                     <button onClick={toggleDropdown} className={activeTab === 'page' ? 'active' : ''}>
@@ -53,6 +59,18 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                             </button>
                             <button onClick={() => setActiveTab('contactPage')} className={activeTab === 'contactPage' ? 'active' : ''}>
                                 Contact Page
+                            </button>
+                            
+                             <button onClick={() => setActiveTab('privacyPolicy')} className={activeTab === 'privacyPolicy' ? 'active' : ''}>
+                             Privacy Policy
+                            </button> 
+                            
+                            <button onClick={() => setActiveTab('termsOfUse')} className={activeTab === 'termsOfUse' ? 'active' : ''}>
+                            Terms of Use
+                            </button> 
+                            
+                            <button onClick={() => setActiveTab('terms&Conditions')} className={activeTab === 'terms&Conditions' ? 'active' : ''}>
+                            Terms & Conditions
                             </button>
                         </div>
                     )}

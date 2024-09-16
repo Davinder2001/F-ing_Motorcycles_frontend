@@ -1,30 +1,38 @@
-
+import Image from "next/image";
 
 // components/HybridWhy.jsx
-export default function HybridWhy() {
-    return (
-      <div className="hybrid-why-section container">
-        <div className="hybrid_sections">
+export default function HybridWhy({ result }) {
+  return (
+    <div className="hybrid-why-section container">
+      <div className="hybrid_sections">
         <div className="hybrid-tech-section">
-        <div className="hybrid-why-content">
-          <h2>Hybrid <span className="highlight">Why?</span></h2>
-          <p>Best of Both World's</p>
-          <ul>
-            <li>Hybrid Efficiency, Electric Performance</li>
-            <li>Fuel Savings, No Compromise</li>
-            <li>Optimise energy use without compromising performance or driving range</li>
-          </ul>
-          <p>The <a href="#" className="vcu-link">Vehicle Control Unit (VCU)</a> is responsible for intelligently controlling the switching mechanism between ICE and Electric drivetrain.</p>
-        </div>
-        
-         
+          <div className="hybrid-why-content">
+            <h2>{result?.heading_2}</h2>
+            <div
+              className=""
+              dangerouslySetInnerHTML={{ __html: result?.description_2 || "" }}
+            ></div>
+          </div>
+
           <div className="tech-icons">
-            <img src="/hybrid2.png" alt="Hybrid Icon"  className="hybrid_imageone"/>
-            <img src="hybrid.png" alt="Speedometer Icon"/>
+            <Image
+              src={result?.image}
+              alt="Hybrid Icon"
+              className="hybrid_imageone"
+              width={500} // You should specify width and height for better performance
+              height={500} // or adjust these values according to your needs
+            />
+
+            <Image
+              src={result?.image_2}
+              alt="Speedometer Icon"
+              className="speedometer-icon"
+              width={500} // Adjust as needed
+              height={500} // Adjust as needed
+            />
           </div>
         </div>
-        </div>
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

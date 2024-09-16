@@ -3,14 +3,19 @@ import Layout from '../_common/layout/layout'
 import GrowthSection from './components/invertorPoints'
 import Image from 'next/image'
 import InvestorSection from './components/investorCorner'
+import { EXPORT_ALL_APIS } from '../../../utils/apis/apis';
 
-function page() {
+
+
+const page = async() => {
+  const api   = EXPORT_ALL_APIS();
+  let investor  = await api.fetchInvestor();
   return (
      <>
 <Layout>
-<InvestorSection/>
+<InvestorSection investor={investor}/>
 <div className='invertor_growthsection'>
-<GrowthSection/>
+<GrowthSection investor={investor}/>
   
 </div>
 

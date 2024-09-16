@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 const ContactSection = ({ result }) => {
-  console.log('Contact Data:', result);
 
   return (
     <div className="container_contact_us">

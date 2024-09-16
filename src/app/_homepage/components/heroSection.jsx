@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 
 const SliderComponent = ({ result, heroSection }) => {
   const [activeSlide, setActiveSlide] = useState(0); // Default to the first slide
-  const [highlightText, setHighlightText] = useState('Electric Scooter'); // Text to type out
-  const textArray = ['Electric Scooter', 'Electric Bike', 'Hybrid Vehicle']; // Array of texts to loop
+  const [highlightText, setHighlightText] = useState(' ScooteElectricr'); // Text to type out
+  const textArray = [`${result.heading_nxt}`, 'Electric Bike',]; // Array of texts to loop
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [typedText, setTypedText] = useState('');
@@ -70,7 +70,7 @@ const SliderComponent = ({ result, heroSection }) => {
     return '/slidethree.png'; // Fallback if heroSection is empty
   };
 
-  console.log("result", result)
+ 
 
   return (
     <div className="slider-container">
@@ -78,13 +78,12 @@ const SliderComponent = ({ result, heroSection }) => {
         <div className="hero_slider">
           <div className="left_side_panel">
             <h2 className="title">
-              Innovative Control Products for <span className="highlight">{typedText}</span>
+              {result.heading} <span className="highlight">{typedText}</span>
             </h2>
-            <p className="description">
-              We are revolutionizing the Automotive market with Innovation in Design & Integration
-              services for Hybrid Powertrain technology. Our patented tech and years of experience in
-              the automotive sector.
-            </p>
+            <div>
+           
+            <div className="description" dangerouslySetInnerHTML={{ __html: result?.description || '' }} />
+        </div>
             <button className="enquiry-button">
               <img src="/enquiry.png" alt="enquiry" /> Enquiry Now
             </button>

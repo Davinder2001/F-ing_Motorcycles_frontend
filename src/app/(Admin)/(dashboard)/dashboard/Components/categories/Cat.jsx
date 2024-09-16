@@ -1,9 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-// import {  , updateCategory, deleteCategory } from '@/Api/CategoryApi/api';
 import { EXPORT_ALL_APIS } from '../../../../../../../utils/apis/apis';
-let api=EXPORT_ALL_APIS()
+import dynamic from 'next/dynamic';
+
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false }); // Dynamically import Quill for client-side rendering
+import 'react-quill/dist/quill.snow.css'; // Import Quill CSS
+
+let api = EXPORT_ALL_APIS();
 
 const CategoryManagement = () => {
     const [categories, setCategories] = useState([]);
@@ -12,22 +16,20 @@ const CategoryManagement = () => {
     const [newCategory, setNewCategory] = useState({
         name: '',
         shortDescription: '',
-        longDescription: '',
-        // image: null
+        longDescription: '', // This will use Quill editor
     });
     const [editCategoryData, setEditCategoryData] = useState({
         id: '',
         name: '',
         shortDescription: '',
-        longDescription: '',
-        // image: null
+        longDescription: '', // This will use Quill editor
     });
 
     useEffect(() => {
         const loadCategories = async () => {
             try {
-                const fetchedCategories = await api.fetchCategories(); // Only call fetch once
-                setCategories(fetchedCategories || []); // Set categories or an empty array if nothing is returned
+                const fetchedCategories = await api.fetchCategories();
+                setCategories(fetchedCategories || []);
             } catch (error) {
                 console.error('Error loading categories:', error.message);
             }
@@ -40,18 +42,18 @@ const CategoryManagement = () => {
     const handleCreateCategory = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
-
-        const formData = new FormData();
-        formData.append('name', newCategory.name);
-        formData.append('short_description', newCategory.shortDescription);
-        formData.append('long_description', newCategory.longDescription);
     
-
+        const formData = {
+            name: newCategory.name,
+            short_description: newCategory.shortDescription,
+            long_description: newCategory.longDescription,
+        };
+    
         try {
-            await api.createCategory(token, newCategory);
+            await api.createCategory(token, formData);
             const updatedCategories = await api.fetchCategories();
             setCategories(updatedCategories || []);
-            setNewCategory({ name: '', shortDescription: '', longDescription: '', /* image: null */ });
+            setNewCategory({ name: '', shortDescription: '', longDescription: '' });
             setShowAddForm(false);
         } catch (error) {
             console.error('Failed to create category:', error.message);
@@ -62,17 +64,14 @@ const CategoryManagement = () => {
         e.preventDefault();
         const token = localStorage.getItem('token');
     
-        const formData = new FormData();
-        formData.append('name', editCategoryData.name);
-        formData.append('short_description', editCategoryData.shortDescription);
-        formData.append('long_description', editCategoryData.longDescription);
+        const formData = {
+            name: editCategoryData.name,
+            short_description: editCategoryData.shortDescription,
+            long_description: editCategoryData.longDescription,
+        };
     
-        if (editCategoryData.category_image) { // Assuming 'category_image' is the image field
-            formData.append('category_image', editCategoryData.category_image);
-        }
-      
         try {
-            await api.updateCategory(token, editCategoryData.id, editCategoryData); // Pass formData instead of editCategoryData
+            await api.updateCategory(token, editCategoryData.id, formData);
             const updatedCategories = await api.fetchCategories();
             setCategories(updatedCategories || []);
             setEditCategoryData({
@@ -80,14 +79,12 @@ const CategoryManagement = () => {
                 name: '',
                 shortDescription: '',
                 longDescription: '',
-                category_image: null
             });
             setEditCategory(null);
         } catch (error) {
             console.error('Failed to update category:', error.message);
         }
     };
-    
 
     const handleDeleteCategory = async (categoryId) => {
         const token = localStorage.getItem('token');
@@ -99,7 +96,6 @@ const CategoryManagement = () => {
             console.error('Failed to delete category:', error.message);
         }
     };
-    
 
     return (
         <div>
@@ -125,16 +121,11 @@ const CategoryManagement = () => {
                             onChange={(e) => setNewCategory({ ...newCategory, shortDescription: e.target.value })}
                             required
                         />
-                        <textarea
-                            placeholder="Long Description"
+                        <ReactQuill
                             value={newCategory.longDescription}
-                            onChange={(e) => setNewCategory({ ...newCategory, longDescription: e.target.value })}
-                            required
+                            onChange={(value) => setNewCategory({ ...newCategory, longDescription: value })}
+                            placeholder="Long Description"
                         />
-                        {/* <input
-                            type="file"
-                            onChange={(e) => setNewCategory({ ...newCategory, image: e.target.files[0] })}
-                        /> */}
                         <button type="submit">Create Category</button>
                         <button type="button" onClick={() => setShowAddForm(false)}>Cancel</button>
                     </form>
@@ -148,7 +139,6 @@ const CategoryManagement = () => {
                     <form onSubmit={handleUpdateCategory}>
                         <input
                             type="text"
-                            name='name'
                             placeholder="Category Name"
                             value={editCategoryData.name}
                             onChange={(e) => setEditCategoryData({ ...editCategoryData, name: e.target.value })}
@@ -160,16 +150,11 @@ const CategoryManagement = () => {
                             onChange={(e) => setEditCategoryData({ ...editCategoryData, shortDescription: e.target.value })}
                             required
                         />
-                        <textarea
-                            placeholder="Long Description"
+                        <ReactQuill
                             value={editCategoryData.longDescription}
-                            onChange={(e) => setEditCategoryData({ ...editCategoryData, longDescription: e.target.value })}
-                            required
+                            onChange={(value) => setEditCategoryData({ ...editCategoryData, longDescription: value })}
+                            placeholder="Long Description"
                         />
-                        {/* <input
-                            type="file"
-                            onChange={(e) => setEditCategoryData({ ...editCategoryData, image: e.target.files[0] })}
-                        /> */}
                         <button type="submit">Update Category</button>
                         <button type="button" onClick={() => setEditCategory(null)}>Cancel</button>
                     </form>
@@ -184,7 +169,6 @@ const CategoryManagement = () => {
                             <th>Name</th>
                             <th>Short Description</th>
                             <th>Long Description</th>
-                            {/* <th>Image</th> */}
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -193,17 +177,9 @@ const CategoryManagement = () => {
                             <tr key={category.id}>
                                 <td>{category.name}</td>
                                 <td>{category.short_description}</td>
-                                <td>{category.long_description}</td>
-                                {/* <td>
-                                    {category.category_image && (
-                                        <Image
-                                            src={`${BASE_URL}/storage/${category.category_image}`}
-                                            alt={category.name}
-                                            width={100}
-                                            height={100}
-                                        />
-                                    )}
-                                </td> */}
+                                <td>
+                                    <div dangerouslySetInnerHTML={{ __html: category.long_description }} />
+                                </td>
                                 <td>
                                     <button onClick={() => {
                                         setEditCategory(category);
@@ -212,7 +188,6 @@ const CategoryManagement = () => {
                                             name: category.name,
                                             shortDescription: category.short_description,
                                             longDescription: category.long_description,
-                                            // image: null
                                         });
                                     }}>
                                         Edit
