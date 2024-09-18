@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import FooterPage from "./component/footerPage";
 import { EXPORT_ALL_APIS } from "../../../../utils/apis/apis";
 
-async function Footer() {
+function Footer() {
   let api=EXPORT_ALL_APIS()
   let [result,setResult]=useState([])
 
@@ -20,7 +20,7 @@ async function Footer() {
 
 
 
-  console.log(result)
+
   
   return (
     <section className="footer_section">

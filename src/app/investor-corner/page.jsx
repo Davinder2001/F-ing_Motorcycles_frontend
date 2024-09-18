@@ -1,3 +1,5 @@
+'use client'
+import { useEffect, useState } from "react";
 import { EXPORT_ALL_APIS } from "../../../utils/apis/apis";
 import dynamic from "next/dynamic";
 
@@ -9,9 +11,22 @@ let GrowthSection = dynamic(() => import("./components/invertorPoints"), {
 });
 let Layout = dynamic(() => import("../_common/layout/layout"), { ssr: false });
 
-export default async function page() {
+export default  function page() {
+
+  let [investor,setInvestor]=useState([])
+  
   const api = EXPORT_ALL_APIS();
-  let investor = await api.fetchInvestor();
+  useEffect(()=>{
+
+    let loadInvertor=async()=>{
+      let resp = await api.fetchInvestor();
+      setInvestor(resp)
+    }
+    loadInvertor()
+
+  },[])
+
+
   return (
     <>
       <Layout>

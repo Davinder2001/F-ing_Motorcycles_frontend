@@ -13,7 +13,7 @@ function ProductPage() {
       setResult(resp);
     };
     loadProduct();
-  }, [api]);
+  }, []);
 
   return (
     <>

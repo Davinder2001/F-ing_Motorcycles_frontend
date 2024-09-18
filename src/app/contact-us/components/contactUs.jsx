@@ -1,6 +1,23 @@
-// import Image from 'next/image';
+'use client'
 
-const ContactSection = ({ result }) => {
+import { useEffect, useState } from "react";
+import { EXPORT_ALL_APIS } from "../../../../utils/apis/apis";
+
+const ContactSection =() => {
+
+  let api=EXPORT_ALL_APIS();
+  let [result,setResult]=useState([])
+
+  useEffect(()=>{
+
+    let loadContact=async()=>{
+      let resp =await api.fetchContactPage();
+      setResult(resp)
+    }
+    loadContact()
+
+  },[])
+  
 
   return (
     <div className="container_contact_us">
