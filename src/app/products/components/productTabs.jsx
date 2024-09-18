@@ -1,14 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PopupForm from '@/app/_common/layout/popup';
 
 const TabComponent = ({ result }) => {
   const tabData = result;
 
-  // Initialize activeTab with the name of the first tab
-  const [activeTab, setActiveTab] = useState(tabData.length > 0 ? tabData[0].name : '');
+  // Initialize activeTab state as an empty string
+  const [activeTab, setActiveTab] = useState('');
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  // Use useEffect to set the active tab to the first tab when tabData is available
+  useEffect(() => {
+    if (tabData.length > 0) {
+      setActiveTab(tabData[0].name);  // Set the first tab as the active tab
+    }
+  }, [tabData]);  // Run this effect whenever tabData changes
 
   const openPopup = () => setIsPopupOpen(true);
   const closePopup = () => setIsPopupOpen(false);

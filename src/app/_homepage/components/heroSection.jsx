@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import PopupForm from '@/app/_common/layout/popup';
 
 const SliderComponent = ({ result, heroSection }) => {
   const [activeSlide, setActiveSlide] = useState(0); // Default to the first slide
@@ -12,6 +13,8 @@ const SliderComponent = ({ result, heroSection }) => {
   const typingSpeed = 100; // Speed of typing in ms
   const deletingSpeed = 50; // Speed of deleting in ms
   const pauseTime = 1500; // Time to wait before deleting the text
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
 
   const hasImages = heroSection && heroSection.length > 0;
 
@@ -69,6 +72,8 @@ const SliderComponent = ({ result, heroSection }) => {
     }
     return '/slidethree.png'; // Fallback if heroSection is empty
   };
+  const openPopup = () => setIsPopupOpen(true);
+  const closePopup = () => setIsPopupOpen(false);
 
  
 
@@ -84,9 +89,9 @@ const SliderComponent = ({ result, heroSection }) => {
            
             <div className="description" dangerouslySetInnerHTML={{ __html: result?.description || '' }} />
         </div>
-            <button className="enquiry-button">
-              <img src="/enquiry.png" alt="enquiry" /> Enquiry Now
-            </button>
+        <button className="enquiry-button" onClick={openPopup}>
+                <img src="/enquiry.png" alt="Enquiry" /> Enquiry Now
+              </button>
           </div>
 
           {hasImages && (
@@ -110,6 +115,7 @@ const SliderComponent = ({ result, heroSection }) => {
             ))}
           </div>
         )}
+        {isPopupOpen && <PopupForm closeForm={closePopup} />} 
       </div>
     </div>
   );

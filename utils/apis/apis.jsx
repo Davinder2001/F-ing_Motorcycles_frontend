@@ -1259,8 +1259,7 @@ export const EXPORT_ALL_APIS = () => {
           body: JSON.stringify(formData),
         });
 
-        // Log response details
-        console.log("API Response:", response);
+
 
         return response; // Ensure this returns the response object
       } catch (error) {

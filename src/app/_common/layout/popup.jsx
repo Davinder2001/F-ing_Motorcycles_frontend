@@ -27,10 +27,7 @@ const PopupForm = ({ closeForm }) => {
     try {
         const response = await api.createFormEnquery(token, formData);
 
-        // Log the response for debugging
-        console.log('Response:', response);
-
-        // Assuming response has an 'ok' property; adjust based on actual response
+          // Assuming response has an 'ok' property; adjust based on actual response
         if (response && response.ok) {
             alert('Enquiry submitted successfully');
             setFormData({ name: '', email: '', phone: '', interestedIn: '', message: '' });

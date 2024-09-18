@@ -2,21 +2,11 @@ import React from 'react'
 // import Image from 'next/image'
 
 const AdminHeader = ({ getHeaderLogo }) => {
-  console.log(getHeaderLogo)
   return (
     <div className='admin_header'>
       <div className='header-inner'>
         <div className='header-left'>
-          {/* Use the Image component from next/image */}
-          {/* <Image 
-            src={getHeaderLogo.image_path} 
-            height={20} 
-            width={180} 
-            alt='logo' 
-          /> */}
-          {/* <img src={getHeaderLogo.image_path} alt=''/> */}
-          <img src="/path/to/image.jpg" alt="Description" />
-
+          <img src={getHeaderLogo.image_path} alt="Header Logo" />
         </div>
         <div className='header-right'></div>
       </div>

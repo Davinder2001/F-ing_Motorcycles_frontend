@@ -16,9 +16,6 @@ const Dashboard = async () => {
                 const AboutUs = await api.fetchAboutUsPage();
                 const founders = await api.fetchFounders();
                 const enquiryFormData = await api.fetchenquiryForm();
-
-                console.log(profile)
-                console.log(`profile`)
                 
 
 return (

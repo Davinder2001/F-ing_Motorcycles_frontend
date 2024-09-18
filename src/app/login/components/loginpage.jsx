@@ -1,16 +1,22 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { EXPORT_ALL_APIS } from '../../../../utils/apis/apis';
 
 const LoginPage = () => {
-    let api=EXPORT_ALL_APIS();
+    let api = EXPORT_ALL_APIS();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
 
- 
+    // Redirect to dashboard if token is already present
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            router.push('/dashboard'); // Redirect to dashboard if token is found
+        }
+    }, [router]);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -63,3 +69,6 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+
+
