@@ -30,6 +30,7 @@ const FooterManagement = () => {
         const getFooter = async () => {
             try {
                 const footers = await api.fetchFooter();
+               
                 if (footers.length > 0) {
                     // Assuming there is only one footer
                     const footer = footers[0];
@@ -97,6 +98,7 @@ const FooterManagement = () => {
 
     return (
         <div>
+        
             <h1>Update Footer</h1>
             <form onSubmit={handleSubmit}>
             <div className='admin-footer-section-columns'>

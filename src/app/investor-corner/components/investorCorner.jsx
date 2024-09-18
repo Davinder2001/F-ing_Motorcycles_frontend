@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const InvestorSection = ({investor}) => {
 
@@ -10,13 +10,14 @@ const InvestorSection = ({investor}) => {
      <div className="invertor_inner_section container"> 
       <img src='/dotsback.png' className='custom_dot_section'></img>
       <div className="investor-image">
-      <Image 
+      {/* <Image 
             src={investorData?.image} 
             alt="Investor" 
             width={500} 
             height={300} 
             layout="responsive"
-          />
+          /> */}
+            <img src={investorData?.image} alt="Investor" />
       </div>
       <div className="investor-content">
         <h3>{investorData?.field1}</h3>

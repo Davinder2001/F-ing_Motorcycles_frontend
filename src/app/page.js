@@ -1,9 +1,12 @@
 
 
 import { EXPORT_ALL_APIS } from '../../utils/apis/apis';
-import Layout from './_common/layout/layout';
+ 
+import dynamic from 'next/dynamic';
 
-import Homepage from './_homepage/homepage';
+
+const Homepage = dynamic(() => import('./_homepage/homepage'),{ssr:false});
+const Layout = dynamic(() => import('./_common/layout/layout'),{ssr:false});
 
 const Page = async() => {
   let api         = EXPORT_ALL_APIS()
@@ -11,6 +14,8 @@ const Page = async() => {
   let category    = await api.fetchCategories()
   let heroSection = await api.fetchHeroSections()  
   let investor    = await api.fetchInvestor()
+
+  console.warn(result)
 
 
   return (
@@ -21,3 +26,6 @@ const Page = async() => {
 };
 
 export default Page;
+
+
+

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const ContactSection = ({ result }) => {
 
@@ -17,23 +17,25 @@ const ContactSection = ({ result }) => {
               </a>
             </div>
             <div className="icon-text-container">
-              <Image
+              {/* <Image
                 src="/nav.png" // Replace with your email icon path
                 alt="Email Icon"
                 width={16}
                 height={16}
                 className="icon"
-              />
+              /> */}
+               <img src='/nav.png' alt="Email Icon" />
               <span><a href={`mailto:${contact.email}`}>{contact.email}</a></span>
             </div>
             <div className="icon-text-container">
-              <Image
+              {/* <Image
                 src="/mob.png" // Replace with your phone icon path
                 alt="Phone Icon"
                 width={16}
                 height={16}
                 className="icon"
-              />
+              /> */}
+               <img src='/mob.png' alt="Phone Icon" />
               <span><a href={`tel:${contact.number}`}>{contact.number}</a></span>
             </div>
           </div>
@@ -44,13 +46,14 @@ const ContactSection = ({ result }) => {
           <img className="line_g" src="/linesg.png" alt="line" />
           <div className="title">Registered Address</div>
           <div className="icon-text-container">
-            <Image
+            {/* <Image
               src="/map.png" // Replace with your location icon path
               alt="Location Icon"
               width={16}
               height={16}
               className="icon"
-            />
+            /> */}
+             <img src='/map.png' alt="Phone Icon" />
             <span>Headquarters: Bangalore, Karnataka</span>
           </div>
           <div>

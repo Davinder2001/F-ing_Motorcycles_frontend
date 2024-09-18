@@ -1,16 +1,17 @@
 'use client';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { logoutUser } from '@/Api/LoginApi/api'; // Adjust the import path if needed
+import { EXPORT_ALL_APIS } from '../../../../../../../utils/apis/apis';
 
 const LogoutBtn = () => {
+  const api = EXPORT_ALL_APIS();
   const router = useRouter();
 
   const handleLogout = async () => {
     try {
       // Retrieve the token from localStorage
       const token = localStorage.getItem('token');
-      await logoutUser(token);
+      await api.logoutUser(token);
 
       localStorage.removeItem('token');
 

@@ -1,15 +1,20 @@
-import TabComponent from './components/productTabs'
+ 
 import Layout from '../_common/layout/layout';
-import { EXPORT_ALL_APIS } from '../../../utils/apis/apis'
+import ProductPage from './components/productPage';
+ 
+ 
 
-const page = async() => {
-  let api=EXPORT_ALL_APIS()
-  let result=await api.fetchCategories()
+const page = () => {
+ 
+
+ 
+
+   
 
   return (
     <div>
    <Layout>   
-      <TabComponent result={result}/>
+       <ProductPage/>
   </Layout>
 
     </div>

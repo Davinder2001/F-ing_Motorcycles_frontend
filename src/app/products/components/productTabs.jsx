@@ -17,7 +17,7 @@ const TabComponent = ({ result }) => {
     <div className="tabs-container container">
       <h2>What We <span className="mc-green">Provide</span></h2>
       <div className="tabs">
-        {tabData.map((tab) => (
+        {tabData?.map((tab) => (
           <button
             key={tab.name}
             className={`tab-button ${activeTab === tab.name ? 'active' : ''}`}

@@ -1,29 +1,23 @@
 'use client';
-
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { loginUser } from '@/api/LoginApi/api';
+import { EXPORT_ALL_APIS } from '../../../../utils/apis/apis';
 
 const LoginPage = () => {
+    let api=EXPORT_ALL_APIS();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
 
-    // Check if the token exists, if so, redirect to dashboard
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            router.push('/dashboard'); // Redirect to dashboard if token exists
-        }
-    }, []); // Empty dependency array to run this effect only on mount
+ 
 
     const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
 
         try {
-            const data = await loginUser(email, password);
+            const data = await api.loginUser(email, password);
 
             if (data.status) {
                 localStorage.setItem('token', data.token); // Store token in local storage

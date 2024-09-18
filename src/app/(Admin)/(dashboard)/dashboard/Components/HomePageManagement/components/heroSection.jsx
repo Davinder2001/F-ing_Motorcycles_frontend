@@ -1,5 +1,6 @@
+'use client'
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
 import { EXPORT_ALL_APIS } from '../../../../../../../../utils/apis/apis';
 
 const HeroSection = () => {

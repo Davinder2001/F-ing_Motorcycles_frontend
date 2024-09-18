@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 
 const AdminHeader = ({ getHeaderLogo }) => {
   console.log(getHeaderLogo)
@@ -8,12 +8,15 @@ const AdminHeader = ({ getHeaderLogo }) => {
       <div className='header-inner'>
         <div className='header-left'>
           {/* Use the Image component from next/image */}
-          <Image 
+          {/* <Image 
             src={getHeaderLogo.image_path} 
             height={20} 
             width={180} 
             alt='logo' 
-          />
+          /> */}
+          {/* <img src={getHeaderLogo.image_path} alt=''/> */}
+          <img src="/path/to/image.jpg" alt="Description" />
+
         </div>
         <div className='header-right'></div>
       </div>

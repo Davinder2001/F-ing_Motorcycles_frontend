@@ -1,21 +1,31 @@
 import React from 'react';
-import Layout from '../_common/layout/layout';
-import TermsAndConditionsContent from './components/TermsAndConditions'; // Make sure this file exists and matches the component name
+import dynamic from 'next/dynamic';
 import { EXPORT_ALL_APIS } from '../../../utils/apis/apis';
+import Layout from '../_common/layout/layout'; 
+
+ 
+const TermsAndConditionsContent = dynamic(() => import('./components/TermsAndConditions'), {
+  ssr: false, 
+});
 
 const TermsAndConditionsPage = async () => {
   let api = EXPORT_ALL_APIS();
-  let result = await api.fetchTermsAndConditionsPage(); // Ensure this function is defined in your API utils
+  let result;
+
+  try {
+    result = await api.fetchTermsAndConditionsPage();
+  } catch (error) {
+    console.error("Error fetching terms and conditions:", error);
+    result = null; 
+  }
 
   return (
-    <>
-      <Layout>
-        <div className='container terms_and_conditions_page'>
-          <TermsAndConditionsContent result={result} />
-        </div>
-      </Layout>
-    </>
+    <Layout>
+      <div className="container terms_and_conditions_page">
+        <TermsAndConditionsContent result={result} />
+      </div>
+    </Layout>
   );
-}
+};
 
 export default TermsAndConditionsPage;

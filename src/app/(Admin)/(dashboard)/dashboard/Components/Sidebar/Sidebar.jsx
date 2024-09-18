@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import LogoutBtn from '@/app/(Admin)/(dashboard)/dashboard/Components/Logout/LogoutBtn';
+import LogoutBtn from '../Logout/LogoutBtn';
+
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
     const [showDropdown, setShowDropdown] = useState(false);

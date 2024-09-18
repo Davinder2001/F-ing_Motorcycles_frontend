@@ -15,21 +15,23 @@ export default function HybridWhy({ result }) {
           </div>
 
           <div className="tech-icons">
-            <Image
+            {/* <Image
               src={result?.image}
               alt="Hybrid Icon"
               className="hybrid_imageone"
               width={500} // You should specify width and height for better performance
               height={500} // or adjust these values according to your needs
-            />
+            /> */}
+              <img src={result?.image} alt="Speedometer Icon" className="hybrid_imageone" />
+              <img src={result?.image_2} alt="Speedometer Icon" className="speedometer-icon" />
 
-            <Image
+            {/* <Image
               src={result?.image_2}
               alt="Speedometer Icon"
               className="speedometer-icon"
               width={500} // Adjust as needed
               height={500} // Adjust as needed
-            />
+            /> */}
           </div>
         </div>
       </div>

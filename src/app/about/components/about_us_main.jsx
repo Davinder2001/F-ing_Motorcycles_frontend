@@ -1,6 +1,6 @@
-import React from 'react';
+// components/about_us_main.js
 
-const AboutUsMain = ({ result }) => {
+export const AboutUsMain = ({ result }) => {
   return (
     <div className='container aboutus'>
       {result?.data && result.data.length > 0 ? (
@@ -16,5 +16,3 @@ const AboutUsMain = ({ result }) => {
     </div>
   );
 };
-
-export default AboutUsMain;

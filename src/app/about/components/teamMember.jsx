@@ -1,12 +1,12 @@
-// components/Founders.jsx
-export default function Founders({ founders }) {
+// components/teamMember.js
 
+export const Founders = ({ founders }) => {
   return (
     <div className="founders-section">
       <div className="container">
         <h2 className="title">The Founders</h2>
         <div className="founders-container">
-          {founders && founders.data.map((founder) => (
+          {founders && founders?.data?.map((founder) => (
             <div key={founder.id} className="founder-card">
               <div className="founder-info">
                 <h3 className="founder-name">{founder.name}</h3>
@@ -28,4 +28,4 @@ export default function Founders({ founders }) {
       </div>
     </div>
   );
-}
+};

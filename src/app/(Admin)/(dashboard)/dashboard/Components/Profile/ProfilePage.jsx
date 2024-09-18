@@ -1,10 +1,8 @@
 import React from 'react';
 
-const ProfilePage = ({ profileData }) => {
+const ProfilePage = ({ profile }) => {
  
-  const { data, success } = profileData || {};
-
-  console.log(data)
+  const { data, success } = profile || {};
  
   return (
     <div>

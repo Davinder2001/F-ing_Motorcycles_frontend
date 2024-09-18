@@ -1,10 +1,9 @@
-import React from 'react'
 
-function loading() {
+function NotFound() {
   return (
     <h1>404</h1>
 
   )
 }
 
-export default loading
+export default NotFound
