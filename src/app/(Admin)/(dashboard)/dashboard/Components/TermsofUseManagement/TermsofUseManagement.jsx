@@ -10,14 +10,28 @@ const TermsOfUseManagement = ({ termsOfUse }) => {
     const [description, setDescription] = useState('');
     const [termsId, setTermsId] = useState(null);
 
+  
     useEffect(() => {
-        if (termsOfUse?.data && termsOfUse.data.length > 0) {
-            const term = termsOfUse.data[0];
-            setTitle(term.title);
-            setDescription(term.description);
-            setTermsId(term.id);
-        }
-    }, [termsOfUse]);
+        // Fetch terms of use data
+        const fetchTermsOfUse = async () => {
+            const api = EXPORT_ALL_APIS();
+            try {
+                const result = await api.fetchTermsOfUsePage();
+                // Assuming the API returns data in a format like { data: [...] }
+                if (result.data) {
+                    const term = result.data[0];
+                    setTitle(term.title);
+                    setDescription(term.description);
+                    setTermsId(term.id); // Set the ID when data is available
+                }
+            } catch (error) {
+                console.error('Error fetching terms of use:', error);
+            }
+        };
+
+        fetchTermsOfUse(); // Call the fetch function
+    }, []); // Empty dependency array ensures this runs once on component mount
+
 
     const handleEdit = (id) => {
         setIsEditing(true);
@@ -39,7 +53,7 @@ const TermsOfUseManagement = ({ termsOfUse }) => {
         
         try {
             await api.deleteTermsOfUse(token, termsId);
-            console.log('Terms of use deleted');
+            alert('Terms of use deleted');
             setTitle('');
             setDescription('');
             setTermsId(null);

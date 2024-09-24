@@ -11,14 +11,27 @@ const PrivacyPolicyManagement = ({ PrivacyPolicy }) => {
     const [policyId, setPolicyId] = useState(null); // Store the policy ID
 
     useEffect(() => {
-        // Initialize title and description from props if available
-        if (PrivacyPolicy?.data && PrivacyPolicy.data.length > 0) {
-            const policy = PrivacyPolicy.data[0];
-            setTitle(policy.title);
-            setPolicyDescription(policy.description);
-            setPolicyId(policy.id); // Set the ID when data is available
-        }
-    }, [PrivacyPolicy]);
+        // Fetch privacy policy data
+        const fetchPrivacyPolicy = async () => {
+            try {
+                const api = EXPORT_ALL_APIS();
+                const result = await api.fetchPrivacyPolicyPage();
+                // Assuming the API returns data in a format like { data: [...] }
+                if (result?.data) {
+                    const policy = result.data[0];
+                    setTitle(policy.title);
+                    setPolicyDescription(policy.description);
+                    setPolicyId(policy.id); // Set the ID when data is available
+                }
+            } catch (error) {
+                console.error('Error fetching privacy policy:', error);
+            }
+        };
+
+        fetchPrivacyPolicy(); // Call the fetch function
+    }, []); // Empty dependency array ensures this runs once on component mount
+
+
 
     // Handle Edit Button Click
     const handleEdit = (id) => {
@@ -43,7 +56,6 @@ const PrivacyPolicyManagement = ({ PrivacyPolicy }) => {
         
         try {
             await api.deletePrivacyPolicy(token, policyId); // Pass the ID of the policy
-            console.log('Privacy policy deleted');
             // Reset state after deletion
             setTitle('');
             setPolicyDescription('');

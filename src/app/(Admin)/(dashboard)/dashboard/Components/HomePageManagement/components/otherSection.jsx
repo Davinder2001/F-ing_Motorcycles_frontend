@@ -218,6 +218,7 @@ const OtherSection = () => {
             console.error('Failed to delete content:', error.message);
         }
     };
+    console.log(content)
 
     return (
         <div>
@@ -608,20 +609,19 @@ const OtherSection = () => {
                     <p><strong>Slider Heading:</strong> {content.heading}</p>
                     <p><strong>Typing Heading:</strong> {content.heading_nxt}</p>
                     <p><strong>Slider Description :</strong> </p>
-                     <div
-        dangerouslySetInnerHTML={{ __html: content.heading || '' }}
-    />
+                     <div dangerouslySetInnerHTML={{ __html: content.description || '' }} />
+
                     <h2>Third Section</h2>
                     <p><strong>Heading:</strong> {content.heading_2}</p>
-                    <p><strong>Sub Heading :</strong> {content.Sub_heading_2}</p>
+                    {/* <p><strong>Sub Heading :</strong> {content.Sub_heading_2}</p>
                     <p><strong>Sub Description 1:</strong> {content.s_description_1}</p>
                     <p><strong>Sub Description 2:</strong> {content.s_description_2}</p>
-                    <p><strong>Sub Description 3:</strong> {content.s_description_3}</p>
-                    <p><strong>Main Description :</strong> </p>
+                    <p><strong>Sub Description 3:</strong> {content.s_description_3}</p> */}
+                    <p><strong>Description :</strong> </p>
                      <div
         dangerouslySetInnerHTML={{ __html: content.description_2 || '' }}
     />
-
+    <h3>Images</h3>
                     {content.image && <img src={content.image} alt="Content Image" />}
                         {content.image_2 && <img src={content.image_2} alt="Content Image 2" />}
 

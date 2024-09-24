@@ -11,13 +11,27 @@ const TermsAndConditionsManagement = ({ termsAndConditions }) => {
     const [termsId, setTermsId] = useState(null);
 
     useEffect(() => {
-        if (termsAndConditions?.data && termsAndConditions.data.length > 0) {
-            const term = termsAndConditions.data[0];
-            setTitle(term.title);
-            setDescription(term.description);
-            setTermsId(term.id);
-        }
-    }, [termsAndConditions]);
+        const api = EXPORT_ALL_APIS();
+        // Fetch terms and conditions data
+        const fetchTermsAndConditions = async () => {
+            try {
+                const result = await api.fetchTermsAndConditionsPage();
+                    
+              if (result.data){
+                    const term = result.data[0];
+                    setTitle(term.title);
+                    setDescription(term.description);
+                    setTermsId(term.id); // Set the ID when data is available
+              }
+                
+            } catch (error) {
+                console.error('Error fetching terms and conditions:', error);
+            }
+        };
+
+        fetchTermsAndConditions(); // Call the fetch function
+    }, []); // Empty dependency array ensures this runs once on component mount
+
 
     const handleEdit = (id) => {
         setIsEditing(true);
