@@ -637,7 +637,7 @@ export const EXPORT_ALL_APIS = () => {
             },
           }
         );
-
+        alert('Logo updated successfully')
         return response.data;
       } catch (error) {
         console.error("Error uploading header image:", error);
