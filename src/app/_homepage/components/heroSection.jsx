@@ -25,7 +25,7 @@ const SliderComponent = ({ result, heroSection }) => {
         `Image URL for item ${index}:`, item.image;
       });
     } else {
-      console.log('Hero section data is not available or empty.');
+      // console.log('Hero section data is not available or empty.');
     }
   }, [heroSection, hasImages]);
 
