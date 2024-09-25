@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// const API_URL = '';
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const EXPORT_ALL_APIS = () => {
@@ -28,25 +27,10 @@ export const EXPORT_ALL_APIS = () => {
     let data = await resp.json();
     return data;
   };
-  const fetchInvestor = async (token) => {
-    try {
-      const response = await fetch(`${API_URL}/api/investorPage`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch investor.");
-      }
-
-      const result = await response.json();
-      return result; // Return the fetched investor data
-    } catch (error) {
-      console.error("Failed to fetch investor:", error.message);
-      alert("Failed to fetch investor.");
-    }
+   const fetchInvestor = async () => {
+    let resp = await fetch(`${API_URL}/api/investorPage`);
+    let data = await resp.json();
+    return data;
   };
 
   const fetchFooter = async () => {
@@ -56,11 +40,7 @@ export const EXPORT_ALL_APIS = () => {
       return data;
     } catch (error) {}
   };
-  // const fetchProducts = async () => {
-  //     let resp = await fetch(`${API_URL}/api/footer`)
-  //     let data = await resp.json()
-  //     return data
-  // }
+  
   const fetchprofile = async () => {
     let resp = await fetch(`${API_URL}/api/profile`);
     let data = await resp.json();
@@ -183,19 +163,12 @@ export const EXPORT_ALL_APIS = () => {
         alert("Failed to fetch contact page content.");
       }
     };
+
     const fetchGalleries = async () => {
-      try {
-        const response = await fetch(`${API_URL}/api/homeGallery`);
-
-        const data = await response.json();
-        return data;
-      } catch (error) {
-        console.error("Failed to fetch Galery:", error.message);
-        alert("Failed to fetch Galery.");
-      }
+      let resp = await fetch(`${API_URL}/api/homeGallery`);
+      let data = await resp.json();
+      return data;
     };
-
-
 
 
 
