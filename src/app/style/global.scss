@@ -146,14 +146,18 @@ body.dark-mode h3.cardTitle {
   z-index: 999;
   position: relative;
 }
-.second_column li {
-  margin-bottom: 15px;
+.second_column li p {
+  margin: 0px;
+  color: #437a67;
+  font-family: Oxanium;
+  font-size: 22px;
 }
-.third_column {
-  line-height: 27px;
+.footer_section .footer_outer .second_column main h5{
+  margin: 0px ;
 }
-.first_column li {
-  line-height: 28px;
+.second_column main {
+  margin-top: 10px;
+  line-height: 30px;
 }
 body.light-mode .menu.active {
   right: 0;
@@ -252,12 +256,15 @@ nav.navbar ul li a {
 a.menu-item:hover {
   color: #fff;
 }
+.footer_section li a {
+  font-size: 16px;
+}
 .footer_section li {
   list-style-type: none;
   padding-left: 0;
   font-family: Helvetica Neue;
   font-size: 16px;
-  line-height: 25px;
+  line-height: 29px;
   letter-spacing: 0.6px;
 }
 .tab-content div:nth-child(2) {
@@ -276,9 +283,12 @@ a.menu-item:hover {
 }
 .tab-content {
   padding: 20px;
-  background-color: #fafafa;
-  box-shadow: 0 0 12px -4px rgba(0, 0, 0, 0.271);
+  background-color: #fff;
+  box-shadow: 0px 4px 20px 0px rgba(244, 244, 244, 0.6980392157);
   margin-bottom: 30px;
+  border: 0.5px solid #DBEEFB;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .dark-mode,
 .dark-mode .slider-container {
@@ -930,9 +940,7 @@ span.highlight {
   padding: 20px 0 !important;
   text-align: center;
 }
-.footer_section .first_column {
-  width: 30%;
-}
+
 .first_column div:nth-child(3) a {
   color: #437a67;
   font-size: 30px;
@@ -958,10 +966,7 @@ span.highlight {
   flex-direction: column;
   row-gap: 10px;
 }
-.container {
-  max-width: 1320px;
-  margin: auto;
-}
+
 header ul,
 ol {
   list-style-type: none;
@@ -975,10 +980,11 @@ header nav ul {
   display: flex;
   column-gap: 35px;
 }
-.footer_inner_section {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 40px !important;
+.footer_inner_section .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    padding: 50px 0px;
 }
 .footer_section ul,
 ol {
@@ -1040,7 +1046,6 @@ ol {
 }
 section.footer_section {
   border-top: 1px solid #c4e8dc;
-  padding-top: 50px;
 }
 h1 {
   font-size: 50px;
@@ -1394,6 +1399,7 @@ button.enquiry-button:hover {
   margin-top: 50px;
   font-size: 16px;
   display: flex;
+  height: 50px;
   align-items: center;
   column-gap: 10px;
   border-radius: 5px;

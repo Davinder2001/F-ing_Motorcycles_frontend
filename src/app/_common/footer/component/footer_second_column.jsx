@@ -22,6 +22,9 @@ const FooterColumnTwo = ({ result }) => {
                             {ele.column_2_field_3}
                         </Link>
                     </li>
+                    <li>
+                        <main><h5> GST No: </h5> 29AAHCE1621M1ZH </main>
+                    </li>
                 </div>
             ))}
         </div>
