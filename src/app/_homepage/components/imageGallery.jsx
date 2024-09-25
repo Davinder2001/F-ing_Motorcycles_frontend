@@ -1,20 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Imagegallery = ({ gallery }) => {
+const ImageGallery = ({ gallery }) => {
+    const [previewImage, setPreviewImage] = useState(null);
+
+    const handleImageClick = (image) => {
+        setPreviewImage(image);
+    };
+
+    const closePreview = () => {
+        setPreviewImage(null);
+    };
+
     return (
-        <div className='container'>
-            {gallery && gallery.data?.map((item) => (
-                <div key={item?.id} style={{ marginBottom: '20px' }}>
-                    <h2>{item.imgHeading}</h2>
-                    <img 
-                        src={item.image} 
-                        alt={item.imgHeading} 
-                        style={{ maxWidth: '100%', height: 'auto' }} 
-                    />
+        <div className='certificate-section'> 
+            <div className='container'>
+                <h2>Certificate</h2>
+                <div className='gallery-certificate'>    
+                    {gallery && gallery.data?.map((item) => (
+                        <div 
+                            className='inner-image' 
+                            key={item?.id}
+                            onClick={() => handleImageClick(item.image)}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <img 
+                                src={item.image} 
+                                alt={item.imgHeading}    
+                            />
+                        </div>
+                    ))}
                 </div>
-            ))}
+            </div>
+
+            {/* Preview Modal */}
+            {previewImage && (
+                <div className="image-preview-modal" onClick={closePreview}>
+                    <div className="image-preview-content">
+                        <span className="close-preview" onClick={closePreview}>&times;</span>
+                        <img src={previewImage} alt="Preview" />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
 
-export default Imagegallery;
+export default ImageGallery;

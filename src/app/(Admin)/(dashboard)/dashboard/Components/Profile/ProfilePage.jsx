@@ -26,7 +26,7 @@ const ProfilePage = ({ profile }) => {
   };
 
   return (
-    <div>
+    <div className='profile-inner-data'>
       <h1>Profile Page</h1>
       {
         <ul>

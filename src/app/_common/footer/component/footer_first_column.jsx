@@ -9,7 +9,7 @@ const FooterColumnOne = ({ result }) => (
             ))}
         </ul>
         {result?.map((ele, index) => (
-            <div key={index} style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+            <div key={index} style={{ display: 'flex', gap: '20px', marginTop: '10px' }}>
                 {ele.column_1_field_2 && (
                     <a href={ele.column_1_field_2} target="_blank" rel="noopener noreferrer">
                         <FaFacebookF />
