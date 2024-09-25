@@ -218,7 +218,7 @@ const OtherSection = () => {
             console.error('Failed to delete content:', error.message);
         }
     };
-    console.log(content)
+
 
     return (
         <div>

@@ -1,6 +1,19 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useState } from 'react';
+import { EXPORT_ALL_APIS } from '../../../../utils/apis/apis';
 
-const Content = ({ result }) => {
+const Content = () => {
+  let api=EXPORT_ALL_APIS();
+  let [result,setResult]=useState([])
+
+  useEffect(()=>{
+    let loadPrivecypolicy=async()=>{
+      let resp =await api.fetchPrivacyPolicyPage();
+      setResult(resp)
+    }
+    loadPrivecypolicy()
+  },[])
+
   return (
     <div>
       {result?.data && result.data.length > 0 ? (

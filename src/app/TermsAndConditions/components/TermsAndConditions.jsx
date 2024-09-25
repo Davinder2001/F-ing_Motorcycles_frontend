@@ -1,6 +1,18 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useState } from 'react';
+import { EXPORT_ALL_APIS } from '../../../../utils/apis/apis';
 
-const TermsAndConditions = ({ result }) => {
+const TermsAndConditions = () => {
+  let api=EXPORT_ALL_APIS()
+  let[result,setResult]=useState([])
+  useEffect(()=>{
+    let loadtermCondition=async()=>{
+      let resp = await api.fetchTermsAndConditionsPage();
+      setResult(resp);
+    }
+    loadtermCondition()
+
+  },[])
   return (
     <div>
       {result?.data && result.data.length > 0 ? (

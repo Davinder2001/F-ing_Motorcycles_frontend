@@ -22,7 +22,7 @@ function FooterPage({result}) {
         </div>
       </div>
       <div className='copyright_bar'>
-        <div className='copyright_bar_inner container'>© UZAQ (2024-2027) | All Rights Reserved | Privacy Policy | Cookie Policy</div>
+        <div className='copyright_bar_inner container'>© UZAQ (2024) | All Rights Reserved</div>
       </div>
     </div>
   )

@@ -183,6 +183,28 @@ export const EXPORT_ALL_APIS = () => {
         alert("Failed to fetch contact page content.");
       }
     };
+    const fetchGalleries = async () => {
+      try {
+        const response = await fetch(`${API_URL}/api/homeGallery`);
+
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error("Failed to fetch Galery:", error.message);
+        alert("Failed to fetch Galery.");
+      }
+    };
+
+
+
+
+
+
+
+
+
+
+
 
     /////////////////////////////////////// Crud Api's //////////////////////////////*html*/
 
@@ -778,7 +800,6 @@ export const EXPORT_ALL_APIS = () => {
     };
 
     const updateeHeroSection = async (token, editId, editContent) => {
-      console.log("editContent", editContent);
 
       try {
         // Create a FormData object and append data to it
@@ -1449,6 +1470,122 @@ export const EXPORT_ALL_APIS = () => {
       }
     };
 
+    const changePassword = async (token, newPassword, confirmPassword) => {
+    try {
+        const response = await fetch(`${API_URL}/api/change-password`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                password: newPassword,
+                password_confirmation: confirmPassword,
+            }),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            // Check if there are validation errors returned from the API
+            const errorMessage = result.errors 
+                ? Object.values(result.errors).flat().join(' ') 
+                : result.message || "Failed to change password.";
+
+            throw new Error(errorMessage);
+        }
+
+        alert("Password changed successfully!");
+        return result;
+    } catch (error) {
+        console.error("Error changing password:", error.message);
+        alert(error.message || "An unexpected error occurred.");
+    }
+};
+
+
+
+  const createGallery = async (token, formData) => {
+    const response = await fetch(`${API_URL}/api/homeGallery`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create Gallery');
+    }
+    alert('Added successfully')
+    return response.json();
+  };
+
+  const updateGallery = async (token, gallerySeoId, data) => {
+    try {
+      const formData = new FormData();
+      
+      // Append the imgHeading field
+      formData.append("imgHeading", data.imgHeading);
+      
+      if (data.image && data.image instanceof File && data.image.type.startsWith("image/")) {
+        formData.append("image", data.image); 
+      }
+      // Indicate the method to use for the update
+      formData.append("_method", "PUT")
+      
+      // Make the API call
+      const response = await fetch(`${API_URL}/api/homeGallery/${gallerySeoId}`, {
+        method: 'POST', // Use POST for FormData
+        headers: {
+          Authorization: `Bearer ${token}`, // Include token in headers
+        },
+        body: formData, // Send FormData in the body
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to update Gallery');
+      }
+      alert('Updated successfully')
+      return response.json(); // Return the updated gallery data
+    } catch (error) {
+      console.error('Error updating gallery:', error.message); // Log error message
+      alert("Failed to update Gallery."); // Alert on error
+    }
+  };
+  
+
+  const deleteGallery = async (token, id) => {
+
+    const response = await fetch(`${API_URL}/api/homeGallery/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete Gallery');
+    }
+    alert('Deleted successfully')
+    return response.json();
+  };
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
     return {
       // Fetch Apis in order
       loadHeaderImage,
@@ -1469,6 +1606,8 @@ export const EXPORT_ALL_APIS = () => {
       fetchenquiryForm,
       fetchProductPage,
       fetchContactSeoPage,
+      fetchGalleries,
+
 
       // CRUD Apis in order
       loginUser,
@@ -1515,6 +1654,10 @@ export const EXPORT_ALL_APIS = () => {
       createProductPage,
       updateProductPage,
       deleteProductPage,
+      changePassword,
+      createGallery,
+      updateGallery,
+      deleteGallery
     };
   };
   

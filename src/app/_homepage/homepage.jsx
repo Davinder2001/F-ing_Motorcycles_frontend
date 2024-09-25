@@ -6,7 +6,9 @@ import HybridInfo from './components/weProvide'
 import InvestorSection from '../investor-corner/components/investorCorner'
 import HybridWhy from './components/Hybridwhy'
 import OurJourney from './components/ourJourney'
+import ImageGallery from './components/imageGallery'
 import { EXPORT_ALL_APIS } from '../../../utils/apis/apis'
+
 
 function Homepage() {
 
@@ -16,6 +18,7 @@ function Homepage() {
   let [category, setCategory] = useState([])
   let [heroSection, setHeroSection] = useState([])
   let [investor, setInvestor] = useState([])
+  let [gallery, setGallery] = useState([])
 
 
   useEffect(() => {
@@ -36,12 +39,17 @@ function Homepage() {
     let loadInvestor = async () => {
       let resp = await api.fetchInvestor()
       setInvestor(resp)
+    } 
+    let loadGalaery = async () => {
+      let resp = await api.fetchGalleries()
+      setGallery(resp)
     }
 
     loadContent()
     loadCategory()
     loadHeroSection()
     loadInvestor()
+    loadGalaery()
 
   }, [])
 
@@ -59,6 +67,7 @@ function Homepage() {
       <HybridWhy result={result} />
       <OurJourney result={result} />
       <InvestorSection investor={investor} />
+      <ImageGallery gallery={gallery} />
     </div>
   )
 }
