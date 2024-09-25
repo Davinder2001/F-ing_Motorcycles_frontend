@@ -85,11 +85,11 @@ const EnquiryForm = ({ enquiryFormData }) => {
     };
 
     return (
-        <div>
+        <div className='dashboard-inner-data'>
             <h2>Enquiry Form Data</h2>
 
             {/* Date Range Filters */}
-            <div>
+            <div className='form-table'>
                 <label>
                     From Date:
                     <input
@@ -97,7 +97,7 @@ const EnquiryForm = ({ enquiryFormData }) => {
                         name="fromDate"
                         value={fromDate}
                         onChange={handleDateChange}
-                        style={{ marginBottom: '10px', padding: '5px' }}
+                        
                     />
                 </label>
                 <label>
@@ -107,23 +107,23 @@ const EnquiryForm = ({ enquiryFormData }) => {
                         name="toDate"
                         value={toDate}
                         onChange={handleDateChange}
-                        style={{ marginBottom: '10px', padding: '5px', marginLeft: '10px' }}
+                        
                     />
                 </label>
             </div>
               {/* Export to Excel Button */}
               <button
                 onClick={handleExportToExcel}
-                style={{ marginBottom: '20px', padding: '10px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '5px' }}
+               
             >
                 Export to Excel
             </button>
 
             {/* Dropdown for selecting search criteria */}
-            <select 
+            <select className='dropdown-table'
                 value={searchField} 
                 onChange={handleSearchFieldChange} 
-                style={{ marginBottom: '10px', padding: '5px' }}
+               
             >
                 <option value="name">Search by Name</option>
                 <option value="email">Search by Email</option>
@@ -136,14 +136,14 @@ const EnquiryForm = ({ enquiryFormData }) => {
                 placeholder={`Search by ${searchField}`}
                 value={searchTerm}
                 onChange={handleSearch}
-                style={{ marginBottom: '20px', padding: '5px', marginLeft: '10px' }}
+                
             />
 
             {/* Dropdown for selecting page size */}
-            <select 
+             <select className='dropdown-table'
                 value={pageSize} 
                 onChange={handlePageSizeChange} 
-                style={{ marginBottom: '20px', padding: '5px', marginLeft: '10px' }}
+               
             >
                 <option value="25">Show 25</option>
                 <option value="50">Show 50</option>
@@ -155,7 +155,7 @@ const EnquiryForm = ({ enquiryFormData }) => {
           
 
             {/* Table for displaying enquiries */}
-            <table border="1" cellPadding="10" cellSpacing="0">
+            <table className="enquery-table" border="0.5px solid #e5e5e5" cellPadding="10" cellSpacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -189,7 +189,7 @@ const EnquiryForm = ({ enquiryFormData }) => {
             </table>
 
             {/* Pagination controls */}
-            <div style={{ marginTop: '20px' }}>
+            <div className="pagination-form" style={{ marginTop: '20px' }}>
                 <button onClick={goToPreviousPage} disabled={currentPage === 1}>
                     Previous
                 </button>

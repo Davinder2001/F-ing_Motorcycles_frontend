@@ -98,7 +98,7 @@ const CategoryManagement = () => {
     };
 
     return (
-        <div>
+        <div className='category-managment'>
             <h2>Category Management</h2>
 
             <button onClick={() => setShowAddForm(true)}>Add New Category</button>
@@ -163,7 +163,7 @@ const CategoryManagement = () => {
 
             {/* Categories Table */}
             {categories.length > 0 ? (
-                <table>
+                <table className='category-table' border="0.5px solid #e5e5e5" cellPadding="10" cellSpacing="0" >
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -180,8 +180,8 @@ const CategoryManagement = () => {
                                 <td>
                                     <div dangerouslySetInnerHTML={{ __html: category.long_description }} />
                                 </td>
-                                <td>
-                                    <button onClick={() => {
+                                <td> 
+                                    <button className="edit-delet-table" onClick={() => {
                                         setEditCategory(category);
                                         setEditCategoryData({
                                             id: category.id,
@@ -192,7 +192,7 @@ const CategoryManagement = () => {
                                     }}>
                                         Edit
                                     </button>
-                                    <button onClick={() => handleDeleteCategory(category.id)}>
+                                    <button className="edit-delet-table" onClick={() => handleDeleteCategory(category.id)}>
                                         Delete
                                     </button>
                                 </td>

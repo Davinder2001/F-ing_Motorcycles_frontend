@@ -72,7 +72,7 @@ const HeaderLogoPage = () => {
     };
 
     return (
-        <div className="container">
+        <div className="admin-headerbar">
             <h2>Manage Header Logo</h2>
 
             {error && <div className="error">{error}</div>}
