@@ -856,7 +856,7 @@ span.highlight {
   font-weight: 600;
   font-family: Oxanium;
   font-style: italic;
-  color: #437a67;
+  color: #747474;
 }
 .slider-navigation button.active span {
   background: #13544e;
@@ -871,7 +871,7 @@ span.highlight {
   border-radius: 65px;
   width: 20px;
   height: 20px;
-  color: #000;
+  color: #747474;
   font-weight: 800;
   font-style: italic;
   font-size: 20px;
@@ -894,6 +894,7 @@ span.highlight {
 }
 .slider-navigation button.active {
   border-top: 2px solid #13544e;
+  color: #13544e;
 }
 .weprovide .card img {
   position: absolute;
