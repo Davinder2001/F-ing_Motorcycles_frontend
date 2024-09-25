@@ -136,17 +136,216 @@ body {
   margin: 0;
   padding: 0;
 }
-
-body.dark-mode .card {
+ .dark-mode .slider-container {
+  background: #171717;
+ }
+.dark-mode {
   background: #171717;
 }
-body.dark-mode .card p {
+
+.dark-mode {
+  .founder-card {
+    background-color: #322f2f;
+    border: 0.5px solid rgba(219, 238, 251, 0.168627451);
+  }
+  .growth-card {
+    border: 0.5px solid rgba(219, 238, 251, 0.168627451);
+    box-shadow: none;
+    background: #1c1c1c;
+  }
+  .tab-content {
+    border: 0.5px solid rgba(219, 238, 251, 0.168627451);
+    box-shadow: none;
+    background: #1c1c1c;
+  }
+  .second_column main {
+    color: #fff;
+}
+  section.footer_section {
+    border-top: 1px solid #322f2f;
+}
+  .certificate-section {
+    background: #1c1c1c;
+}
+  .weprovide .card img {
+    filter: invert(1);
+}
+  .weprovide .card {
+    border: 0.5px solid rgba(219, 238, 251, 0.168627451);
+    box-shadow: none;
+    background: #1c1c1c;
+}
+  h3.cardTitle {
+    z-index: 999;
+    position: relative;
+  }
+  .card p {
   color: #e5e5e5;
 }
-body.dark-mode h3.cardTitle {
-  z-index: 999;
-  position: relative;
+  .footer_outer h5 {
+    color: #13544e;
+  }
+  .tabs button.tab-button {
+    background: #0d0d0d;
+    color: #fff;
+  }
+  .tabs button.tab-button.active {
+    background-color: #000;
+  }
+  .copyright_bar_inner.container {
+    color: #fff;
+  }
+  .tab-button.active:before {
+    border-top: 15px solid #000;
+  }
+  .tab-content.custom_tab_design {
+    background: #1c1c1c;
+    color: #fff;
+  }
+   .popup-form h2 {
+    color: #000;
+  }
+  .card {
+    border: 0.5px solid #dbeefb2b;
+    box-shadow: none;
+    background: #1c1c1c;
+  }
+  .getdirection {
+    color: #fff;
+  }
+  .menu.active,
+  {
+    background: #000;
+  }
+  .slider-container {
+    background: #171717;
+  }
+  .header_logo img {
+    filter: brightness(0) invert(1);
+  }
+   .description p {
+      color: #fff;
+      letter-spacing: .5px;
+      font-weight: 400
+  }
+  .hybrid-why-content p:nth-child(3) {
+      color: #ffffff;
+      letter-spacing: 0.7px;
+      line-height: 27px;
+      font-size: 16px;
+  }
+  nav.navbar ul li:hover {
+      color:#fff !important;
+  }
+  .menu {
+    background: #000;
+    color: #fff;
+  }
+  .close-menu svg {
+    color: #fff;
+    margin-left: 14px;
+  }
+  .close-menu svg,
+   .mobile-menu svg {
+    color: #fff;
+  }
+  .hybrid-why-section .tech-icons img {
+    width: 100%;
+    max-width: 570px;
+    margin-right: 10px;
+    filter: invert(1);
+  }
+  section.investor-corner:before {
+    content: "";
+    background: #322f2f;
+  }
+ .contact_details .title {
+    color: #fff;
+  }
+  .hero_slider h2 {
+    margin-top: 0;
+    display: grid;
+    height: 74px;
+    color: #fff;
+  }
+  .address_contact span {
+    font-size: 18px;
+    color: #fff;
+  }
+  a,
+ p {
+    font-family: Helvetica Neue;
+    font-size: 18px;
+    color: #fff;
+  }
+   .slider-navigation button {
+    color: #fff;
+  }
+   header {
+    background: #0d0d0d;
+  }
+ .theme-toggle-container svg {
+    color: #fff;
+  }
+  .what_we_provide {
+    padding: 50px 0;
+    background: linear-gradient(188deg, #161616, rgba(0, 0, 0, 0.678));
+  }
+  .weprovide .title {
+    color: #fff;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul li {
+    font-family: Helvetica Neue;
+    color: #fff !important;
+  }
+
+  .popup-form h2 {
+    color: #fff !important;
+  }
+ form.custom_popup_form label {
+    font-family: Helvetica Neue;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .popup-form {
+    background-color: #1c1c1c !important;
+    padding: 43px 46px;
+    border-radius: 5px;
+    max-width: 850px;
+    position: relative;
+    overflow: hidden;
+  }
+   p.about_us_description {
+    color: #fff;
+  }
+
+  .founders-section {
+    background-color: #000;
+  }
+  .copyright_bar {
+    background: #000;
+  }
+  .our-journey-section {
+    background-color: hsla(0, 0%, 9%, 0.659);
+    text-align: center;
+  }
+ .journey-step {
+    background: #322f2f;
+  }
 }
+
+// Dark Mode CSS END
+
+
+
+
 .second_column li p {
   margin: 0px;
   color: #437a67;
@@ -164,39 +363,14 @@ body.light-mode .menu.active {
   right: 0;
   background: #fff;
 }
-body.dark-mode .menu.active,
-body.dark-mode .navbar_2 {
-  background: #000;
-}
+
 body.light-mode .navbar_2 {
   background: #fff;
 }
 .contact_details .icon-text-container {
   column-gap: 15px;
 }
-body.dark-mode .footer_outer h5 {
-  color: #13544e;
-}
-body.dark-mode .tabs button.tab-button {
-  background: #0d0d0d;
-  color: #fff;
-}
-body.dark-mode .tabs button.tab-button.active {
-  background-color: #000;
-}
-body.dark-mode .copyright_bar_inner.container {
-  color: #fff;
-}
-body.dark-mode .tab-button.active:before {
-  border-top: 15px solid #000;
-}
-body.dark-mode .tab-content.custom_tab_design {
-  background: #1c1c1c;
-  color: #fff;
-}
-body.dark-mode .popup-form h2 {
-  color: #000;
-}
+
 .theme-toggle-container svg {
   width: 20px;
 }
@@ -291,49 +465,8 @@ a.menu-item:hover {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.dark-mode,
-.dark-mode .slider-container {
-  background: #171717;
-}
-.dark-mode .header_logo img {
-  filter: brightness(0) invert(1);
-}
-.dark-mode .description p {
-    color: #fff;
-    letter-spacing: .5px;
-    font-weight: 400
-}
-.dark-mode .hybrid-why-content p:nth-child(3) {
-    color: #ffffff;
-    letter-spacing: 0.7px;
-    line-height: 27px;
-    font-size: 16px;
-}
-.dark-mode nav.navbar ul li:hover {
-    color:#fff !important;
-}
-.dark-mode .menu {
-  background: #000;
-  color: #fff;
-}
-.dark-mode .close-menu svg {
-  color: #fff;
-  margin-left: 14px;
-}
-.dark-mode .dark-mode .close-menu svg,
-.dark-mode .mobile-menu svg {
-  color: #fff;
-}
-.dark-mode .hybrid-why-section .tech-icons img {
-  width: 100%;
-  max-width: 570px;
-  margin-right: 10px;
-  filter: invert(1);
-}
-.dark-mode section.investor-corner:before {
-  content: "";
-  background: #322f2f;
-}
+
+ 
 .investor-content h5 {
   line-height: 27px;
   margin-bottom: 5px;
@@ -344,96 +477,13 @@ a.menu-item:hover {
   letter-spacing: 0.7px;
   font-size: 14px;
 }
-.dark-mode .contact_details .title {
-  color: #fff;
-}
-.dark-mode .hero_slider h2 {
-  margin-top: 0;
-  display: grid;
-  height: 74px;
-  color: #fff;
-}
-.dark-mode .address_contact span {
-  font-size: 18px;
-  color: #fff;
-}
-.dark-mode a,
-.dark-mode p {
-  font-family: Helvetica Neue;
-  font-size: 18px;
-  color: #fff;
-}
-.dark-mode .slider-navigation button {
-  color: #fff;
-}
-.dark-mode header {
-  background: #0d0d0d;
-}
-.dark-mode .theme-toggle-container svg {
-  color: #fff;
-}
-.dark-mode .what_we_provide {
-  padding: 50px 0;
-  background: linear-gradient(188deg, #161616, rgba(0, 0, 0, 0.678));
-}
-.dark-mode .weprovide .title {
-  color: #fff;
-}
-.dark-mode h1,
-.dark-mode h2,
-.dark-mode h3,
-.dark-mode h4,
-.dark-mode h5,
-.dark-mode h6,
-.dark-mode ul li {
-  font-family: Helvetica Neue;
-  color: #fff !important;
-}
-.dark-mode .growth-card {
-  background-color: #322f2f;
-}
-.dark-mode .popup-form h2 {
-  color: #fff !important;
-}
-body.dark-mode form.custom_popup_form label {
-  font-family: Helvetica Neue;
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #fff;
-}
-body.dark-mode .popup-form {
-  background-color: #1c1c1c !important;
-  padding: 43px 46px;
-  border-radius: 5px;
-  max-width: 850px;
-  position: relative;
-  overflow: hidden;
-}
+
 .description p {
   color: #161616;
   letter-spacing: 0.5px;
   font-weight: 400;
 }
-.dark-mode p.about_us_description {
-  color: #fff;
-}
-.dark-mode .founder-card {
-  background-color: #322f2f;
-  border: 1px solid #c8d6e3;
-}
-.dark-mode .founders-section {
-  background-color: #000;
-}
-.dark-mode .copyright_bar {
-  background: #000;
-}
-.dark-mode .our-journey-section {
-  background-color: hsla(0, 0%, 9%, 0.659);
-  text-align: center;
-}
-.dark-mode .journey-step {
-  background: #322f2f;
-}
+
 header {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.078);
   position: -webkit-sticky;
@@ -927,6 +977,7 @@ span.highlight {
   color: #555;
   line-height: 1.6;
   font-weight: 400;
+  z-index: 9;
 }
 .sidebar .sidebar-inner {
   position: -webkit-sticky;
@@ -1021,6 +1072,7 @@ ol {
 }
 .header-left img {
   height: 25px;
+  filter: brightness(4.5);
 }
 .sidebar .tab-buttons {
   padding-top: 20px;
@@ -1169,6 +1221,7 @@ span.mc-green {
   font-size: 20px;
   border: none;
   background: #e7f6f1;
+  cursor: pointer;
 }
 .tab-button:first-child {
   border-top-left-radius: 5px;
@@ -1211,6 +1264,7 @@ h2.heading_dualc span {
   padding-top: 150px;
   grid-column-gap: 20px;
   column-gap: 20px;
+  align-items: center;
 }
 
 section.investor-corner:before {
