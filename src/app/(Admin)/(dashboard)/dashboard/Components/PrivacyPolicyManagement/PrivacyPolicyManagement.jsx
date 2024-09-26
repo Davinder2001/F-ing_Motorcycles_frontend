@@ -91,14 +91,17 @@ const PrivacyPolicyManagement = ({ PrivacyPolicy }) => {
     };
 
     return (
-        <div>
+        <div className='admin-content-homepage'>
             <h2>Privacy Policy Management</h2>
             {title ? (
                 <div style={{ marginBottom: '20px' }}>
                     <h3>{title}</h3>
                     <div dangerouslySetInnerHTML={{ __html: policyDescription }} />
-                    <button onClick={() => handleEdit(policyId)}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
+
+                    <div className='edit-delet-btn'>
+                        <button onClick={() => handleEdit(policyId)}>Edit</button>
+                        <button onClick={handleDelete}>Delete</button>
+                    </div>
                 </div>
             ) : (
                 <p>No privacy policy available. <button onClick={handleCreate}>Add New Policy</button></p>

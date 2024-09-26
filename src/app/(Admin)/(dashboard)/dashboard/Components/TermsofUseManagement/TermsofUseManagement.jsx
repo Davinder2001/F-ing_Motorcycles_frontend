@@ -81,14 +81,16 @@ const TermsOfUseManagement = ({ termsOfUse }) => {
     };
 
     return (
-        <div>
+        <div className='admin-content-homepage'>
             <h2>Terms of Use Management</h2>
             {title ? (
                 <div style={{ marginBottom: '20px' }}>
                     <h3>{title}</h3>
                     <div dangerouslySetInnerHTML={{ __html: description }} />
-                    <button onClick={() => handleEdit(termsId)}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
+                    <div className='edit-delet-btn'>
+                        <button onClick={() => handleEdit(termsId)}>Edit</button>
+                        <button onClick={handleDelete}>Delete</button>
+                    </div>
                 </div>
             ) : (
                 <p>No terms of use available. <button onClick={handleCreate}>Add New Terms</button></p>

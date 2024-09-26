@@ -136,14 +136,14 @@ const handleCreateSubmit = async (e) => {
   };
 
   return (
-    <div>
-      <h5>Hero Section Manager</h5>
-
-      {/* Button to toggle create form */}
-      {!showCreateForm && !showEditForm && (
-        <button onClick={() => setShowCreateForm(true)}>Add New Hero Section</button>
-      )}
-
+    <div className='admin-homepage'>
+      <div className='inner-homepage-addon'> 
+        <h5>Hero Section Manager</h5>
+          {/* Button to toggle create form */}
+          {!showCreateForm && !showEditForm && (
+            <button onClick={() => setShowCreateForm(true)}>Add New Hero Section</button>
+          )}
+      </div>
       {/* Create form */}
       {showCreateForm && (
         <form onSubmit={handleCreateSubmit}>
@@ -200,7 +200,7 @@ const handleCreateSubmit = async (e) => {
         </form>
       )}
 
-      <div>
+      <div className='admin-hero-section'>
         <h2>Existing Hero Sections</h2>
         <ul>
           {heroSections?.map((heroSection) => (
@@ -213,8 +213,10 @@ const handleCreateSubmit = async (e) => {
                   width="100"
                 />
               )}
-              <button onClick={() => handleEdit(heroSection)}>Edit</button>
-              <button onClick={() => handleDelete(heroSection.id)}>Delete</button>
+              <div className='edit-delet-btn'>  
+                <button onClick={() => handleEdit(heroSection)}>Edit</button>
+                <button onClick={() => handleDelete(heroSection.id)}>Delete</button>
+              </div>
             </li>
           ))}
         </ul>

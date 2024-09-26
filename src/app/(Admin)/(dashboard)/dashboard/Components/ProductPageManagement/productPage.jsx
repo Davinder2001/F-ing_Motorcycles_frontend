@@ -103,8 +103,11 @@ const ProductSeoPage = () => {
             {/* Conditional rendering of buttons */}
             {seoData?.[0].id ? (
                 <>
+                <div className='edit-delet-btn'> 
                     <button onClick={handleUpdate}>Update</button>
                     <button onClick={handleDelete}>Delete</button>
+                </div>
+                   
                 </>
             ) : (
                 <button onClick={handleCreate}>Create</button>

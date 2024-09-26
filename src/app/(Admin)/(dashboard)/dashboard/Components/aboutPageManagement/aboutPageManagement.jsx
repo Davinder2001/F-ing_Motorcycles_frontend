@@ -93,18 +93,19 @@ const AboutPageManagement = ({ AboutUs }) => {
     };
 
     return (
-        <div>
+        <div className='admin-about-managment'>
             <h2>About Us Management</h2>
             {title ? (
-                  <div style={{ marginBottom: '20px' }}>
-                  <h3></h3>
+                  <div>
                   <p><strong>SEO Title :</strong> {seoTitle}</p>
                   <p><strong>SEO Discription :</strong>{seoDescription},</p>
                   <p><strong>SEO Host URL :</strong>{seoHostUrl}</p>
                     <h3>{title}</h3>
                     <div dangerouslySetInnerHTML={{ __html: description }} />
-                    <button onClick={() => handleEdit(aboutUsId)}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
+                    <div className='edit-delet-btn'> 
+                        <button onClick={() => handleEdit(aboutUsId)}>Edit</button>
+                        <button onClick={handleDelete}>Delete</button>
+                    </div>
                 </div>
 
             ) : (

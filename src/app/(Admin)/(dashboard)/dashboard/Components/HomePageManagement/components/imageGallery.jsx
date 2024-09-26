@@ -137,14 +137,15 @@ const ImageGallery = () => {
   };
 
   return (
-    <div>
+    <div className='admin-content-homepage'>   
+    <div className='inner-homepage-addon'>
       <h5>Image Gallery Manager</h5>
 
       {/* Button to toggle create form */}
       {!showCreateForm && !showEditForm && (
         <button onClick={() => setShowCreateForm(true)}>Add New Gallery Item</button>
       )}
-
+</div> 
       {/* Create form */}
       {showCreateForm && (
         <form onSubmit={handleCreateSubmit}>
@@ -202,29 +203,31 @@ const ImageGallery = () => {
       )}
 
       {/* Display existing gallery items */}
-      <div>
-  <h2>Existing Gallery Items</h2>
-  <ul>
-    {galleries.length > 0 ? (
-      galleries.map((gallery) => (
-        <li key={gallery.id}>
-          <p>{gallery.imgHeading}</p>
-          {gallery.image && (
-            <img
-              src={gallery.image}
-              alt={gallery.imgHeading}
-              width="100"
-            />
-          )}
-          <button onClick={() => handleEdit(gallery)}>Edit</button>
-          <button onClick={() => handleDelete(gallery)}>Delete</button>
-        </li>
-      ))
-    ) : (
-      <p>No gallery items available.</p>
-    )}
-  </ul>
-</div>
+      <div className='existing-gallery-admin'>
+        <h2>Existing Gallery Items</h2>
+          <ul>
+            {galleries.length > 0 ? (
+              galleries.map((gallery) => (
+                <li key={gallery.id}>
+                  <p>{gallery.imgHeading}</p>
+                  {gallery.image && (
+                    <img
+                      src={gallery.image}
+                      alt={gallery.imgHeading}
+                      width="100"
+                    />
+                  )}
+                  <div class="edit-delet-btn"> 
+                    <button onClick={() => handleEdit(gallery)}>Edit</button>
+                    <button onClick={() => handleDelete(gallery)}>Delete</button>
+                  </div>
+                </li>
+              ))
+            ) : (
+              <p>No gallery items available.</p>
+            )}
+          </ul>
+      </div>
 
     </div>
   );

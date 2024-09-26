@@ -1025,23 +1025,19 @@ span.highlight {
 .dashboard_main .card {
   width: 90%;
 }
-.dashboard-inner .main-content h1, h2 {
-  font-weight: 500;
-  font-family: Helvetica Neue;
-  color: #000;
-  font-size: 40px;
+.profile-inner-data h1, h2 {
+  font-size: 30px !important;
   margin: 0px;
-  padding: 0px;
 }
 .sidebar {
   width: 20%;
   background: #13544e;
-  height: 100vh;
+  padding-bottom: 100px;
+  position: sticky;
 }
 .dashboard .tab-buttons {
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
 }
 
 header ul,
@@ -1069,10 +1065,7 @@ ol {
   padding: 0;
   margin: 0;
 }
-.admin-footer-section-columns {
-  display: flex;
-  justify-content: space-between;
-}
+
 .header-inner {
   display: flex;
   gap: 20px;
@@ -1081,7 +1074,7 @@ ol {
 }
 .header-left img {
   height: 25px;
-  filter: brightness(4.5);
+  filter: brightness(20);
 }
 .sidebar .tab-buttons {
   padding-top: 20px;
@@ -1325,14 +1318,206 @@ section.investor-corner:before {
   margin: 50px 20px 50px 0px;
   border: 0.5px solid #DBEEFB;
   padding: 50px 20px;
+  height: 100vh;
+    overflow: auto;
 }
-.dashboard-inner .main-content form {
-  background: hsla(0, 0%, 95%, 0.541);
-  padding: 25px 15px;
-  margin-bottom: 43px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
+.admin-founder-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
 }
+.button-founder {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.inner-homepage-addon h5 {
+  font-weight: 500;
+  font-family: Helvetica Neue;
+  font-size: 30px;
+  color: #13544e;
+  margin: 0px;
+}
+.inner-homepage-addon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 20px 0 hsla(0, 0%, 96%, .698);
+  border: .5px solid #dbeefb;
+  padding: 30px;
+  margin: 30px 0px;
+  button {
+    margin: 0px !important;
+  }
+}
+.admin-founder-card {
+  box-shadow: 0 4px 20px 0 hsla(0, 0%, 96%, .698);
+  border: .5px solid #dbeefb;
+  padding: 30px;
+  h3 {
+    font-weight: 500;
+    font-family: Helvetica Neue;
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #13544e;
+    margin-top: 0px;
+  }
+}
+.admin-footer-section-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+
+  h3 {
+  font-weight: 500;
+  font-family: Helvetica Neue;
+  margin: 20px 0px;
+  font-size: 30px;
+  color: #13544e;
+  }
+  label {
+    color: #13544e;
+    letter-spacing: .7px;
+    line-height: 27px;
+    font-size: 16px;
+    font-family: Helvetica Neue;
+  }
+  input {
+    font-size: 16px;
+    font-family: Helvetica Neue;
+    line-height: 28px;
+    letter-spacing: .6px;
+    color: #12191d;
+    font-weight: 300;
+  }
+}
+.edit-delet-btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.admin-hero-section {
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+}
+.admin-homepage-seo, .admin-content-homepage{
+  box-shadow: 0 4px 20px 0 hsla(0, 0%, 96%, .698);
+  border: .5px solid #dbeefb;
+  padding: 20px;
+  margin: 20px 0px;
+  p {
+    margin: 0px;
+    line-height: 32px;
+    color: #747474;
+    font-weight: 400;
+    letter-spacing: 0.6px;
+    font-size: 16px;
+  }
+  strong {
+    color: #13544e;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+      font-size: 16px;
+      font-family: Helvetica Neue;
+      line-height: 28px;
+      letter-spacing: .6px;
+      color: #12191d;
+      font-weight: 300;
+  }
+  p.journey-heading-admin {
+    font-size: 30px;
+    margin-bottom: 25px;
+  }
+  h5 {
+    color: #13544e;
+    font-size: 30px;
+    margin: 0px;
+  }
+  h3 {
+    color: #13544e;
+    font-size: 30px;
+  }
+}
+  .admin-journey-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .journey-ed-del-btn {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+.existing-gallery-admin {
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    gap: 10px;
+  }
+}
+.admin-investor-pagecontent {
+  box-shadow: 0 4px 20px 0 hsla(0, 0%, 96%, 0.698);
+  border: 0.5px solid #dbeefb;
+  padding: 20px;
+  margin: 20px 0px;
+  h3 {
+    font-size: 30px;
+    margin: 0px;
+  }
+  .content-invest-admin {
+    display: flex;
+    gap: 20px;
+    font-size: 30px;
+    font-weight: 300;
+    color: #13544e;
+  }
+}
+.investor-description, .admin-about-managment {
+  box-shadow: 0 4px 20px 0 hsla(0, 0%, 96%, 0.698);
+  border: 0.5px solid #dbeefb;
+  padding: 20px;
+  margin: 20px 0px;
+  strong {
+    color: #13544e;
+    font-size: 22px;
+    font-family: Helvetica Neue;
+  }
+  h5 {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.6px;
+    line-height: 25px;
+    margin: 15px 0px;
+  }
+  p {
+    margin: 0px;
+    line-height: 32px;
+    color: #747474;
+    font-weight: 400;
+    letter-spacing: 0.6px;
+    font-size: 16px;
+  }
+  .card-investor {
+    padding: 20px 0px;
+    line-height: 30px;
+  }
+}
+.admin-contact {
+  h3 {
+    font-size: 30px;
+    margin: 0px;
+  }
+}
+
+
 .dashboard-inner-data .form-table label {
   font-size: 16px;
   color: #000;

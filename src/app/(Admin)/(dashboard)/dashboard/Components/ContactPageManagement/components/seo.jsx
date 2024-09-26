@@ -70,11 +70,11 @@ const ContactSeoPage = () => {
     };
 
     return (
-        <div>
+        <div className='admin-homepage-seo'>
             <h1>Contact SEO Page</h1>
-            <div>
-               data {seoData?.name}
-            </div>
+            <p>
+               Data {seoData?.name}
+            </p>
             <input
                 type="text"
                 value={formData.seoTitle}
@@ -96,8 +96,10 @@ const ContactSeoPage = () => {
             {/* Conditional rendering of buttons */}
             {seoData ? (
                 <>
+                <div className='button-founder'>
                     <button onClick={handleUpdate}>Update</button>
                     <button onClick={handleDelete}>Delete</button>
+                </div>
                 </>
             ) : (
                 <button onClick={handleCreate}>Create</button>

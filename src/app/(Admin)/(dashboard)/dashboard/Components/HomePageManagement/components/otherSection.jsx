@@ -599,58 +599,64 @@ const OtherSection = () => {
 
             {!showAddForm && !showEditForm && (
                 <div>
-                    <div className=''>
-                    <h2>SEO Details</h2>
-                    <p><strong>SEO Title:</strong> {content.seo_title}</p>
-                    <p><strong>SEO Description:</strong> {content.seo_description}</p>
-                    <p><strong>SEO Host URL:</strong> {content.seo_host_url}</p>
+                    <div className='admin-homepage-seo'>
+                        <h2>SEO Details</h2>
+                        <p><strong>SEO Title:</strong> {content.seo_title}</p>
+                        <p><strong>SEO Description:</strong> {content.seo_description}</p>
+                        <p><strong>SEO Host URL:</strong> {content.seo_host_url}</p>
                     </div>
-                    <h2>Content Details</h2>
-                    <p><strong>Slider Heading:</strong> {content.heading}</p>
-                    <p><strong>Typing Heading:</strong> {content.heading_nxt}</p>
-                    <p><strong>Slider Description :</strong> </p>
-                     <div dangerouslySetInnerHTML={{ __html: content.description || '' }} />
-
-                    <h2>Third Section</h2>
-                    <p><strong>Heading:</strong> {content.heading_2}</p>
-                    {/* <p><strong>Sub Heading :</strong> {content.Sub_heading_2}</p>
-                    <p><strong>Sub Description 1:</strong> {content.s_description_1}</p>
-                    <p><strong>Sub Description 2:</strong> {content.s_description_2}</p>
-                    <p><strong>Sub Description 3:</strong> {content.s_description_3}</p> */}
-                    <p><strong>Description :</strong> </p>
-                     <div
-        dangerouslySetInnerHTML={{ __html: content.description_2 || '' }}
-    />
-    <h3>Images</h3>
-                    {content.image && <img src={content.image} alt="Content Image" />}
-                        {content.image_2 && <img src={content.image_2} alt="Content Image 2" />}
-
-                    <h2>Third Section</h2>
-                    <p><strong>Fourth Section Heading:</strong> {content.third_sec_heading}</p>
-                    <p>{content.disc_1_sec_3}</p>
-                    {content.image_1_sec_3 && <img src={content.image_1_sec_3} alt="Image 1 Sec 3" />}
-                    <p>{content.disc_2_sec_3}</p>
-                        {content.image_2_sec_3 && <img src={content.image_2_sec_3} alt="Image 2 Sec 3" />}
-                        <p>{content.disc_3_sec_3}</p>
-                        {content.image_3_sec_3 && <img src={content.image_3_sec_3} alt="Image 3 Sec 3" />}
-                        <p>{content.disc_4_sec_3}</p>
-                        {content.image_4_sec_3 && <img src={content.image_4_sec_3} alt="Image 4 Sec 3" />}
-                        <p>{content.disc_5_sec_3}</p>
-                        {content.image_5_sec_3 && <img src={content.image_5_sec_3} alt="Image 5 Sec 3" />}
-                    <div>
-                        
-                        
-                        
+                    <div className='admin-content-homepage'> 
+                        <h2>Content Details</h2>
+                        <p><strong>Slider Heading:</strong> {content.heading}</p>
+                        <p><strong>Typing Heading:</strong> {content.heading_nxt}</p>
+                        <p><strong>Slider Description :</strong> </p>
+                        <div dangerouslySetInnerHTML={{ __html: content.description || '' }} />
                     </div>
-                    <div>
-                                            
-                        
-                        
-                       
+                    <div className='admin-content-homepage'> 
+                        <h2>Third Section</h2>
+                        <p><strong>Heading:</strong> {content.heading_2}</p>
+                        {/* <p><strong>Sub Heading :</strong> {content.Sub_heading_2}</p>
+                        <p><strong>Sub Description 1:</strong> {content.s_description_1}</p>
+                        <p><strong>Sub Description 2:</strong> {content.s_description_2}</p>
+                        <p><strong>Sub Description 3:</strong> {content.s_description_3}</p> */}
+                        <p><strong>Description :</strong> </p>
+                        <div dangerouslySetInnerHTML={{ __html: content.description_2 || '' }} />
+                        <h3>Images</h3>
+                        {content.image && <img src={content.image} alt="Content Image" />}
+                            {content.image_2 && <img src={content.image_2} alt="Content Image 2" />}
                     </div>
-                    <button onClick={() => setShowAddForm(true)}>Add Content</button>
-                    <button onClick={() => setShowEditForm(true)}>Edit Content</button>
-                    <button onClick={handleDeleteContent}>Delete Content</button>
+                    <div className='admin-content-homepage'>    
+                        <h2>Third Section</h2>
+                        <p className='journey-heading-admin'><strong>Fourth Section Heading:</strong> {content.third_sec_heading}</p>
+                        <div className='admin-journey-section'> 
+                            <div> 
+                                <p>{content.disc_1_sec_3}</p>
+                                {content.image_1_sec_3 && <img src={content.image_1_sec_3} alt="Image 1 Sec 3" />}
+                            </div>
+                            <div> 
+                                <p>{content.disc_2_sec_3}</p>
+                                {content.image_2_sec_3 && <img src={content.image_2_sec_3} alt="Image 2 Sec 3" />}
+                            </div>
+                            <div>     
+                                <p>{content.disc_3_sec_3}</p>
+                                {content.image_3_sec_3 && <img src={content.image_3_sec_3} alt="Image 3 Sec 3" />} 
+                            </div>
+                            <div> 
+                                <p>{content.disc_4_sec_3}</p>
+                                {content.image_4_sec_3 && <img src={content.image_4_sec_3} alt="Image 4 Sec 3" />}
+                            </div>
+                            <div> 
+                                <p>{content.disc_5_sec_3}</p>
+                                {content.image_5_sec_3 && <img src={content.image_5_sec_3} alt="Image 5 Sec 3" />}
+                            </div>
+                        </div>
+                    </div>
+                    <div className='journey-ed-del-btn'>
+                        <button onClick={() => setShowAddForm(true)}>Add Content</button>
+                        <button onClick={() => setShowEditForm(true)}>Edit Content</button>
+                        <button onClick={handleDeleteContent}>Delete Content</button>
+                    </div>
+                    
                 </div>
             )}
         </div>

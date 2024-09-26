@@ -95,21 +95,24 @@ const FounderManagement = ({ founders }) => {
     return (
         <div>
             <h2>Founder Management</h2>
-
-            {foundersList.length > 0 ? (
-                foundersList.map((founder) => (
-                    <div key={founder.id} style={{ marginBottom: '20px' }}>
-                        <h3>{founder.name}</h3>
-                        <div dangerouslySetInnerHTML={{ __html: founder.description }} />
-                        {founder.image && <img src={founder.image} alt={founder.name} style={{ width: '150px', height: 'auto' }} />}
-                        <button onClick={() => handleEdit(founder.id)}>Edit</button>
-                        <button onClick={() => handleDelete(founder.id)}>Delete</button>
-                    </div>
-                ))
-            ) : (
-                <p>No founders available. <button onClick={handleCreate}>Add New Founder</button></p>
-            )}
-
+            <div className='admin-founder-section'> 
+                {foundersList.length > 0 ? (
+                    foundersList.map((founder) => (
+                        <div className="admin-founder-card" key={founder.id} >
+                            <h3>{founder.name}</h3>
+                            <div dangerouslySetInnerHTML={{ __html: founder.description }} />
+                            {founder.image && <img src={founder.image} alt={founder.name} style={{ width: '150px', height: 'auto' }} />}
+                            <div className='button-founder'> 
+                                <button onClick={() => handleEdit(founder.id)}>Edit</button>
+                                <button onClick={() => handleDelete(founder.id)}>Delete</button>
+                            </div>
+                            
+                        </div>
+                    ))
+                ) : (
+                    <p>No founders available. <button onClick={handleCreate}>Add New Founder</button></p>
+                )}
+            </div>
             <button onClick={handleCreate}>Add New Founder</button>
 
             {(isEditing || isCreating) && (

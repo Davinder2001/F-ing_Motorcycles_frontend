@@ -83,41 +83,48 @@ const ContactUs = () => {
   }, [api]);
 
   return (
-    <>
-    <h3>Contats us</h3>
-      {/* Input fields for name, email, and number */}
-      <input 
-        type='text' 
-        placeholder='Enter name' 
-        onChange={(e) => setName(e.target.value)} 
-        value={name}
-      />
-      <input 
-        type='email' 
-        placeholder='Enter email' 
-        onChange={(e) => setEmail(e.target.value)} 
-        value={email}
-      />
-      <input 
-        type='text' 
-        placeholder='Enter number' 
-        onChange={(e) => setNumber(e.target.value)} 
-        value={number}
-      />
-      <button onClick={saveOrUpdateHandler}>
-        {selectedUserId ? 'Update' : 'Save'}
-      </button>
+      <>
+        <div className='admin-contact'>
+          <h3>Contats us</h3>
+          {/* Input fields for name, email, and number */}
+          <input 
+            type='text' 
+            placeholder='Enter name' 
+            onChange={(e) => setName(e.target.value)} 
+            value={name}
+          />
+          <input 
+            type='email' 
+            placeholder='Enter email' 
+            onChange={(e) => setEmail(e.target.value)} 
+            value={email}
+          />
+          <input 
+            type='text' 
+            placeholder='Enter number' 
+            onChange={(e) => setNumber(e.target.value)} 
+            value={number}
+          />
+          <button onClick={saveOrUpdateHandler}>
+            {selectedUserId ? 'Update' : 'Save'}
+          </button>
 
-      {data.map((ele) => (
-        <div key={ele.id}>
-          <h1>{ele.name}</h1>
-          <p>{ele.email}</p>
-          <p>{ele.number}</p>
-          <button onClick={() => selectUserForUpdate(ele.id, ele.name, ele.email, ele.number)}>Edit</button>
-          <button onClick={() => deleteHandler(ele.id)}>Delete</button> {/* Delete button */}
+<div className='admin-founder-section'> 
+          {data.map((ele) => (
+            <div className="admin-founder-card" key={ele.id}>
+              <h1>{ele.name}</h1>
+              <p>{ele.email}</p>
+              <p>{ele.number}</p>
+                <div className='button-founder'>
+                  <button onClick={() => selectUserForUpdate(ele.id, ele.name, ele.email, ele.number)}>Edit</button>
+                  <button onClick={() => deleteHandler(ele.id)}>Delete</button> {/* Delete button */}
+                </div>
+            </div>
+          ))}
+</div>
+
         </div>
-      ))}
-    </>
+      </>
   );
 };
 

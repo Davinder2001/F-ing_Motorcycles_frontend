@@ -221,36 +221,43 @@ const InvestorPageManagement = () => {
         <button type="submit" disabled={loading}>Update Investor</button>
     </form>
 )}
-
+        <div className='edit-delet-btn'> 
             <button onClick={() => setShowAddForm(!showAddForm)}>
                 {showAddForm ? 'Cancel' : 'Add Investor'}
             </button>
             <button onClick={() => setShowEditForm(!showEditForm)}>
                 {showEditForm ? 'Cancel Edit' : 'Edit Investor'}
             </button>
+        </div>
+         
 
             <div>
-                <h2>Current Investor Page</h2>
-                <h3>SEO</h3>
-                <p><strong>SEO Title:</strong> {investor.field8}</p>
-                <p><strong>SEO Discription:</strong> {investor.field9}</p>
-                <p><strong>SEO Host URL:</strong> {investor.field10}</p>
-
-                <h3>Page Content</h3>
-                {investor.image && <p><strong>Image:</strong> <img src={investor.image} alt="Investor" /></p>}
-                <h3><strong>Heading: -</strong> {investor.field1}</h3>
-                <div><strong>Discription:</strong> <div dangerouslySetInnerHTML={{ __html: investor.field2 }} /></div>
-                <h3>Second Section</h3>
-
-                <p><strong>Heading:</strong> {investor.field3}</p>
-                <div className='card'>
-                <p><strong>Card Heading 1:</strong> {investor.field4}</p>
-                <div><strong>Card Discription 1:</strong> <div dangerouslySetInnerHTML={{ __html: investor.field5 }} /></div>
-
+                <div className='admin-content-homepage'> 
+                    <h2>Current Investor Page</h2>
+                    <h3>SEO</h3>
+                    <p><strong>SEO Title:</strong> {investor.field8}</p>
+                    <p><strong>SEO Discription:</strong> {investor.field9}</p>
+                    <p><strong>SEO Host URL:</strong> {investor.field10}</p>
                 </div>
-                <div className='card'>
-                <p><strong>Card Heading 2:</strong> {investor.field6}</p>
-                <div><strong>Card Discription 2:</strong> <div dangerouslySetInnerHTML={{ __html: investor.field7 }} /></div>
+                <div className='admin-investor-pagecontent'> 
+                    <h3>Page Content</h3>
+                    {investor.image && <p className='content-invest-admin'><strong>Image:</strong> <img src={investor.image} alt="Investor" /></p>}
+                    <h3><strong>Heading: -</strong> {investor.field1}</h3>
+                    <div className='investor-description'>
+                        <strong>Discription:</strong> <div dangerouslySetInnerHTML={{ __html: investor.field2 }} />
+                    </div>
+                    <div className='investor-description'>
+                        <h3>Second Section</h3>
+                        <p><strong>Heading:</strong> {investor.field3}</p>
+                        <div className='card-investor'>
+                            <p><strong>Card Heading 1:</strong> {investor.field4}</p>
+                            <div><strong>Card Discription 1:</strong> <div dangerouslySetInnerHTML={{ __html: investor.field5 }} /></div>
+                        </div>
+                        <div className='card-investor'>
+                            <p><strong>Card Heading 2:</strong> {investor.field6}</p>
+                            <div><strong>Card Discription 2:</strong> <div dangerouslySetInnerHTML={{ __html: investor.field7 }} /></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
