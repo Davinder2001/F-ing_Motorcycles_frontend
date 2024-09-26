@@ -84,7 +84,7 @@ const ContactUs = () => {
 
   return (
     <>
-    <h3>Contats us</h3>
+    <h3>Contact us</h3>
       {/* Input fields for name, email, and number */}
       <input 
         type='text' 

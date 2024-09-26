@@ -73,7 +73,7 @@ const ContactSeoPage = () => {
         <div>
             <h1>Contact SEO Page</h1>
             <div>
-               data {seoData?.name}
+               {seoData?.name}
             </div>
             <input
                 type="text"
