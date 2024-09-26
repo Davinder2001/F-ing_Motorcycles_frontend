@@ -83,31 +83,30 @@ const ContactUs = () => {
   }, [api]);
 
   return (
-      <>
-        <div className='admin-contact'>
-          <h3>Contats us</h3>
-          {/* Input fields for name, email, and number */}
-          <input 
-            type='text' 
-            placeholder='Enter name' 
-            onChange={(e) => setName(e.target.value)} 
-            value={name}
-          />
-          <input 
-            type='email' 
-            placeholder='Enter email' 
-            onChange={(e) => setEmail(e.target.value)} 
-            value={email}
-          />
-          <input 
-            type='text' 
-            placeholder='Enter number' 
-            onChange={(e) => setNumber(e.target.value)} 
-            value={number}
-          />
-          <button onClick={saveOrUpdateHandler}>
-            {selectedUserId ? 'Update' : 'Save'}
-          </button>
+    <>
+    <h3>Contats us</h3>
+      {/* Input fields for name, email, and number */}
+      <input 
+        type='text' 
+        placeholder='Enter name' 
+        onChange={(e) => setName(e.target.value)} 
+        value={name}
+      />
+      <input 
+        type='email' 
+        placeholder='Enter email' 
+        onChange={(e) => setEmail(e.target.value)} 
+        value={email}
+      />
+      <input 
+        type='text' 
+        placeholder='Enter number' 
+        onChange={(e) => setNumber(e.target.value)} 
+        value={number}
+      />
+      <button onClick={saveOrUpdateHandler}>
+        {selectedUserId ? 'Update' : 'Save'}
+      </button>
 
 <div className='admin-founder-section'> 
           {data.map((ele) => (

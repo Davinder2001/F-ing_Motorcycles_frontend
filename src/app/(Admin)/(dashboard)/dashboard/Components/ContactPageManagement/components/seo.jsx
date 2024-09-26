@@ -72,9 +72,9 @@ const ContactSeoPage = () => {
     return (
         <div className='admin-homepage-seo'>
             <h1>Contact SEO Page</h1>
-            <p>
-               Data {seoData?.name}
-            </p>
+            <div>
+               data {seoData?.name}
+            </div>
             <input
                 type="text"
                 value={formData.seoTitle}

@@ -2,6 +2,7 @@ import React from 'react'
 // import Image from 'next/image'
 
 const AdminHeader = ({ getHeaderLogo }) => {
+  // console.log(getHeaderLogo)
   return (
     <div className='admin_header'>
       <div className='header-inner'>
