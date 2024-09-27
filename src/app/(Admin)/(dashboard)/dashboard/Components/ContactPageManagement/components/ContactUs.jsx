@@ -84,7 +84,7 @@ const ContactUs = () => {
 
   return (
     <>
-    <h3>Contats us</h3>
+    <h3>Contact us</h3>
       {/* Input fields for name, email, and number */}
       <input 
         type='text' 
@@ -108,21 +108,7 @@ const ContactUs = () => {
         {selectedUserId ? 'Update' : 'Save'}
       </button>
 
-<div className='admin-founder-section'> 
-          {data.map((ele) => (
-            <div className="admin-founder-card" key={ele.id}>
-              <h1>{ele.name}</h1>
-              <p>{ele.email}</p>
-              <p>{ele.number}</p>
-                <div className='button-founder'>
-                  <button onClick={() => selectUserForUpdate(ele.id, ele.name, ele.email, ele.number)}>Edit</button>
-                  <button onClick={() => deleteHandler(ele.id)}>Delete</button> {/* Delete button */}
-                </div>
-            </div>
-          ))}
-</div>
-
-        </div>
+    
       </>
   );
 };

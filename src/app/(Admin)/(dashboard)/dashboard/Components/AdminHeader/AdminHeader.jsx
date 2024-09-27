@@ -7,7 +7,7 @@ const AdminHeader = ({ getHeaderLogo }) => {
     <div className='admin_header'>
       <div className='header-inner'>
         <div className='header-left'>
-          <img src={getHeaderLogo.image_path} alt="Header Logo" />
+          <img src={getHeaderLogo?.image_path} alt="Header Logo" />
         </div>
         <div className='header-right'></div>
       </div>
