@@ -6,6 +6,9 @@ const ManagementPage = dynamic(() => import('./_dashboard/ManagementPage'), { ss
 
 const Dashboard = async () => {
 
+
+ 
+
                 let api = EXPORT_ALL_APIS();
                 const profile = await api.fetchprofile();
                 const categoryList = await api.fetchCategories();

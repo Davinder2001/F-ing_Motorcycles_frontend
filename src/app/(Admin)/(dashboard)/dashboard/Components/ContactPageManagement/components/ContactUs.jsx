@@ -1,21 +1,20 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { EXPORT_ALL_APIS } from '../../../../../../../../utils/apis/apis';
+"use client";
+import React, { useEffect, useState } from "react";
+import { EXPORT_ALL_APIS } from "../../../../../../../../utils/apis/apis";
 const api = EXPORT_ALL_APIS();
 
 const ContactUs = () => {
-
   // State hooks for the fields
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [number, setNumber] = useState('');
-  const [data, setData] = useState([]);
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+  const [data, setData] = useState([]); // To store fetched data
+  const [selectedUserId, setSelectedUserId] = useState(null); // For updating
 
   // Function to save or update contact page
   const saveOrUpdateHandler = async () => {
     if (!name.trim() || !email.trim() || !number.trim()) {
-      alert('Please fill all fields (name, email, and number).');
+      alert("Please fill all fields (name, email, and number).");
       return;
     }
 
@@ -31,22 +30,22 @@ const ContactUs = () => {
       }
 
       // Clear input fields and reset selected userId after successful save/update
-      setName('');
-      setEmail('');
-      setNumber('');
+      setName("");
+      setEmail("");
+      setNumber("");
       setSelectedUserId(null);
 
       // Fetch updated data
       loadPage();
     } catch (error) {
-      console.error('Error saving/updating contact page:', error);
-      alert('Error saving/updating contact page');
+      console.error("Error saving/updating contact page:", error);
+      alert("Error saving/updating contact page");
     }
   };
 
   // Function to delete a user
   const deleteHandler = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this user?')) {
+    if (!window.confirm("Are you sure you want to delete this user?")) {
       return;
     }
 
@@ -54,8 +53,8 @@ const ContactUs = () => {
       await api.deleteContactPage(id); // Call the API to delete the user
       loadPage(); // Reload the data after deletion
     } catch (error) {
-      console.error('Error deleting contact page:', error);
-      alert('Error deleting contact page');
+      console.error("Error deleting contact page:", error);
+      alert("Error deleting contact page");
     }
   };
 
@@ -73,43 +72,59 @@ const ContactUs = () => {
       const resp = await api.fetchContactPage(); // Fetch data from API
       setData(resp.data);
     } catch (error) {
-      console.error('Error fetching contact page data:', error);
+      console.error("Error fetching contact page data:", error);
     }
   };
 
   // Effect to load data when component mounts
   useEffect(() => {
     loadPage();
-  }, [api]);
+  }, []);
 
   return (
     <>
-    <h3>Contact us</h3>
+      <h3>Contact us</h3>
       {/* Input fields for name, email, and number */}
-      <input 
-        type='text' 
-        placeholder='Enter name' 
-        onChange={(e) => setName(e.target.value)} 
+      <input
+        type="text"
+        placeholder="Enter name"
+        onChange={(e) => setName(e.target.value)}
         value={name}
       />
-      <input 
-        type='email' 
-        placeholder='Enter email' 
-        onChange={(e) => setEmail(e.target.value)} 
+      <input
+        type="email"
+        placeholder="Enter email"
+        onChange={(e) => setEmail(e.target.value)}
         value={email}
       />
-      <input 
-        type='text' 
-        placeholder='Enter number' 
-        onChange={(e) => setNumber(e.target.value)} 
+      <input
+        type="text"
+        placeholder="Enter number"
+        onChange={(e) => setNumber(e.target.value)}
         value={number}
       />
       <button onClick={saveOrUpdateHandler}>
-        {selectedUserId ? 'Update' : 'Save'}
+        {selectedUserId ? "Update" : "Save"}
       </button>
 
-    
-      </>
+      <hr />
+      <h4>Contact List</h4>
+      <ul>
+        {data.map((user, index) => (
+          <li key={user.id}>
+            {index + 1}. {user.name} ({user.email}, {user.number}){" "}
+            <button
+              onClick={() =>
+                selectUserForUpdate(user.id, user.name, user.email, user.number)
+              }
+            >
+              Edit
+            </button>
+            <button onClick={() => deleteHandler(user.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 

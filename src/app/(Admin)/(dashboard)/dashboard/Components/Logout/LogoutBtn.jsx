@@ -14,12 +14,11 @@ const LogoutBtn = () => {
       await api.logoutUser(token);
 
       localStorage.removeItem('token');
-
-      // // Redirect to the login page or another route
       router.push('/login');
     } catch (error) {
       console.error('Logout failed:', error.message);
-      // Optionally, show an error message to the user
+      localStorage.removeItem('token');
+      router.push('/login');
     }
   };
 

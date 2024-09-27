@@ -13,8 +13,14 @@ const LoginPage = () => {
     // Redirect to dashboard if token is already present
     useEffect(() => {
         const token = localStorage.getItem('token');
+        // console.log('Token ',token)
+        // return
         if (token) {
+            const responce = api.getUserDashboard(token)
             router.push('/dashboard'); // Redirect to dashboard if token is found
+        }else{
+            // Redirect to login page if no token is present
+            router.push('/login');
         }
     }, [router]);
 
@@ -28,6 +34,7 @@ const LoginPage = () => {
             if (data.status) {
                 localStorage.setItem('token', data.token); // Store token in local storage
                 router.push('/dashboard'); // Redirect to dashboard
+                alert('Login sucess');
             } else {
                 alert(data.message); // Display alert if login fails
             }

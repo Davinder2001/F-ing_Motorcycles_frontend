@@ -2,6 +2,7 @@
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { EXPORT_ALL_APIS } from '../../../../../../utils/apis/apis';
 
 
 const DashboardMain = dynamic(() => import('../Components/MainDashboard/dashboard'), { ssr: false });
@@ -30,10 +31,24 @@ const ManagementPage = ({profile, categoryList, PrivacyPolicy, termsOfUse, terms
    
      // Redirect to login if no token is present
      useEffect(() => {
+        const api = EXPORT_ALL_APIS(); 
         const token = localStorage.getItem('token');
         if (!token) {
             router.push('/login'); // Redirect to login if token is not found
-        }
+          } else {
+            // Wrapping the logic in an async function to use await
+            const fetchDashboardData = async () => {
+              try {
+                const getDashboard = await api.getUserDashboard(token); // Wait for the promise to resolve
+              } catch (error) {
+                console.error('Error fetching dashboard:', error); // Handle any errors
+              }
+            };
+          
+            fetchDashboardData(); // Call the async function
+          }
+          
+       
     }, [router]);
     
 

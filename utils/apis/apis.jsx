@@ -60,9 +60,10 @@ export const EXPORT_ALL_APIS = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      return response.data;
+      // console.log('res',response)
+      return response;
     } catch (error) {
-      throw new Error("Failed to fetch user dashboard.");
+      
     }
   };
 
@@ -199,13 +200,12 @@ export const EXPORT_ALL_APIS = () => {
 
     const logoutUser = async (token) => {
       try {
-        console.log("token recived from api", token);
         const response = await axios.get(`${API_URL}/api/logout`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-
+        alert('Admin logout successfully');
         return response.data;
       } catch (error) {
         throw new Error(
