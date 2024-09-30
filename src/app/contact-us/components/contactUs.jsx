@@ -74,7 +74,7 @@ const ContactSection =() => {
             <span>Headquarters: Bangalore, Karnataka</span>
           </div>
           <div>
-            <a className="getdirection" href="https://goo.gl/maps/..." target="_blank" rel="noopener noreferrer">
+            <a className="getdirection" href="https://www.google.com/maps/search/No.66,+Hanumatha+Layout,+Singasandra,+Bangalore,+Karnataka,+India/@12.9656358,77.5716856,12z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MDkyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
               Get directions
               <img src="/getd.png" alt="Get Directions Icon" />
             </a>

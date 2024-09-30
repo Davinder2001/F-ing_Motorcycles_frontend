@@ -68,6 +68,33 @@ const OtherSection = () => {
     // State for showing forms
     const [showAddForm, setShowAddForm] = useState(false);
     const [showEditForm, setShowEditForm] = useState(false);
+    const [fetchData, setFetchContent] = useState({
+        heading: '',
+        heading_nxt: '',
+        description: '',
+        heading_2: '',
+        Sub_heading_2: '',
+        description_2: '',
+        s_description_1: '',
+        s_description_2: '',
+        s_description_3: '',
+        third_sec_heading: '',
+        image: '',
+        image_2: '',
+        image_1_sec_3: '',
+        image_2_sec_3: '',
+        image_3_sec_3: '',
+        image_4_sec_3: '',
+        image_5_sec_3: '',
+        disc_1_sec_3: '',
+        disc_2_sec_3: '',
+        disc_3_sec_3: '',
+        disc_4_sec_3: '',
+        disc_5_sec_3: '',
+        seo_title: '',
+        seo_description: '',
+        seo_host_url: ''
+    });
 
     // Fetch content on component mount
     useEffect(() => {
@@ -75,6 +102,7 @@ const OtherSection = () => {
             const token = localStorage.getItem('token');
             try {
                 const data = await api.fetchContent(token);
+                setFetchContent(data || {});
                 setContent(data || {});
             } catch (error) {
                 console.error('Failed to fetch content:', error.message);
@@ -150,6 +178,7 @@ const OtherSection = () => {
                 seo_host_url: ''
             });
             setShowAddForm(false);
+
         } catch (error) {
             console.error('Failed to create content:', error.message);
         }
@@ -174,6 +203,7 @@ const OtherSection = () => {
             await api.updateContent(token, content.id, content);
             const updatedContent = await api.fetchContent(token);
             setContent(updatedContent || {});
+
             setContent({
                 heading: '',
                 heading_nxt: '',
@@ -218,6 +248,7 @@ const OtherSection = () => {
             console.error('Failed to delete content:', error.message);
         }
     };
+    
 
 
     return (
@@ -268,12 +299,25 @@ const OtherSection = () => {
                             onChange={handleChange}
                             placeholder="Typing Heading"
                         />
+                         <input
+                            type="text"
+                            name="s_description_1"
+                            value={newContent.s_description_1}
+                            onChange={handleChange}
+                            placeholder="Typing Heading 2"
+                        />
                         <ReactQuill
                             value={newContent.description}
                             onChange={handleQuillChange('description')}
                             placeholder="Slider Description"
                         />
                     </div>
+                    <h3>Slider Background</h3>
+                    <input
+                            type="file"
+                            name="image"
+                            onChange={handleChange}
+                        />
 
                     {/* Third Section */}
                     <div className='form-section'>
@@ -290,11 +334,7 @@ const OtherSection = () => {
                             onChange={handleQuillChange('description_2')}
                             placeholder="Main Description"
                         />
-                        <input
-                            type="file"
-                            name="image"
-                            onChange={handleChange}
-                        />
+                       
                         <input
                             type="file"
                             name="image_2"
@@ -365,13 +405,7 @@ const OtherSection = () => {
                     {/* Investor Section */}
                     <div className='form-section d-none'>
                         <h3>Investor Section</h3>
-                        <input
-                            type="text"
-                            name="s_description_1"
-                            value={newContent.s_description_1}
-                            onChange={handleChange}
-                            placeholder="Sub Description 1"
-                        />
+                       
                         <input
                             type="text"
                             name="s_description_2"
@@ -447,6 +481,13 @@ const OtherSection = () => {
                 onChange={handleUpdate}
                 placeholder="Typing Heading"
             />
+            <input
+                type="text"
+                name="s_description_1"
+                value={content.s_description_1}
+                onChange={handleUpdate}
+                placeholder="Typing Heading 2"
+            />
             <ReactQuill
                 name="description"
                 value={content.description || ''}
@@ -456,6 +497,13 @@ const OtherSection = () => {
                 }))}
                 placeholder="Slider Description"
             />
+            <h3>Slider Background</h3>
+            <input
+                type="file"
+                name="image"
+                onChange={handleUpdate}
+            />
+              {content.image && <img src={content.image} alt="Content Image" />}
         </div>
 
         {/* Third Section */}
@@ -477,12 +525,7 @@ const OtherSection = () => {
                 }))}
                 placeholder="Main Description"
             />
-            <input
-                type="file"
-                name="image"
-                onChange={handleUpdate}
-            />
-              {content.image && <img src={content.image} alt="Content Image" />}
+           
                       
             <input
                 type="file"
@@ -562,13 +605,6 @@ const OtherSection = () => {
             <h3>Investor Section</h3>
             <input
                 type="text"
-                name="s_description_1"
-                value={content.s_description_1 || ''}
-                onChange={handleUpdate}
-                placeholder="Sub Description 1"
-            />
-            <input
-                type="text"
                 name="s_description_2"
                 value={content.s_description_2 || ''}
                 onChange={handleUpdate}
@@ -601,53 +637,56 @@ const OtherSection = () => {
                 <div>
                     <div className='admin-homepage-seo'>
                         <h2>SEO Details</h2>
-                        <p><strong>SEO Title:</strong> {content.seo_title}</p>
-                        <p><strong>SEO Description:</strong> {content.seo_description}</p>
-                        <p><strong>SEO Host URL:</strong> {content.seo_host_url}</p>
+                        <p><strong>SEO Title:</strong> {fetchData.seo_title}</p>
+                        <p><strong>SEO Description:</strong> {fetchData.seo_description}</p>
+                        <p><strong>SEO Host URL:</strong> {fetchData.seo_host_url}</p>
                     </div>
                     <div className='admin-content-homepage'> 
                         <h2>Content Details</h2>
-                        <p><strong>Slider Heading:</strong> {content.heading}</p>
-                        <p><strong>Typing Heading:</strong> {content.heading_nxt}</p>
+                        <p><strong>Slider Heading:</strong> {fetchData.heading}</p>
+                        <p><strong>Typing Heading:</strong> {fetchData.heading_nxt}</p>
+                        <p><strong>Typing Heading 2:</strong> {fetchData.s_description_1}</p>
+                        <h3>Slider Background</h3>
+                        {fetchData.image && <img src={fetchData.image} alt="Content Image" />}
                         <p><strong>Slider Description :</strong> </p>
-                        <div dangerouslySetInnerHTML={{ __html: content.description || '' }} />
+                        <div dangerouslySetInnerHTML={{ __html: fetchData.description || '' }} />
                     </div>
                     <div className='admin-content-homepage'> 
                         <h2>Third Section</h2>
-                        <p><strong>Heading:</strong> {content.heading_2}</p>
-                        {/* <p><strong>Sub Heading :</strong> {content.Sub_heading_2}</p>
-                        <p><strong>Sub Description 1:</strong> {content.s_description_1}</p>
-                        <p><strong>Sub Description 2:</strong> {content.s_description_2}</p>
-                        <p><strong>Sub Description 3:</strong> {content.s_description_3}</p> */}
+                        <p><strong>Heading:</strong> {fetchData.heading_2}</p>
+                        {/* <p><strong>Sub Heading :</strong> {fetchData.Sub_heading_2}</p>
+                        <p><strong>Sub Description 1:</strong> {fetchData.s_description_1}</p>
+                        <p><strong>Sub Description 2:</strong> {fetchData.s_description_2}</p>
+                        <p><strong>Sub Description 3:</strong> {fetchData.s_description_3}</p> */}
                         <p><strong>Description :</strong> </p>
-                        <div dangerouslySetInnerHTML={{ __html: content.description_2 || '' }} />
-                        <h3>Images</h3>
-                        {content.image && <img src={content.image} alt="Content Image" />}
-                            {content.image_2 && <img src={content.image_2} alt="Content Image 2" />}
+                        <div dangerouslySetInnerHTML={{ __html: fetchData.description_2 || '' }} />
+                        <h3>Image</h3>
+                  
+                            {fetchData.image_2 && <img src={fetchData.image_2} alt="Content Image 2" />}
                     </div>
                     <div className='admin-content-homepage'>    
                         <h2>Third Section</h2>
-                        <p className='journey-heading-admin'><strong>Fourth Section Heading:</strong> {content.third_sec_heading}</p>
+                        <p className='journey-heading-admin'><strong>Fourth Section Heading:</strong> {fetchData.third_sec_heading}</p>
                         <div className='admin-journey-section'> 
                             <div> 
-                                <p>{content.disc_1_sec_3}</p>
-                                {content.image_1_sec_3 && <img src={content.image_1_sec_3} alt="Image 1 Sec 3" />}
+                                <p>{fetchData.disc_1_sec_3}</p>
+                                {fetchData.image_1_sec_3 && <img src={fetchData.image_1_sec_3} alt="Image 1 Sec 3" />}
                             </div>
                             <div> 
-                                <p>{content.disc_2_sec_3}</p>
-                                {content.image_2_sec_3 && <img src={content.image_2_sec_3} alt="Image 2 Sec 3" />}
+                                <p>{fetchData.disc_2_sec_3}</p>
+                                {fetchData.image_2_sec_3 && <img src={fetchData.image_2_sec_3} alt="Image 2 Sec 3" />}
                             </div>
                             <div>     
-                                <p>{content.disc_3_sec_3}</p>
-                                {content.image_3_sec_3 && <img src={content.image_3_sec_3} alt="Image 3 Sec 3" />} 
+                                <p>{fetchData.disc_3_sec_3}</p>
+                                {fetchData.image_3_sec_3 && <img src={fetchData.image_3_sec_3} alt="Image 3 Sec 3" />} 
                             </div>
                             <div> 
-                                <p>{content.disc_4_sec_3}</p>
-                                {content.image_4_sec_3 && <img src={content.image_4_sec_3} alt="Image 4 Sec 3" />}
+                                <p>{fetchData.disc_4_sec_3}</p>
+                                {fetchData.image_4_sec_3 && <img src={fetchData.image_4_sec_3} alt="Image 4 Sec 3" />}
                             </div>
                             <div> 
-                                <p>{content.disc_5_sec_3}</p>
-                                {content.image_5_sec_3 && <img src={content.image_5_sec_3} alt="Image 5 Sec 3" />}
+                                <p>{fetchData.disc_5_sec_3}</p>
+                                {fetchData.image_5_sec_3 && <img src={fetchData.image_5_sec_3} alt="Image 5 Sec 3" />}
                             </div>
                         </div>
                     </div>

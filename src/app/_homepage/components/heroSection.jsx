@@ -5,7 +5,7 @@ import PopupForm from '@/app/_common/layout/popup';
 const SliderComponent = ({ result, heroSection }) => {
   const [activeSlide, setActiveSlide] = useState(0); // Default to the first slide
   const [highlightText, setHighlightText] = useState(' ScooteElectricr'); // Text to type out
-  const textArray = [`${result.heading_nxt}`, 'Electric Bike',]; // Array of texts to loop
+  const textArray = [`${result.heading_nxt}`, `${result.s_description_1}`,]; // Array of texts to loop
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [typedText, setTypedText] = useState('');

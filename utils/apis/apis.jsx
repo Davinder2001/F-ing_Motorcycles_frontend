@@ -488,6 +488,7 @@ export const EXPORT_ALL_APIS = () => {
         if (!response.ok) {
           throw new Error("Failed to update content.");
         }
+        alert('Content updated')
 
         return await response.json();
       } catch (error) {

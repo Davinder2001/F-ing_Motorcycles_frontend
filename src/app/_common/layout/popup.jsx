@@ -8,7 +8,7 @@ const PopupForm = ({ closeForm }) => {
     name: '',
     email: '',
     phone: '',
-    interestedIn: '',
+    interestedIn: 'Mild Hybrid',
     message: ''
   });
 
@@ -23,7 +23,6 @@ const PopupForm = ({ closeForm }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-
     try {
         const response = await api.createFormEnquery(token, formData);
 
@@ -33,7 +32,8 @@ const PopupForm = ({ closeForm }) => {
             setFormData({ name: '', email: '', phone: '', interestedIn: '', message: '' });
             closeForm(); // Close the popup
         } else {
-            const errorText = await response.text(); // Parse text if response is not OK
+            const errorText = await response.statusText; // Parse text if response is not OK
+            console.log('Error',response)
             alert('Error submitting enquiry: ' + errorText);
         }
     } catch (error) {

@@ -27,21 +27,54 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
-
+    
         try {
             const data = await api.loginUser(email, password);
-
+    
             if (data.status) {
-                localStorage.setItem('token', data.token); // Store token in local storage
+                const tokenExpiryTime = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+    
+                // Save token and expiry time to local storage
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('tokenExpiry', tokenExpiryTime.toString());
+    
                 router.push('/dashboard'); // Redirect to dashboard
-                alert('Login sucess');
+                alert('Admin logged in successfully');
             } else {
                 alert(data.message); // Display alert if login fails
             }
         } catch (err) {
             alert(err.message); // Display error in an alert if an exception occurs
         }
+    
+        // Function to check if the token is still valid
+        const getToken = () => {
+            const token = localStorage.getItem('token');
+            const tokenExpiry = localStorage.getItem('tokenExpiry');
+    
+            if (!token || !tokenExpiry) {
+                return null; // No token or expiry time found
+            }
+    
+            const currentTime = new Date().getTime();
+            if (currentTime > tokenExpiry) {
+                localStorage.removeItem('token'); // Token expired, remove it
+                localStorage.removeItem('tokenExpiry'); // Remove expiry time
+                return null;
+            }
+    
+            return token; // Return valid token
+        };
+    
+        // Call getToken to ensure the token is valid if you need to use it
+        const token = getToken();
+        if (!token) {
+            console.log("Session expired or not found.");
+        } else {
+            console.log("Valid token found:", token);
+        }
     };
+    
 
     return (
         <div className='container login_page'>

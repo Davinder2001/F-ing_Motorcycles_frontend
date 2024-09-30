@@ -217,7 +217,7 @@ const ImageGallery = () => {
                       width="100"
                     />
                   )}
-                  <div class="edit-delet-btn"> 
+                  <div className="edit-delet-btn"> 
                     <button onClick={() => handleEdit(gallery)}>Edit</button>
                     <button onClick={() => handleDelete(gallery)}>Delete</button>
                   </div>
