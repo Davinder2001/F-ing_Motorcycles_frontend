@@ -1,10 +1,26 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React from 'react'
-import MainPage from './components/mainPage'
+import FetchDataPage from './components/fetchDataPage'
+import GreenGallery from './components/greenGallery'
+
 
 const GreenAnergyPageManagement = () => {
   return (
     <>
-      <MainPage/>
+     <FetchDataPage/>
+     <GreenGallery/>
     </>
   )
 }

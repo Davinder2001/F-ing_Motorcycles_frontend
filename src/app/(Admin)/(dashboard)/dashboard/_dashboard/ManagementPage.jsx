@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { EXPORT_ALL_APIS } from '../../../../../../utils/apis/apis';
-import GreenAnergyPageManagement from '../Components/greenEnergyPageManagement/greenAnergy';
 
 
 const DashboardMain = dynamic(() => import('../Components/MainDashboard/dashboard'), { ssr: false });
@@ -23,6 +22,7 @@ const PrivacyPolicyManagement = dynamic(() => import('../Components/PrivacyPolic
 const TermsOfUseManagement = dynamic(() => import('../Components/TermsofUseManagement/TermsofUseManagement'), { ssr: false });
 const TermsAndConditionsManagement = dynamic(() => import('../Components/TermsAndConditionsManagement/TermsAndConditionsManagement'), { ssr: false });
 const FounderManagement = dynamic(() => import('../Components/FounderManagement/FounderManagement'), { ssr: false });
+const GreenAnergyPageManagement = dynamic(() => import('../Components/greenEnergyPageManagement/greenAnergy'), { ssr: false });
 
 
 const ManagementPage = ({profile, categoryList, PrivacyPolicy, termsOfUse, termsAndConditions, AboutUs, founders, enquiryFormData }) => {
