@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { EXPORT_ALL_APIS } from '../../../../../../utils/apis/apis';
+import GreenAnergyPageManagement from '../Components/greenEnergyPageManagement/greenAnergy';
 
 
 const DashboardMain = dynamic(() => import('../Components/MainDashboard/dashboard'), { ssr: false });
@@ -39,7 +40,12 @@ const ManagementPage = ({profile, categoryList, PrivacyPolicy, termsOfUse, terms
             // Wrapping the logic in an async function to use await
             const fetchDashboardData = async () => {
               try {
-                const getDashboard = await api.getUserDashboard(token); // Wait for the promise to resolve
+                const getDashboard = await api.getUserDashboard(token);
+                if (getDashboard === undefined) {
+                  alert('Session Expired')
+                  localStorage.removeItem('token');
+                  router.push('/login');
+                }
               } catch (error) {
                 console.error('Error fetching dashboard:', error); // Handle any errors
               }
@@ -76,6 +82,7 @@ const ManagementPage = ({profile, categoryList, PrivacyPolicy, termsOfUse, terms
                     {activeTab === 'termsOfUse' && <TermsOfUseManagement termsOfUse={termsOfUse}/>}
                     {activeTab === 'terms&Conditions' && <TermsAndConditionsManagement termsAndConditions={termsAndConditions}/>}
                     {activeTab === 'founder' && <FounderManagement founders={founders} />}
+                    {activeTab === 'greenAnergyPage' && <GreenAnergyPageManagement/>}
                 </div>
             </div>
         </div>

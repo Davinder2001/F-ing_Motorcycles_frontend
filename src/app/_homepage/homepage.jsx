@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react'
 
 import SliderComponent from './components/heroSection'
 import HybridInfo from './components/weProvide'
-import InvestorSection from '../investor-corner/components/investorCorner'
+// import InvestorSection from '../investor-corner/components/investorCorner'
 import HybridWhy from './components/Hybridwhy'
 import OurJourney from './components/ourJourney'
 import ImageGallery from './components/imageGallery'
 import { EXPORT_ALL_APIS } from '../../../utils/apis/apis'
+import { Founders } from '../about/components/teamMember'
+import GreenEnergy from './components/greenEnergy'
 
 
 function Homepage() {
@@ -19,6 +21,8 @@ function Homepage() {
   let [heroSection, setHeroSection] = useState([])
   let [investor, setInvestor] = useState([])
   let [gallery, setGallery] = useState([])
+  let [founders, setFounders] = useState([])
+  let [greenEnergy, setGreenEnergy] = useState([])
 
 
   useEffect(() => {
@@ -44,13 +48,22 @@ function Homepage() {
       let resp = await api.fetchGalleries()
       setGallery(resp)
     }
+     let loadFounders = async () => {
+      let resp = await api.fetchFounders()
+      setFounders(resp)
+    } 
+    let loadGreenEnergy = async () => {
+      let resp = await api.fetchGreenEnergy()
+      setGreenEnergy(resp)
+    }
 
     loadContent()
     loadCategory()
     loadHeroSection()
     loadInvestor()
     loadGalaery()
-
+    loadFounders()
+    loadGreenEnergy()
   }, [])
 
 
@@ -66,7 +79,9 @@ function Homepage() {
       <HybridInfo category={category} />
       <HybridWhy result={result} />
       <OurJourney result={result} />
-      <InvestorSection investor={investor} />
+      {/* <InvestorSection investor={investor} /> */}
+      <Founders founders={founders} />
+      <GreenEnergy greenEnergy={greenEnergy}/>
       <ImageGallery gallery={gallery} />
     </div>
   )

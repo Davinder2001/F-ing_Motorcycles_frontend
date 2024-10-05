@@ -14,7 +14,7 @@ const ImageGallery = ({ gallery }) => {
     return (
         <div className='certificate-section'> 
             <div className='container'>
-                <h2>Certificate</h2>
+                <h2>IP Achievements and Associations</h2>
                 <div className='gallery-certificate'>    
                     {gallery && gallery.data?.map((item) => (
                         <div 

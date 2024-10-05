@@ -1,24 +1,17 @@
  
 import Layout from '../_common/layout/layout';
 import ProductPage from './components/productPage';
- 
- 
 
-const page = () => {
- 
-
- 
-
-   
-
+const Page = () => {
+  
   return (
     <div>
    <Layout>   
-       <ProductPage/>
+      <ProductPage/>
   </Layout>
 
     </div>
   )
 }
 
-export default page
+export default Page

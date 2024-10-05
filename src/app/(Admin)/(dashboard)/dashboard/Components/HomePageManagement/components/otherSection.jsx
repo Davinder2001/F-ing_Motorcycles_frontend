@@ -306,6 +306,14 @@ const OtherSection = () => {
                             onChange={handleChange}
                             placeholder="Typing Heading 2"
                         />
+                        
+                        <input
+                            type="text"
+                            name="s_description_2"
+                            value={newContent.s_description_2}
+                            onChange={handleChange}
+                            placeholder="Typing Heading 3"
+                        />
                         <ReactQuill
                             value={newContent.description}
                             onChange={handleQuillChange('description')}
@@ -345,6 +353,13 @@ const OtherSection = () => {
                     {/* Fourth Section */}
                     <div className='form-section'>
                         <h3>Fourth Section</h3>
+                        <input
+                            type="text"
+                            name="third_sec_heading"
+                            value={newContent.third_sec_heading}
+                            onChange={handleChange}
+                            placeholder="Third Section Heading"
+                        />
                         <input
                             type="file"
                             name="image_1_sec_3"
@@ -406,20 +421,6 @@ const OtherSection = () => {
                     <div className='form-section d-none'>
                         <h3>Investor Section</h3>
                        
-                        <input
-                            type="text"
-                            name="s_description_2"
-                            value={newContent.s_description_2}
-                            onChange={handleChange}
-                            placeholder="Sub Description 2"
-                        />
-                        <input
-                            type="text"
-                            name="third_sec_heading"
-                            value={newContent.third_sec_heading}
-                            onChange={handleChange}
-                            placeholder="Third Section Heading"
-                        />
                         <input
                             type="text"
                             name="s_description_3"
@@ -488,6 +489,13 @@ const OtherSection = () => {
                 onChange={handleUpdate}
                 placeholder="Typing Heading 2"
             />
+             <input
+                type="text"
+                name="s_description_2"
+                value={content.s_description_2 || ''}
+                onChange={handleUpdate}
+                placeholder="Typing Heading 3"
+            />
             <ReactQuill
                 name="description"
                 value={content.description || ''}
@@ -538,6 +546,13 @@ const OtherSection = () => {
         {/* Fourth Section */}
         <div className='form-section'>
             <h3>Fourth Section</h3>
+        <input
+                type="text"
+                name="third_sec_heading"
+                value={content.third_sec_heading || ''}
+                onChange={handleUpdate}
+                placeholder="Third Section Heading"
+            />
             <input
                 type="file"
                 name="image_1_sec_3"
@@ -603,20 +618,8 @@ const OtherSection = () => {
         {/* Investor Section */}
         <div className='form-section d-none'>
             <h3>Investor Section</h3>
-            <input
-                type="text"
-                name="s_description_2"
-                value={content.s_description_2 || ''}
-                onChange={handleUpdate}
-                placeholder="Sub Description 2"
-            />
-            <input
-                type="text"
-                name="third_sec_heading"
-                value={content.third_sec_heading || ''}
-                onChange={handleUpdate}
-                placeholder="Third Section Heading"
-            />
+           
+           
             <input
                 type="text"
                 name="s_description_3"
@@ -646,6 +649,7 @@ const OtherSection = () => {
                         <p><strong>Slider Heading:</strong> {fetchData.heading}</p>
                         <p><strong>Typing Heading:</strong> {fetchData.heading_nxt}</p>
                         <p><strong>Typing Heading 2:</strong> {fetchData.s_description_1}</p>
+                        <p><strong>Typing Heading 3:</strong> {fetchData.s_description_3}</p>
                         <h3>Slider Background</h3>
                         {fetchData.image && <img src={fetchData.image} alt="Content Image" />}
                         <p><strong>Slider Description :</strong> </p>
