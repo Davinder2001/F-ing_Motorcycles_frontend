@@ -32,7 +32,8 @@ const GreenEnergy = ({greenEnergy}) => {
      <div className="investor-content">
        <h3>{greenEnergy?.data?.[0]?.name}</h3>
        {/* <p>{greenEnergy?.data?.[0]?.short_description}</p> */}
-       <p>{greenEnergy?.data?.[0]?.long_description}</p>
+       <p>{greenEnergy?.data?.[0]?.short_description
+       }</p>
        <Link href={'green-energy'} className='button'>Learn More</Link>
      </div>
   </div>  

@@ -69,13 +69,11 @@ const ProductSeoPage = () => {
                     setErrors(response.message); // Set validation errors
                     return;
                 }
-                alert('Product SEO data updated successfully');
                 // Fetch new data after updating
                 // fetchSeoData();
             }
         } catch (error) {
             console.error('Error updating Product SEO data:', error);
-            alert('Failed to update Product SEO data');
         }
     };
 
@@ -120,6 +118,7 @@ const ProductSeoPage = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Name"
+                    required
                 />
                 {errors.name && <p style={{ color: 'red' }}>{errors.name.join(', ')}</p>} {/* Display name errors */}
                 

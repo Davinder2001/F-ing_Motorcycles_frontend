@@ -223,6 +223,7 @@ const FetchDataPage = () => {
               <li key={energy.id}>
                 <p>{energy.name}</p>
                 <p>{energy.short_description}</p>
+                <p>{energy.long_description}</p>
                 {energy.image && (
                   <img
                     src={energy.image}

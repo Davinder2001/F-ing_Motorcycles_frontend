@@ -25,11 +25,14 @@ const FirstSection = ({ greenEnergy }) => {
       </div>
       <div className="investor-content">
         <h3>{data?.name}</h3>
-        <div><p>{data?.short_description}</p>
-        <p>{data?.long_description}</p></div>
+        <div><p>{data?.short_description}</p></div>
       </div>
    </div>  
+      
     </section>
+    <div className='container'>
+    <p>{data?.long_description}</p>
+    </div>
     </div>
   );
 };

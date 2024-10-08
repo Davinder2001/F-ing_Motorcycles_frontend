@@ -1536,13 +1536,14 @@ export const EXPORT_ALL_APIS = () => {
     const newFormData = new FormData();
   
     // Append the form data
-    newFormData.append("imgHeading", content.imgHeading);
+    newFormData.append("heading", content.imgHeading);
     if (content.image) { // Corrected from createContent.image
       newFormData.append("image", content.image);
     }
+    console.log(newFormData)
   
     // Perform the fetch request
-    const response = await fetch(`${API_URL}/green-energy-gallery`, {
+    const response = await fetch(`${API_URL}/api/green-energy-gallery`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`, // Token for authorization

@@ -221,14 +221,24 @@ const InvestorPageManagement = () => {
         <button type="submit" disabled={loading}>Update Investor</button>
     </form>
 )}
-        <div className='edit-delet-btn'> 
-            <button onClick={() => setShowAddForm(!showAddForm)}>
-                {showAddForm ? 'Cancel' : 'Add Investor'}
-            </button>
-            <button onClick={() => setShowEditForm(!showEditForm)}>
-                {showEditForm ? 'Cancel Edit' : 'Edit Investor'}
-            </button>
-        </div>
+<div className='edit-delet-btn'>
+  {investor ? (
+    // Show the Add, Edit, and Delete buttons if data exists
+    <>
+     
+     
+      <button onClick={() => setShowEditForm(!showEditForm)}>
+        {showEditForm ? 'Cancel Edit' : 'Edit Investor'}
+      </button>
+    </>
+  ) : (
+    // Only show Add button if no data
+    <button onClick={() => setShowAddForm(!showAddForm)}>
+      {showAddForm ? 'Cancel' : 'Add Investor'}
+    </button>
+  )}
+</div>
+
          
 
             <div>
