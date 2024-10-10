@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // Import React Quill styles
 import { EXPORT_ALL_APIS } from '../../../../../../../../utils/apis/apis';
 
 const FetchDataPage = () => {
@@ -83,7 +85,15 @@ const FetchDataPage = () => {
     setShowEditForm(true);
   };
 
-  // Handle input change
+  // Handle input change for Quill
+  const handleQuillChange = (name, value) => {
+    setFormData((prevContent) => ({
+      ...prevContent,
+      [name]: value,
+    }));
+  };
+
+  // Handle other input changes
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setFormData((prevContent) => ({
@@ -108,7 +118,7 @@ const FetchDataPage = () => {
   return (
     <div className='admin-content-homepage'>
       <div className='inner-homepage-addon'>
-        <h5>Green Energy Manager</h5>
+        <h5>Page Manager</h5>
 
         {/* Show "Add New Energy Item" button only if no data exists */}
         {!showCreateForm && !showEditForm && energies.length === 0 && (
@@ -132,21 +142,18 @@ const FetchDataPage = () => {
           </div>
           <div>
             <label>Short Description:</label>
-            <input
-              type="text"
-              name="short_description"
+            <ReactQuill
               value={formData.short_description}
-              onChange={handleChange}
+              onChange={(value) => handleQuillChange('short_description', value)}
               placeholder="Short Description"
               required
             />
           </div>
           <div>
             <label>Long Description:</label>
-            <textarea
-              name="long_description"
+            <ReactQuill
               value={formData.long_description}
-              onChange={handleChange}
+              onChange={(value) => handleQuillChange('long_description', value)}
               placeholder="Long Description"
               required
             />
@@ -181,21 +188,18 @@ const FetchDataPage = () => {
           </div>
           <div>
             <label>Short Description:</label>
-            <input
-              type="text"
-              name="short_description"
+            <ReactQuill
               value={formData.short_description}
-              onChange={handleChange}
+              onChange={(value) => handleQuillChange('short_description', value)}
               placeholder="Short Description"
               required
             />
           </div>
           <div>
             <label>Long Description:</label>
-            <textarea
-              name="long_description"
+            <ReactQuill
               value={formData.long_description}
-              onChange={handleChange}
+              onChange={(value) => handleQuillChange('long_description', value)}
               placeholder="Long Description"
               required
             />
@@ -216,14 +220,14 @@ const FetchDataPage = () => {
 
       {/* Display existing energy items */}
       <div className='existing-energy-admin'>
-        <h2>Existing Green Energy Items</h2>
+        <h2>Existing Items</h2>
         <ul>
           {energies.length > 0 ? (
             energies.map((energy) => (
               <li key={energy.id}>
-                <p>{energy.name}</p>
-                <p>{energy.short_description}</p>
-                <p>{energy.long_description}</p>
+                <h3>{energy.name}</h3>
+                <p dangerouslySetInnerHTML={{ __html: energy.short_description }} />
+                <p dangerouslySetInnerHTML={{ __html: energy.long_description }} />
                 {energy.image && (
                   <img
                     src={energy.image}
@@ -238,7 +242,7 @@ const FetchDataPage = () => {
               </li>
             ))
           ) : (
-            <p>No energy items available.</p>
+            <p>No items available.</p>
           )}
         </ul>
       </div>
@@ -247,3 +251,5 @@ const FetchDataPage = () => {
 };
 
 export default FetchDataPage;
+
+

@@ -1,44 +1,68 @@
-import React from 'react'
-import Link from 'next/link'
+import React, { useState, useEffect } from "react";
 
-const GreenEnergy = ({greenEnergy}) => {
-   
-    return (
-    // <div className='container'>
-    //     <div className='green-energy-home'>
-    //         <h2 className='title'>{greenEnergy?.data?.[0]?.name}</h2>
-    //     <div className='content-area'>
-    //     <div className='left-side'>
-    //         <img
-    //                 src={greenEnergy?.data?.[0]?.image}
-    //                 alt={greenEnergy?.data?.[0]?.name}
-    //               />
-    //     </div>
-    //     <div className='right-side'>
-    //         <p>{greenEnergy?.data?.[0]?.short_description}</p>
+const GreenEnergy = ({ greenEnergy, greenEnergySlider }) => {
+  const sliderData = greenEnergySlider.data || [];
+  const contData = greenEnergy.data?.[0] || [];
 
-    //     <Link href={'green-energy'} className='button'>Learn More</Link>
-    //     </div>
+  // Set the interval duration (5 seconds)
+  const slideIntervalDuration = 5000; // 5 seconds
 
-    //     </div>
-    //     </div>
-    // </div>
-    <section className="investor-corner ">
-    <div className="invertor_inner_section container"> 
-     <img src='/dotsback.png' className='custom_dot_section'></img>
-     <div className="investor-image">
-           <img src={greenEnergy?.data?.[0]?.image} alt="Green Energy" />
-     </div>
-     <div className="investor-content">
-       <h3>{greenEnergy?.data?.[0]?.name}</h3>
-       {/* <p>{greenEnergy?.data?.[0]?.short_description}</p> */}
-       <p>{greenEnergy?.data?.[0]?.short_description
-       }</p>
-       <Link href={'green-energy'} className='button'>Learn More</Link>
-     </div>
-  </div>  
-   </section>
-  )
-}
+  // State to track the current slide index
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-export default GreenEnergy
+  // Effect to handle automatic sliding
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderData.length); // Loop back to first slide
+    }, slideIntervalDuration);
+
+    // Clear the interval on component unmount
+    return () => clearInterval(interval);
+  }, [sliderData.length]); // Re-run effect if sliderData changes
+
+  return (
+    <div className="container">
+    <div className="phenomenon-section">
+    <img className="background-line-img" src="/linesg.png"/>
+        <h2>
+          Plugin/strong Hybrids: Global{" "}
+          <span className="highlight">Phenomenon</span>
+        </h2>
+        <div className="phenomenon-content">
+          <div className="phenomenon-left-side">
+            <div className="long-description">
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: greenEnergy?.data?.[0]?.long_description,
+                }}
+              />
+            </div>
+            <div className="short-description">
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: greenEnergy?.data?.[0]?.short_description,
+                }}
+              />
+            </div>
+          </div>
+          <div className="phenomenon-right-side">
+          
+                <div className="slider" style={{ backgroundImage: `url(${contData.image})` }}>
+                  {sliderData.length > 0 ? (
+                    <img
+                      src={sliderData[currentSlide].image}
+                      alt={sliderData[currentSlide].heading}
+                    />
+                  ) : (
+                    <p>No images available</p> // Message when there are no images
+                  )}
+                </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default GreenEnergy;

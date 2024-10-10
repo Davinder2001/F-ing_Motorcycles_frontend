@@ -23,6 +23,7 @@ function Homepage() {
   let [gallery, setGallery] = useState([])
   let [founders, setFounders] = useState([])
   let [greenEnergy, setGreenEnergy] = useState([])
+  let [greenEnergySlider, setgreenEnergySlider] = useState([])
 
 
   useEffect(() => {
@@ -56,6 +57,10 @@ function Homepage() {
       let resp = await api.fetchGreenEnergy()
       setGreenEnergy(resp)
     }
+    let GreenEnergySlider = async () => {
+      let resp = await api.fetchGreenEnergyGalry()
+      setgreenEnergySlider(resp)
+    }
 
     loadContent()
     loadCategory()
@@ -64,6 +69,7 @@ function Homepage() {
     loadGalaery()
     loadFounders()
     loadGreenEnergy()
+    GreenEnergySlider()
   }, [])
 
 
@@ -81,7 +87,7 @@ function Homepage() {
       <OurJourney result={result} />
       {/* <InvestorSection investor={investor} /> */}
       <Founders founders={founders} />
-      <GreenEnergy greenEnergy={greenEnergy}/>
+      <GreenEnergy greenEnergy={greenEnergy} greenEnergySlider={greenEnergySlider}/>
       <ImageGallery gallery={gallery} />
     </div>
   )

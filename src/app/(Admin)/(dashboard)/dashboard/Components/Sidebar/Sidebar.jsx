@@ -74,7 +74,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                             Terms & Conditions
                             </button>
                             <button onClick={() => setActiveTab('greenAnergyPage')} className={activeTab === 'greenAnergyPage' ? 'active' : ''}>
-                            Green Energy
+                            Phenomenon
                             </button>
                         </div>
                     )}

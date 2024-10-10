@@ -104,11 +104,11 @@ const GreenGallery = () => {
   return (
     <div className='admin-content-homepage'>
       <div className='inner-homepage-addon'>
-        <h5>Green Energy Gallery Manager</h5>
+        <h5>Slider Images</h5>
 
         {/* Toggle the create form */}
         {!showCreateForm && !showEditForm && (
-          <button onClick={() => setShowCreateForm(true)}>Add New Gallery Item</button>
+          <button onClick={() => setShowCreateForm(true)}>Add New Item</button>
         )}
       </div>
 
