@@ -408,7 +408,12 @@ h2 {
   display: inline;
   color:#13544e;
 }
-
+.dark-mode .phenomenon-content .short-description {
+  background-color: #322f2f;
+}
+.dark-mode .phenomenon-section {
+  box-shadow: 0 0px 4px 0 #f2f2f2;
+}
 
 .phenomenon-content .short-description {
   background-color: #e7f2ef;
